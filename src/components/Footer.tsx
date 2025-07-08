@@ -1,33 +1,72 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Clock, ArrowRight, Youtube } from 'lucide-react';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Clock,
+  ArrowRight,
+  Music,
+  Youtube,
+} from 'lucide-react'
 const Footer = () => {
-  return <footer className="bg-gray-900 text-white pt-16 pb-8">
+  return (
+    <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div className="space-y-6">
             <div className="flex items-center">
-              <img src="/winTourlogo.png" alt="WinTours Sri Lanka Logo" className="h-12 mr-2 bg-white rounded-full p-1" />
+              <img
+                src="https://uploadthingy.s3.us-west-1.amazonaws.com/u54FezGT7mEQfifZEYkdks/winTourlogo.png"
+                alt="WinTours Sri Lanka Logo"
+                className="h-12 mr-2 bg-white rounded-full p-1"
+              />
               <h3 className="text-xl font-bold text-green-400">
                 WinTours Sri Lanka
               </h3>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              Your trustworthy companion for unforgettable trips
-               to Sri Lanka. Our experienced guides 
-               will help you explore the island with ease and confidence.
+              Your trusted partner for unforgettable travel experiences in Sri
+              Lanka. Explore the island with confidence and comfort with our
+              expert guides.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="Facebook">
+              <a
+                href="https://web.facebook.com/profile.php?id=61578155069181"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
+                aria-label="Facebook Page"
+              >
                 <Facebook size={18} />
               </a>
-              <a href="#" className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/wintours_srilanka/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
+                aria-label="Instagram Page"
+              >
                 <Instagram size={18} />
               </a>
-              <a href="#" className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="TikTok">
-                <Tiktok size={18} />
+              <a
+                href="https://www.tiktok.com/@wintours_srilanka"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
+                aria-label="TikTok Page"
+              >
+                <Music size={18} />
               </a>
-              <a href="#" className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="Youtube">
+                <a
+                href="https://www.instagram.com/wintours_srilanka/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
+                aria-label="Youtube Page"
+              >
                 <Youtube size={18} />
               </a>
             </div>
@@ -38,31 +77,46 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gray-300 hover:text-green-400 transition-colors flex items-center">
+                <Link
+                  to="/"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                >
                   <ArrowRight size={14} className="mr-2" />
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-green-400 transition-colors flex items-center">
+                <Link
+                  to="/about"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                >
                   <ArrowRight size={14} className="mr-2" />
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/packages" className="text-gray-300 hover:text-green-400 transition-colors flex items-center">
+                <Link
+                  to="/packages"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                >
                   <ArrowRight size={14} className="mr-2" />
                   Packages
                 </Link>
               </li>
               <li>
-                <Link to="/gallery" className="text-gray-300 hover:text-green-400 transition-colors flex items-center">
+                <Link
+                  to="/gallery"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                >
                   <ArrowRight size={14} className="mr-2" />
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-green-400 transition-colors flex items-center">
+                <Link
+                  to="/contact"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                >
                   <ArrowRight size={14} className="mr-2" />
                   Contact
                 </Link>
@@ -75,31 +129,46 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/packages/14-days-13-nights" className="text-gray-300 hover:text-green-400 transition-colors flex items-center">
+                <Link
+                  to="/packages/14-days-13-nights"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                >
                   <ArrowRight size={14} className="mr-2" />
                   14 Days, 13 Nights
                 </Link>
               </li>
               <li>
-                <Link to="/packages/09-days-08-nights" className="text-gray-300 hover:text-green-400 transition-colors flex items-center">
+                <Link
+                  to="/packages/09-days-08-nights"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                >
                   <ArrowRight size={14} className="mr-2" />
                   09 Days, 08 Nights
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-green-400 transition-colors flex items-center">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                >
                   <ArrowRight size={14} className="mr-2" />
                   Sri Lanka Explorer
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-green-400 transition-colors flex items-center">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                >
                   <ArrowRight size={14} className="mr-2" />
                   Beach Getaway
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-green-400 transition-colors flex items-center">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                >
                   <ArrowRight size={14} className="mr-2" />
                   Cultural Tour
                 </a>
@@ -112,13 +181,20 @@ const Footer = () => {
             </h4>
             <ul className="space-y-4">
               <li className="flex items-start">
-                <MapPin size={20} className="mr-3 text-green-400 flex-shrink-0 mt-1" />
+                <MapPin
+                  size={20}
+                  className="mr-3 text-green-400 flex-shrink-0 mt-1"
+                />
                 <span className="text-gray-300">
-                  No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
+                  No 10, Kalalpitiya, Ukuwela, Matale, 
+                  Sri Lanka
                 </span>
               </li>
               <li className="flex items-center">
-                <Phone size={20} className="mr-3 text-green-400 flex-shrink-0" />
+                <Phone
+                  size={20}
+                  className="mr-3 text-green-400 flex-shrink-0"
+                />
                 <span className="text-gray-300">+94 778 289 862</span>
               </li>
               <li className="flex items-center">
@@ -126,7 +202,10 @@ const Footer = () => {
                 <span className="text-gray-300">info@wintours.com</span>
               </li>
               <li className="flex items-center">
-                <Clock size={20} className="mr-3 text-green-400 flex-shrink-0" />
+                <Clock
+                  size={20}
+                  className="mr-3 text-green-400 flex-shrink-0"
+                />
                 <span className="text-gray-300">
                   Mon - Sat: 9:00 AM - 5:00 PM (Hotline 24/7)
                 </span>
@@ -141,19 +220,29 @@ const Footer = () => {
               reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-green-400 text-sm">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-green-400 text-sm"
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-green-400 text-sm">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-green-400 text-sm"
+              >
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-400 hover:text-green-400 text-sm">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-green-400 text-sm"
+              >
                 FAQ
               </a>
             </div>
           </div>
         </div>
       </div>
-    </footer>;
-};
-export default Footer;
+    </footer>
+  )
+}
+export default Footer

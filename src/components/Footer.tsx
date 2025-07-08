@@ -13,9 +13,9 @@ const Footer = () => {
               </h3>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              Your trusted partner for unforgettable travel experiences in Sri
-              Lanka. Explore the island with confidence and comfort with our
-              expert guides.
+              Your trustworthy companion for unforgettable trips
+               to Sri Lanka. Our experienced guides 
+               will help you explore the island with ease and confidence.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="Facebook">
@@ -24,8 +24,8 @@ const Footer = () => {
               <a href="#" className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="Instagram">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="Twitter">
-                <Twitter size={18} />
+              <a href="#" className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="TikTok">
+                <Tiktok size={18} />
               </a>
               <a href="#" className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300" aria-label="Youtube">
                 <Youtube size={18} />

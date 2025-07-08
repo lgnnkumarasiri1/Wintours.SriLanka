@@ -189,9 +189,9 @@ const Home = () => {
             animationDelay: '0.6s',
             animationFillMode: 'forwards'
           }}>
-              Explore the paradise island with our expertly crafted tours. From
-              ancient temples to pristine beaches, experience the true essence
-              of Sri Lanka.
+              Our meticulously planned trips will help you
+              find the paradise island. See the real 
+              Sri Lanka by visiting old temples and beautiful beaches.
             </p>
             <div className="flex flex-wrap gap-4 opacity-0 animate-fadeInUp" style={{
             animationDelay: '0.9s',

@@ -471,7 +471,7 @@ const Home = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg font-display">
-                    100% Satisfaction
+                    100% Satisfaction      
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
                     Guaranteed experiences
@@ -528,7 +528,7 @@ const Home = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg font-display">
-                    24/7 Support
+                    24/7 Support   
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
                     Always here to help

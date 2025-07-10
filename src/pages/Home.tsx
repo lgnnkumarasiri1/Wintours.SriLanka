@@ -463,10 +463,10 @@ const Home = () => {
             <AnimateOnScroll
               animation="fade-up"
               delay={0.03}
-              className="card-hover-effect"
+              className="card-hover-effect h-full"
             >
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300">
-                <div className="bg-green-100 rounded-full p-4 mr-4">
+              <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
+                <div className="bg-green-100 rounded-full p-4 mr-4 flex-shrink-0">
                   <ShieldCheck size={24} className="text-green-600" />
                 </div>
                 <div>
@@ -482,51 +482,57 @@ const Home = () => {
             <AnimateOnScroll
               animation="fade-up"
               delay={0.05}
-              className="card-hover-effect"
+              className="card-hover-effect h-full"
             >
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300">
-                <div className="bg-green-100 rounded-full p-4 mr-4">
+              <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
+                <div className="bg-green-100 rounded-full p-4 mr-4 flex-shrink-0">
                   <Award size={24} className="text-green-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg font-display">
                     Best Price Guarantee
                   </h3>
-                  <p className="text-gray-600 text-sm">Value for your money</p>
+                  <p className="text-gray-600 text-sm mt-1">
+                    Value for your money
+                  </p>
                 </div>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
               delay={0.08}
-              className="card-hover-effect"
+              className="card-hover-effect h-full"
             >
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300">
-                <div className="bg-green-100 rounded-full p-4 mr-4">
+              <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
+                <div className="bg-green-100 rounded-full p-4 mr-4 flex-shrink-0">
                   <Compass size={24} className="text-green-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg font-display">
                     Expert Local Guides
                   </h3>
-                  <p className="text-gray-600 text-sm">Authentic experiences</p>
+                  <p className="text-gray-600 text-sm mt-1">
+                    Authentic experiences
+                  </p>
                 </div>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
               delay={0.1}
-              className="card-hover-effect"
+              className="card-hover-effect h-full"
             >
-              <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300">
-                <div className="bg-green-100 rounded-full p-4 mr-4">
+              <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
+                <div className="bg-green-100 rounded-full p-4 mr-4 flex-shrink-0">
                   <Clock size={24} className="text-green-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg font-display">
                     24/7 Support
                   </h3>
-                  <p className="text-gray-600 text-sm">Always here to help</p>
+                  <p className="text-gray-600 text-sm mt-1">
+                    Always here to help
+                  </p>
                 </div>
               </div>
             </AnimateOnScroll>
@@ -836,7 +842,7 @@ const Home = () => {
                       <Star
                         key={star}
                         size={16}
-                        className="text-yellow-400 fill-current"
+                        className={`${star <= 4 ? 'text-yellow-400 fill-current' : 'text-yellow-400'}`}
                       />
                     ))}
                   </div>

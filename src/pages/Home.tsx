@@ -266,7 +266,6 @@ const Home = () => {
                 WinTours Sri Lanka
               </h3>
             </div>
-            
           </div>
           <div className="overflow-y-auto flex-grow">
             <nav className="p-4">
@@ -365,8 +364,24 @@ const Home = () => {
             }}
           ></div>
         ))}
+        {/* Mobile only logo - visible at the top of the hero section */}
+        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 z-30 md:hidden flex flex-col items-center">
+          <img
+            src="https://uploadthingy.s3.us-west-1.amazonaws.com/u54FezGT7mEQfifZEYkdks/winTourlogo.png"
+            alt="WinTours Sri Lanka Logo"
+            className="h-16 w-16 bg-white rounded-full p-1 shadow-lg"
+          />
+        </div>
+        {/* Desktop logo - visible on the left side */}
+        <div className="absolute top-24 left-8 z-30 hidden md:block">
+          <img
+            src="https://uploadthingy.s3.us-west-1.amazonaws.com/u54FezGT7mEQfifZEYkdks/winTourlogo.png"
+            alt="WinTours Sri Lanka Logo"
+            className="h-16 w-16 bg-white rounded-full p-1 shadow-lg"
+          />
+        </div>
         <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-10 md:py-0">
-          <div className="max-w-3xl pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
+          <div className="max-w-3xl pt-28 sm:pt-32 md:pt-40 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
             <span
               className="inline-block bg-green-600 text-white px-4 py-1 rounded-full text-sm font-medium mb-4 sm:mb-6 opacity-0 animate-fadeInUp"
               style={{

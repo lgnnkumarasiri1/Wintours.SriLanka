@@ -74,10 +74,10 @@ const Home = () => {
     contactUs: useRef(null),
   }
   const heroImages = [
-    'https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png',
-    'https://uploadthingy.s3.us-west-1.amazonaws.com/eMhSrMqJJmtE65svMzPwfW/bg2.png',
-    'https://uploadthingy.s3.us-west-1.amazonaws.com/d1JoSmq7L47akESbiX8JGT/bg1.png',
-    'https://uploadthingy.s3.us-west-1.amazonaws.com/jRBga2DAHmhvNvaXmQn3DH/bg5.png',
+    'https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png',
+    'https://uploadthingy.s3.us-west-1.amazonaws.com/mPYWjQ8E2nPaESZwKPpVUN/waterflower.png',
+    'https://uploadthingy.s3.us-west-1.amazonaws.com/q2JjRmo5vtJ6iV89TcjoBX/Tiger.png',
+    'https://uploadthingy.s3.us-west-1.amazonaws.com/sTQZBRTWrQ7YWzmghXfNj7/Mountain.png',
   ]
   const handleFileChange = (e) => {
     const file = e.target.files[0]
@@ -241,7 +241,7 @@ const Home = () => {
         title="WinTours Sri Lanka - Unforgettable Sri Lankan Adventures"
         description="Explore the paradise island of Sri Lanka with our expertly crafted tours. From ancient temples to pristine beaches, experience the true essence of Sri Lanka."
         keywords="Sri Lanka tours, travel packages, Sri Lankan adventures, cultural tours, wildlife safari, beach holidays"
-        ogImage="https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png"
+        ogImage="https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png"
       />
       {/* Mobile Sidebar Menu */}
       <button
@@ -408,18 +408,18 @@ const Home = () => {
                 animationFillMode: 'forwards',
               }}
             >
-              <a
-                href="/packages"
+              <Link
+                to="/packages"
                 className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center h-[40px] text-sm btn-hover-effect"
               >
                 Explore Packages <ArrowRight size={14} className="ml-2" />
-              </a>
-              <a
-                href="/short-inquiry"
+              </Link>
+              <Link
+                to="/short-inquiry"
                 className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg h-[40px] flex items-center justify-center text-sm btn-hover-effect"
               >
                 Quick Inquiry
-              </a>
+              </Link>
             </div>
           </div>
         </div>

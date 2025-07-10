@@ -490,7 +490,7 @@ const Home = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg font-display">
-                    Best Price Guarantee
+                    Best Price
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
                     Value for your money
@@ -509,7 +509,7 @@ const Home = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg font-display">
-                    Expert Local Guides
+                    Expert Guides
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
                     Authentic experiences

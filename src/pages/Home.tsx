@@ -418,7 +418,7 @@ const Home = () => {
               of Sri Lanka.
             </p>
             <div
-              className="flex flex-wrap gap-4 opacity-0 animate-fadeInUp"
+              className="flex flex-wrap gap-4 opacity-100 md:opacity-0 animate-fadeInUp"
               style={{
                 animationDelay: '0.1s',
                 animationFillMode: 'forwards',

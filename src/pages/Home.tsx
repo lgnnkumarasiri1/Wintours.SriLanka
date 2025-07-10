@@ -54,6 +54,7 @@ const Home = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [contactSubmitSuccess, setContactSubmitSuccess] = useState(false)
   const [isTestimonialsExpanded, setIsTestimonialsExpanded] = useState(false)
+  const [expandedDestinations, setExpandedDestinations] = useState({})
   const visibleSections = useRef({})
   const observerRefs = {
     quickInfo: useRef(null),
@@ -160,6 +161,12 @@ const Home = () => {
         'https://uploadthingy.s3.us-west-1.amazonaws.com/7ZeCM38y7x8KydR9sXo9tA/happy_customer_4.jpg',
     })
   }
+  const toggleDestinationDetails = (id) => {
+    setExpandedDestinations((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }))
+  }
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -221,7 +228,7 @@ const Home = () => {
             <span
               className="inline-block bg-green-600 text-white px-4 py-1 rounded-full text-sm font-medium mb-4 sm:mb-6 opacity-0 animate-fadeInUp"
               style={{
-                animationDelay: '0.05s',
+                animationDelay: '0.02s',
                 animationFillMode: 'forwards',
               }}
             >
@@ -230,7 +237,7 @@ const Home = () => {
             <h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white opacity-0 animate-fadeInUp font-display leading-tight"
               style={{
-                animationDelay: '0.1s',
+                animationDelay: '0.05s',
                 animationFillMode: 'forwards',
               }}
             >
@@ -244,7 +251,7 @@ const Home = () => {
             <p
               className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 opacity-0 animate-fadeInUp max-w-2xl mt-4 sm:mt-6 text-center sm:text-left mx-auto sm:mx-0"
               style={{
-                animationDelay: '0.15s',
+                animationDelay: '0.08s',
                 animationFillMode: 'forwards',
                 willChange: 'transform, opacity',
               }}
@@ -256,7 +263,7 @@ const Home = () => {
             <div
               className="flex flex-wrap gap-4 opacity-0 animate-fadeInUp"
               style={{
-                animationDelay: '0.2s',
+                animationDelay: '0.1s',
                 animationFillMode: 'forwards',
               }}
             >
@@ -298,7 +305,7 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.05}
+              delay={0.03}
               className="card-hover-effect"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300">
@@ -317,7 +324,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.1}
+              delay={0.05}
               className="card-hover-effect"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300">
@@ -334,7 +341,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.15}
+              delay={0.08}
               className="card-hover-effect"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300">
@@ -351,7 +358,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.2}
+              delay={0.1}
               className="card-hover-effect"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300">
@@ -581,19 +588,23 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <p className="text-gray-600 mb-4 line-clamp-3 text-base">
-                    {destination.description}
+                  <p className="text-gray-600 mb-4 text-base">
+                    {expandedDestinations[destination.id]
+                      ? destination.fullDescription || destination.description
+                      : `${destination.description.substring(0, 120)}...`}
                   </p>
-                  <a
-                    href="#"
+                  <button
+                    onClick={() => toggleDestinationDetails(destination.id)}
                     className="inline-flex items-center text-green-600 hover:text-green-800 font-medium text-sm group"
                   >
-                    Discover More{' '}
+                    {expandedDestinations[destination.id]
+                      ? 'Show Less'
+                      : 'Discover More'}{' '}
                     <ArrowRight
                       size={14}
                       className="ml-1 transform group-hover:translate-x-1 transition-transform"
                     />
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -677,12 +688,7 @@ const Home = () => {
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <div className="text-gray-900 font-bold text-xl">
-                    <span className="text-green-600">From $1,299</span>
-                    <span className="text-sm text-gray-500 font-normal ml-1">
-                      per person
-                    </span>
-                  </div>
+                  <div className="text-gray-900 font-bold text-xl"></div>
                   <Link
                     to="/packages/14-days-13-nights"
                     className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md text-base font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[140px] h-[44px] flex items-center justify-center"
@@ -736,12 +742,7 @@ const Home = () => {
                   <span className="text-gray-600 text-sm ml-2">96 Reviews</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <div className="text-gray-900 font-bold text-xl">
-                    <span className="text-green-600">From $899</span>
-                    <span className="text-sm text-gray-500 font-normal ml-1">
-                      per person
-                    </span>
-                  </div>
+                  <div className="text-gray-900 font-bold text-xl"></div>
                   <Link
                     to="/packages/09-days-08-nights"
                     className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md text-base font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[140px] h-[44px] flex items-center justify-center"
@@ -767,7 +768,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* Why Choose Us - Enhanced with better visual impact */}
+      {/* Why Choose Us - Removed animations */}
       <section
         ref={observerRefs.whyChoose}
         className="py-16 md:py-24 bg-gray-900 text-white relative overflow-hidden"
@@ -780,9 +781,7 @@ const Home = () => {
           }}
         ></div>
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div
-            className={`text-center mb-12 md:mb-16 transition-all duration-700 ${visibleSections.current.whyChoose ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
-          >
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-block bg-green-900 bg-opacity-50 text-green-400 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Why Choose Us
             </div>
@@ -798,10 +797,7 @@ const Home = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className={`bg-gray-800 bg-opacity-50 p-8 rounded-2xl text-center transition-all duration-500 hover:scale-105 hover:bg-gray-800 border border-gray-700 ${visibleSections.current.whyChoose ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                style={{
-                  transitionDelay: `${0.05 * index}s`,
-                }}
+                className="bg-gray-800 bg-opacity-50 p-8 rounded-2xl text-center hover:scale-105 hover:bg-gray-800 border border-gray-700 transition-all duration-300"
               >
                 <div className="bg-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 transform transition-transform hover:rotate-12">
                   {cloneElement(feature.icon, {
@@ -818,15 +814,13 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* Testimonials - Enhanced card design */}
+      {/* Testimonials - Removed animations */}
       <section
         ref={observerRefs.testimonials}
         className="py-16 md:py-24 bg-gray-50 relative"
       >
         <div className="container mx-auto px-4 sm:px-6">
-          <div
-            className={`text-center mb-12 md:mb-16 transition-all duration-700 ${visibleSections.current.testimonials ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
-          >
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Testimonials
             </div>
@@ -845,6 +839,22 @@ const Home = () => {
                 <MessageCircle size={18} className="mr-2" />
                 Share Your Experience
               </button>
+              <a
+                href="https://www.tripadvisor.com/UserReviewEdit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-[#00aa6c] hover:bg-[#00956d] text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[180px] h-[48px] text-base"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-5 h-5 mr-2"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-8c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm4 0c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z" />
+                </svg>
+                Review on TripAdvisor
+              </a>
               <button
                 onClick={() =>
                   setIsTestimonialsExpanded(!isTestimonialsExpanded)
@@ -862,10 +872,7 @@ const Home = () => {
               .map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`bg-white p-8 rounded-2xl shadow-lg transition-all duration-500 hover:shadow-xl ${visibleSections.current.testimonials ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                  style={{
-                    transitionDelay: `${0.05 + (index % 3) * 0.05}s`,
-                  }}
+                  className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex items-center mb-4">
                     {[1, 2, 3, 4, 5].map((star) => (
@@ -1075,7 +1082,7 @@ const Home = () => {
           </div>
         )}
       </section>
-      {/* Contact Us Section - Enhanced with better visual design */}
+      {/* Contact Us Section - Removed animations */}
       <section
         ref={observerRefs.contactUs}
         className="py-16 md:py-24 bg-gray-900 text-white relative overflow-hidden"
@@ -1088,9 +1095,7 @@ const Home = () => {
           }}
         ></div>
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div
-            className={`text-center mb-12 md:mb-16 transition-all duration-700 ${visibleSections.current.contactUs ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
-          >
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-block bg-green-900 bg-opacity-50 text-green-400 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Get In Touch
             </div>
@@ -1103,9 +1108,7 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
-            <div
-              className={`h-full transition-all duration-700 ${visibleSections.current.contactUs ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}
-            >
+            <div className="h-full">
               <div className="bg-black bg-opacity-40 p-8 rounded-2xl backdrop-blur-sm h-full flex flex-col">
                 <h3 className="text-2xl font-bold mb-6 text-green-400 font-display">
                   Contact Information
@@ -1171,12 +1174,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div
-              className={`h-full transition-all duration-700 ${visibleSections.current.contactUs ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}
-              style={{
-                transitionDelay: '0.3s',
-              }}
-            >
+            <div className="h-full">
               <div className="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl h-full flex flex-col">
                 <h3 className="text-2xl font-bold mb-6 text-gray-800 font-display">
                   Send us a message
@@ -1354,6 +1352,8 @@ const destinations = [
     location: 'Central Province, Sri Lanka',
     description:
       'Explore this ancient rock fortress with its fascinating frescoes and spectacular views from the summit.',
+    fullDescription:
+      'Sigiriya, also known as the Lion Rock, is an ancient rock fortress and palace built by King Kasyapa during the 5th century AD. This UNESCO World Heritage site rises dramatically 200 meters above the surrounding plains and features remarkable frescoes, extensive gardens, and the remains of a once-magnificent palace. The climb to the summit rewards visitors with breathtaking panoramic views of the surrounding landscape. The sophisticated water gardens, boulder gardens, and terraced gardens showcase the advanced engineering and artistic achievements of ancient Sri Lankan civilization.',
     image:
       'https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png',
   },
@@ -1363,6 +1363,8 @@ const destinations = [
     location: 'Uva Province, Sri Lanka',
     description:
       'Experience the breathtaking railway journey and iconic Nine Arch Bridge surrounded by lush tea plantations.',
+    fullDescription:
+      'Ella is a picturesque mountain village nestled in the misty highlands of Sri Lanka\'s Uva Province. The iconic Nine Arch Bridge, also known as the "Bridge in the Sky," is a colonial-era railway bridge built entirely of brick, rock, and cement without using a single piece of steel. The bridge spans 91 meters and stands 24 meters high, creating a magnificent vantage point for photographs, especially when a blue train crosses over. The surrounding area offers numerous hiking trails, including Little Adam\'s Peak and Ella Rock, with panoramic views of valleys, tea plantations, and waterfalls. The train journey to Ella itself is considered one of the most beautiful rail trips in the world.',
     image:
       'https://uploadthingy.s3.us-west-1.amazonaws.com/jRBga2DAHmhvNvaXmQn3DH/bg5.png',
   },
@@ -1372,6 +1374,8 @@ const destinations = [
     location: 'Southern Province, Sri Lanka',
     description:
       'Step back in time as you explore this well-preserved colonial fortress with its charming streets and ocean views.',
+    fullDescription:
+      "Galle Fort, built by the Portuguese in the 16th century and extensively fortified by the Dutch in the 17th century, stands as a testament to Sri Lanka's colonial past. This UNESCO World Heritage site is a living heritage site where history blends seamlessly with modern life. Within its ramparts, you'll find a fascinating mix of architectural styles, from colonial Dutch and British buildings to Muslim mosques and ornate churches. The fort's narrow cobblestone streets are lined with boutique shops, cafés, art galleries, and restored colonial houses. Walking along the massive walls offers spectacular views of the Indian Ocean, especially at sunset. The fort is also home to important historical structures, including the Old Dutch Church, the Maritime Museum, and the iconic lighthouse.",
     image:
       'https://uploadthingy.s3.us-west-1.amazonaws.com/73AwLdEJo1TiQf7DgDmsKX/galle_fort.png',
   },
@@ -1381,6 +1385,8 @@ const destinations = [
     location: 'Uva Province, Sri Lanka',
     description:
       'Experience thrilling wildlife encounters in this famous national park, known for its large herds of wild elephants and diverse bird species.',
+    fullDescription:
+      "Udawalawe National Park, established in 1972, is one of Sri Lanka's most popular wildlife destinations, particularly renowned for its large elephant population. Covering approximately 30,000 hectares, the park centers around the Udawalawe Reservoir, creating a diverse ecosystem that supports numerous animal species. Visitors can observe herds of Sri Lankan elephants—often numbering 100 or more—throughout the year, unlike in other national parks where elephant sightings are seasonal. Beyond elephants, the park is home to water buffalo, sambar deer, spotted deer, wild boar, jackals, and the elusive Sri Lankan leopard. Bird enthusiasts will be delighted by over 200 species, including endemic birds like the Sri Lanka spurfowl and red-faced malkoha. The park's relatively flat terrain and open grasslands make wildlife viewing easier than in more densely forested parks.",
     image:
       'https://uploadthingy.s3.us-west-1.amazonaws.com/v5v7xrDdyWu5VfawZzXUea/udawalawa_safari.png',
   },
@@ -1390,8 +1396,10 @@ const destinations = [
     location: 'Kandy, Central Province, Sri Lanka',
     description:
       'Visit this revered Buddhist temple housing the relic of the tooth of Buddha, one of the most sacred places of worship in the Buddhist world.',
+    fullDescription:
+      "The Temple of the Sacred Tooth Relic (Sri Dalada Maligawa) is a Buddhist temple located in the royal palace complex of the former Kingdom of Kandy. It houses the relic of the tooth of the Buddha, which is venerated by Buddhists worldwide. According to legend, the tooth was taken from the Buddha's funeral pyre in the 4th century by Princess Hemamali, who smuggled it into Sri Lanka hidden in her hair. The temple was built within the royal palace complex during the Kandyan Kingdom (1592-1815), with the tooth becoming a symbol of sovereignty—whoever held the relic had the right to rule the land. The temple is part of the Sacred City of Kandy, a UNESCO World Heritage site, and is renowned for its Kandyan architecture featuring intricate wood carvings, inlaid ivory, and lacquer work. Visitors can observe daily rituals performed three times a day, with the sacred tooth relic displayed in an ornate golden casket. The annual Esala Perahera, one of Asia's most spectacular festivals, celebrates and honors the Sacred Tooth Relic with a grand procession featuring dancers, drummers, and decorated elephants.",
     image:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/hTAWW7tXAqv8Tt4CEi6yCf/tooth_temple.png',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/uPmomXqwwqccNGkB9YLN1H/tooth_temple.png',
   },
   {
     id: 'nuwara-eliya',
@@ -1399,6 +1407,8 @@ const destinations = [
     location: 'Central Province, Sri Lanka',
     description:
       'Discover the lush tea plantations and colonial charm of "Little England," with its cool climate, misty hills, and picturesque landscapes.',
+    fullDescription:
+      'Nuwara Eliya, often referred to as "Little England," is a charming hill station nestled in the central highlands of Sri Lanka at an elevation of 1,868 meters (6,128 feet) above sea level. Established by British colonists in the 19th century, the town retains much of its colonial character with Tudor-style cottages, country houses, and a well-maintained golf course. The cool climate and misty landscapes create perfect conditions for growing Ceylon tea, and the surrounding hillsides are carpeted with emerald-green tea plantations. Visitors can tour historic tea factories to learn about the tea-making process from plucking to processing and enjoy tea tasting sessions. Beyond tea, Nuwara Eliya offers beautiful gardens including Victoria Park and the Hakgala Botanical Gardens, scenic waterfalls such as Lovers Leap and Devon Falls, and the picturesque Gregory Lake where visitors can boat and enjoy picnics. The region is also known for its fresh produce, particularly strawberries, and its cool climate provides a refreshing escape from the tropical heat of the lowlands.',
     image:
       'https://uploadthingy.s3.us-west-1.amazonaws.com/s26uXY2tp13sUSnjnHPUPo/nywaraeliya_tea.png',
   },

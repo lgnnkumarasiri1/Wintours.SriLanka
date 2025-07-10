@@ -346,6 +346,12 @@ const PackageDetails = () => {
                     >
                       Quick Inquiry
                     </Link>
+                    <Link
+                      to="/contact"
+                      className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md h-[48px] flex items-center justify-center btn-hover-effect"
+                    >
+                      Visit Our Office
+                    </Link>
                   </div>
                   <div className="text-sm text-gray-600 text-center">
                     Need help planning?{' '}
@@ -408,7 +414,7 @@ const packageDetails = {
     rating: 5,
     reviewCount: 128,
     heroImage:
-      'https://images.unsplash.com/photo-1546708973-b339540b5162?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
     overview:
       "This 14-day Sri Lanka tour takes you on an unforgettable journey through the island's ancient cities, lush landscapes, and pristine beaches. From the historic ruins of Anuradhapura to the colonial charm of Galle, you'll experience the incredible diversity that Sri Lanka has to offer. Enjoy Ayurvedic wellness treatments, wildlife safaris, cultural performances, and relaxing beach stays. Our expert guides will introduce you to the rich history, vibrant culture, and warm hospitality of this tropical paradise.",
     highlights: [
@@ -434,12 +440,12 @@ const packageDetails = {
       },
     ],
     gallery: [
-      'https://images.unsplash.com/photo-1588511706388-c4e0a25a5991?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      'https://images.unsplash.com/photo-1586250127208-8218b38ff1cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      'https://images.unsplash.com/photo-1531168010535-61c1be9c4abe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      'https://images.unsplash.com/photo-1580100586938-02822d99c4a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80',
-      'https://images.unsplash.com/photo-1602601747662-e0f7c9a4f10a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      'https://images.unsplash.com/photo-1590123715937-e1b2e5ae7cc3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1378&q=80',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/umKpchjBUtECmnTjGTnjYM/nature6.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
     ],
     itinerary: [
       {
@@ -698,7 +704,7 @@ const packageDetails = {
           'The perfect blend of relaxation and adventure with pristine beaches and thrilling wildlife safaris.',
         tag: 'Popular',
         image:
-          'https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+          'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
       },
       {
         id: 'wildlife-safari',
@@ -708,7 +714,7 @@ const packageDetails = {
           'Witness majestic wildlife in their natural habitat on an unforgettable safari adventure.',
         tag: null,
         image:
-          'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80',
+          'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
       },
     ],
   },
@@ -726,7 +732,7 @@ const packageDetails = {
     rating: 4,
     reviewCount: 96,
     heroImage:
-      'https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
     overview:
       "This 9-day expedition combines the best of both worlds: the thrill of wildlife safaris and the relaxation of pristine beaches. Begin your journey with exciting game drives in Sri Lanka's famous wildlife parks, where you'll witness the incredible diversity of wildlife in their natural habitat. Then unwind on the beautiful beaches of the southern coast, enjoying crystal-clear waters and white sand beaches. This perfectly balanced itinerary offers adventure, relaxation, and unforgettable experiences.",
     highlights: [
@@ -752,12 +758,12 @@ const packageDetails = {
       },
     ],
     gallery: [
-      'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80',
-      'https://images.unsplash.com/photo-1535941339077-2dd1c7963098?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
-      'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80',
-      'https://images.unsplash.com/photo-1523805009345-7448845a9e53?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80',
-      'https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1168&q=80',
-      'https://images.unsplash.com/photo-1528844443059-a7f4d44f6ac9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/umKpchjBUtECmnTjGTnjYM/nature6.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
     ],
     itinerary: [
       {
@@ -919,7 +925,7 @@ const packageDetails = {
           'Experience the rich cultural heritage with our comprehensive 14-day tour package that covers all major historical sites.',
         tag: 'Best Seller',
         image:
-          'https://images.unsplash.com/photo-1583452924150-ea5ea61708c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+          'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
       },
       {
         id: 'wildlife-safari',
@@ -929,7 +935,7 @@ const packageDetails = {
           'Witness majestic wildlife in their natural habitat on an unforgettable safari adventure.',
         tag: null,
         image:
-          'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80',
+          'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
       },
     ],
   },
@@ -947,7 +953,7 @@ const packageDetails = {
     rating: 5,
     reviewCount: 87,
     heroImage:
-      'https://images.unsplash.com/photo-1588511706388-c4e0a25a5991?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
     overview:
       "This 8-day Sri Lanka tour offers the perfect introduction to the island's most iconic attractions. From the ancient rock fortress of Sigiriya to the colonial charm of Galle, you'll experience Sri Lanka's rich cultural heritage, stunning landscapes, and diverse wildlife. Explore UNESCO World Heritage sites, visit tea plantations, take a safari in Yala National Park, and relax on beautiful beaches. This carefully crafted itinerary provides a comprehensive overview of Sri Lanka's highlights while maintaining a comfortable pace.",
     highlights: [
@@ -973,12 +979,12 @@ const packageDetails = {
       },
     ],
     gallery: [
-      'https://images.unsplash.com/photo-1588511706388-c4e0a25a5991?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      'https://images.unsplash.com/photo-1580100586938-02822d99c4a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80',
-      'https://images.unsplash.com/photo-1586250127208-8218b38ff1cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      'https://images.unsplash.com/photo-1602601747662-e0f7c9a4f10a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-      'https://images.unsplash.com/photo-1590081159887-8edc72e2ba51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80',
-      'https://images.unsplash.com/photo-1548416891-ebb2e9f4b490?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80', // Tea Plantation
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/umKpchjBUtECmnTjGTnjYM/nature6.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
     ],
     itinerary: [
       {
@@ -1149,7 +1155,7 @@ const packageDetails = {
           'Experience the rich cultural heritage with our comprehensive 14-day tour package that covers all major historical sites.',
         tag: 'Best Seller',
         image:
-          'https://images.unsplash.com/photo-1583452924150-ea5ea61708c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+          'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
       },
       {
         id: '09-days-08-nights',
@@ -1159,7 +1165,7 @@ const packageDetails = {
           'The perfect blend of relaxation and adventure with pristine beaches and thrilling wildlife safaris.',
         tag: 'Popular',
         image:
-          'https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+          'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
       },
     ],
   },

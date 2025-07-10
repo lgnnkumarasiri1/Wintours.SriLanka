@@ -28,6 +28,13 @@ import {
   Upload,
   Camera,
   ChevronDown,
+  Menu,
+  Home as HomeIcon,
+  Info,
+  Package,
+  Image,
+  MessageSquare,
+  ChevronUp,
 } from 'lucide-react'
 import SEO from '../components/SEO'
 import AnimateOnScroll from '../components/AnimateOnScroll'
@@ -55,6 +62,7 @@ const Home = () => {
   const [contactSubmitSuccess, setContactSubmitSuccess] = useState(false)
   const [isTestimonialsExpanded, setIsTestimonialsExpanded] = useState(false)
   const [expandedDestinations, setExpandedDestinations] = useState({})
+  const [showMobileSidebar, setShowMobileSidebar] = useState(false)
   const visibleSections = useRef({})
   const observerRefs = {
     quickInfo: useRef(null),
@@ -167,6 +175,14 @@ const Home = () => {
       [id]: !prev[id],
     }))
   }
+  const scrollToSection = (sectionRef) => {
+    if (sectionRef && sectionRef.current) {
+      sectionRef.current.scrollIntoView({
+        behavior: 'smooth',
+      })
+      setShowMobileSidebar(false)
+    }
+  }
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -203,6 +219,22 @@ const Home = () => {
       })
     }
   }, [])
+  // Close sidebar when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        showMobileSidebar &&
+        !e.target.closest('.mobile-sidebar') &&
+        !e.target.closest('.mobile-sidebar-toggle')
+      ) {
+        setShowMobileSidebar(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showMobileSidebar])
   return (
     <div className="w-full">
       <SEO
@@ -211,7 +243,109 @@ const Home = () => {
         keywords="Sri Lanka tours, travel packages, Sri Lankan adventures, cultural tours, wildlife safari, beach holidays"
         ogImage="https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png"
       />
-      {/* Hero Section - Enhanced with better visual hierarchy */}
+      {/* Mobile Sidebar Menu */}
+      <button
+        className="fixed bottom-6 right-6 bg-green-600 text-white p-3 rounded-full shadow-lg z-50 md:hidden mobile-sidebar-toggle"
+        onClick={() => setShowMobileSidebar(!showMobileSidebar)}
+        aria-label="Toggle sidebar menu"
+      >
+        {showMobileSidebar ? <X size={24} /> : <Menu size={24} />}
+      </button>
+      <div
+        className={`fixed inset-y-0 left-0 w-64 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden mobile-sidebar ${showMobileSidebar ? 'translate-x-0' : '-translate-x-full'}`}
+      >
+        <div className="flex flex-col h-full">
+          <div className="p-4 border-b border-gray-200">
+            <h3 className="text-xl font-bold text-green-600">
+              Quick Navigation
+            </h3>
+          </div>
+          <div className="overflow-y-auto flex-grow">
+            <nav className="p-4">
+              <ul className="space-y-2">
+                <li>
+                  <button
+                    onClick={() =>
+                      scrollToSection({
+                        current: document.body,
+                      })
+                    }
+                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
+                  >
+                    <HomeIcon size={18} className="mr-3 text-green-500" />
+                    <span>Top</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(observerRefs.introduction)}
+                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
+                  >
+                    <Info size={18} className="mr-3 text-green-500" />
+                    <span>About Sri Lanka</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(observerRefs.destinations)}
+                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
+                  >
+                    <MapPin size={18} className="mr-3 text-green-500" />
+                    <span>Destinations</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(observerRefs.packages)}
+                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
+                  >
+                    <Package size={18} className="mr-3 text-green-500" />
+                    <span>Tour Packages</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(observerRefs.whyChoose)}
+                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
+                  >
+                    <Award size={18} className="mr-3 text-green-500" />
+                    <span>Why Choose Us</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(observerRefs.testimonials)}
+                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
+                  >
+                    <MessageSquare size={18} className="mr-3 text-green-500" />
+                    <span>Testimonials</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(observerRefs.contactUs)}
+                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
+                  >
+                    <Phone size={18} className="mr-3 text-green-500" />
+                    <span>Contact Us</span>
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div className="p-4 border-t border-gray-200">
+            <Link
+              to="/packages"
+              className="flex items-center justify-center w-full p-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+              onClick={() => setShowMobileSidebar(false)}
+            >
+              <Package size={18} className="mr-2" />
+              <span>View All Packages</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+      {/* Hero Section - Enhanced with better visual hierarchy and increased padding */}
       <section className="relative min-h-[100vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/40 z-10"></div>
         {heroImages.map((image, index) => (
@@ -224,7 +358,7 @@ const Home = () => {
           ></div>
         ))}
         <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-10 md:py-0">
-          <div className="max-w-3xl pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
+          <div className="max-w-3xl pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
             <span
               className="inline-block bg-green-600 text-white px-4 py-1 rounded-full text-sm font-medium mb-4 sm:mb-6 opacity-0 animate-fadeInUp"
               style={{
@@ -832,38 +966,41 @@ const Home = () => {
               have to say about their experiences.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button
-                onClick={() => setShowFeedbackForm(true)}
-                className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[180px] h-[48px] text-base"
-              >
-                <MessageCircle size={18} className="mr-2" />
-                Share Your Experience
-              </button>
-              <a
-                href="https://www.tripadvisor.com/UserReviewEdit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center bg-[#00aa6c] hover:bg-[#00956d] text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[180px] h-[48px] text-base"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-5 h-5 mr-2"
-                >
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-8c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm4 0c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z" />
-                </svg>
-                Review on TripAdvisor
-              </a>
-              <button
-                onClick={() =>
-                  setIsTestimonialsExpanded(!isTestimonialsExpanded)
-                }
-                className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[180px] h-[48px] text-base"
-              >
-                <Star size={18} className="mr-2" />
-                {isTestimonialsExpanded ? 'Show Less' : 'View All Feedbacks'}
-              </button>
+              <div className="flex flex-wrap justify-center gap-4">
+  <button
+    onClick={() => setShowFeedbackForm(true)}
+    className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
+  >
+    <MessageCircle size={18} className="mr-2" />
+    Share Your Experience
+  </button>
+
+  <a
+    href="https://www.tripadvisor.com/UserReviewEdit"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center bg-[#00aa6c] hover:bg-[#00956d] text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="w-5 h-5 mr-2"
+    >
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-8c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm4 0c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z" />
+    </svg>
+    Review on TripAdvisor
+  </a>
+
+  <button
+    onClick={() => setIsTestimonialsExpanded(!isTestimonialsExpanded)}
+    className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
+  >
+    <Star size={18} className="mr-2" />
+    {isTestimonialsExpanded ? 'Show Less' : 'View All Feedbacks'}
+  </button>
+</div>
+
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1341,6 +1478,19 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* Back to top button */}
+      <button
+        onClick={() =>
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          })
+        }
+        className="fixed bottom-6 left-6 bg-green-600 text-white p-3 rounded-full shadow-lg z-40 md:hidden"
+        aria-label="Back to top"
+      >
+        <ChevronUp size={24} />
+      </button>
     </div>
   )
 }

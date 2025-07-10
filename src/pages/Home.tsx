@@ -256,9 +256,17 @@ const Home = () => {
       >
         <div className="flex flex-col h-full">
           <div className="p-4 border-b border-gray-200">
-            <h3 className="text-xl font-bold text-green-600">
-              Quick Navigation
-            </h3>
+            <div className="flex items-center mb-2">
+              <img
+                src="https://uploadthingy.s3.us-west-1.amazonaws.com/u54FezGT7mEQfifZEYkdks/winTourlogo.png"
+                alt="WinTours Sri Lanka Logo"
+                className="h-10 mr-2 bg-white rounded-full p-1"
+              />
+              <h3 className="text-xl font-bold text-green-600">
+                WinTours Sri Lanka
+              </h3>
+            </div>
+            <p className="text-sm text-gray-600 mt-2">Quick Navigation</p>
           </div>
           <div className="overflow-y-auto flex-grow">
             <nav className="p-4">
@@ -967,40 +975,41 @@ const Home = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <div className="flex flex-wrap justify-center gap-4">
-  <button
-    onClick={() => setShowFeedbackForm(true)}
-    className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
-  >
-    <MessageCircle size={18} className="mr-2" />
-    Share Your Experience
-  </button>
+                <button
+                  onClick={() => setShowFeedbackForm(true)}
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
+                >
+                  <MessageCircle size={18} className="mr-2" />
+                  Share Your Experience
+                </button>
 
-  <a
-    href="https://www.tripadvisor.com/UserReviewEdit"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center justify-center bg-[#00aa6c] hover:bg-[#00956d] text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className="w-5 h-5 mr-2"
-    >
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-8c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm4 0c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z" />
-    </svg>
-    Review on TripAdvisor
-  </a>
+                <a
+                  href="https://www.tripadvisor.com/UserReviewEdit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-[#00aa6c] hover:bg-[#00956d] text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5 mr-2"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-8c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm4 0c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z" />
+                  </svg>
+                  Review on TripAdvisor
+                </a>
 
-  <button
-    onClick={() => setIsTestimonialsExpanded(!isTestimonialsExpanded)}
-    className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
-  >
-    <Star size={18} className="mr-2" />
-    {isTestimonialsExpanded ? 'Show Less' : 'View All Feedbacks'}
-  </button>
-</div>
-
+                <button
+                  onClick={() =>
+                    setIsTestimonialsExpanded(!isTestimonialsExpanded)
+                  }
+                  className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
+                >
+                  <Star size={18} className="mr-2" />
+                  {isTestimonialsExpanded ? 'Show Less' : 'View All Feedbacks'}
+                </button>
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

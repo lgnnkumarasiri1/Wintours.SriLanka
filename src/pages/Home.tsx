@@ -364,22 +364,6 @@ const Home = () => {
             }}
           ></div>
         ))}
-        {/* Mobile only logo - visible at the top of the hero section */}
-        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 z-30 md:hidden flex flex-col items-center">
-          <img
-            src="https://uploadthingy.s3.us-west-1.amazonaws.com/u54FezGT7mEQfifZEYkdks/winTourlogo.png"
-            alt="WinTours Sri Lanka Logo"
-            className="h-16 w-16 bg-white rounded-full p-1 shadow-lg"
-          />
-        </div>
-        {/* Desktop logo - visible on the left side */}
-        <div className="absolute top-24 left-8 z-30 hidden md:block">
-          <img
-            src="https://uploadthingy.s3.us-west-1.amazonaws.com/u54FezGT7mEQfifZEYkdks/winTourlogo.png"
-            alt="WinTours Sri Lanka Logo"
-            className="h-16 w-16 bg-white rounded-full p-1 shadow-lg"
-          />
-        </div>
         <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-10 md:py-0">
           <div className="max-w-3xl pt-28 sm:pt-32 md:pt-40 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
             <span
@@ -471,7 +455,7 @@ const Home = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg font-display">
-                    100% Satisfaction      
+                    100% Satisfaction
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
                     Guaranteed experiences
@@ -490,7 +474,7 @@ const Home = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg font-display">
-                    Best Price Guantee
+                    Best Price Guarantee
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
                     Value for your money
@@ -528,7 +512,7 @@ const Home = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg font-display">
-                    24/7 Customer Support   
+                    24/7 Support
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
                     Always here to help
@@ -1016,7 +1000,7 @@ const Home = () => {
                     fill="currentColor"
                     className="w-5 h-5 mr-2"
                   >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-8c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm4 0c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z" />
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-8c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z" />
                   </svg>
                   Review on TripAdvisor
                 </a>

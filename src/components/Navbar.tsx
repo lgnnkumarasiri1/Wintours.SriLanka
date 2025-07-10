@@ -62,7 +62,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center">
             <img
-              src="https://uploadthingy.s3.us-west-1.amazonaws.com/u54FezGT7mEQfifZEYkdks/winTourlogo.png"
+              src="https://uploadthingy.s3.us-west-1.amazonaws.com/q5GtXVzavzBDpZEwjdBU35/winTourlogo.png"
               alt="WinTours Sri Lanka Logo"
               className="h-8 sm:h-10 md:h-12 mr-2 sm:mr-3"
             />

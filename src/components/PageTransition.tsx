@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-interface PageTransitionProps {
-  children: React.ReactNode;
-}
-const PageTransition: React.FC<PageTransitionProps> = ({
-  children
-}) => {
-  const location = useLocation();
+import React, { useEffect, useState } from 'react'
+const PageTransition = ({ children }) => {
+  const [isVisible, setIsVisible] = useState(false)
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
-  return <div className="animate-pageTransition">{children}</div>;
-};
-export default PageTransition;
+    // Set a small delay to ensure the transition is visible
+    const timer = setTimeout(() => {
+      setIsVisible(true)
+    }, 50)
+    return () => clearTimeout(timer)
+  }, [])
+  return (
+    <div
+      className={`transition-opacity duration-300 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
+      {children}
+    </div>
+  )
+}
+export default PageTransition

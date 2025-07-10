@@ -424,18 +424,18 @@ const Home = () => {
                 animationFillMode: 'forwards',
               }}
             >
-              <Link
-                to="/packages"
+              <a
+                href="/packages"
                 className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center h-[40px] text-sm btn-hover-effect"
               >
                 Explore Packages <ArrowRight size={14} className="ml-2" />
-              </Link>
-              <Link
-                to="/short-inquiry"
+              </a>
+              <a
+                href="/short-inquiry"
                 className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg h-[40px] flex items-center justify-center text-sm btn-hover-effect"
               >
                 Quick Inquiry
-              </Link>
+              </a>
             </div>
           </div>
         </div>

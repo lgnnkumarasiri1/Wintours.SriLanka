@@ -61,7 +61,7 @@ const Footer = () => {
                 <Music size={18} />
               </a>
                 <a
-                href="https://www.instagram.com/wintours_srilanka/"
+                href="https://youtube.com/@wintourssrilanka"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"

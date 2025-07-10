@@ -138,60 +138,6 @@ const Packages = () => {
                 </div>
               </div>
             </div>
-            <div
-              className={`bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200 flex flex-col md:flex-row transition-all duration-700 hover:shadow-xl hover:-translate-y-2 ${visibleSections.featured ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}
-              style={{
-                transitionDelay: '0.05s',
-              }}
-            >
-              <div className="md:w-2/5 relative">
-                <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg"
-                  alt="8 Days Sri Lanka Highlights"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
-                <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                  Best Value
-                </div>
-              </div>
-              <div className="md:w-3/5 p-6">
-                <div className="flex items-center mb-2">
-                  <Calendar size={16} className="text-green-600 mr-1" />
-                  <span className="text-gray-600 text-sm">
-                    8 Days, 7 Nights
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">
-                  Sri Lanka Highlights Tour
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Experience the best of Sri Lanka with this compact tour
-                  covering all major highlights of the island.
-                </p>
-                <div className="flex items-center mb-4">
-                  <div className="flex">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <svg
-                        key={star}
-                        className="w-4 h-4 text-yellow-400 fill-current"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <span className="text-gray-600 text-sm ml-2">87 Reviews</span>
-                </div>
-                <div className="flex justify-end">
-                  <Link
-                    to="/packages/08-days-07-nights"
-                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all transform hover:scale-105 hover:shadow-md"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* All Packages */}
@@ -264,19 +210,22 @@ const Packages = () => {
             waiting to assist you.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/inquiry"
-              className="bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg w-40"
-            >
-              Make an Inquiry
-            </Link>
-            <Link
-              to="/contact"
-              className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg w-40"
-            >
-              Contact Us
-            </Link>
-          </div>
+  <Link
+    to="/inquiry"
+    className="w-44 text-center bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg"
+  >
+    Make an Inquiry
+  </Link>
+
+  <Link
+    to="/contact"
+    className="w-44 text-center bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg"
+  >
+    Contact Us
+  </Link>
+
+</div>
+
         </div>
       </section>
     </div>
@@ -295,60 +244,6 @@ const packages = [
     image:
       'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
   },
-  {
-    id: 'cultural-heritage',
-    title: 'Cultural Heritage Tour',
-    duration: '7 Days, 6 Nights',
-    description:
-      'Immerse yourself in the rich cultural heritage of ancient civilizations and historical landmarks of Sri Lanka.',
-    location: 'Sri Lanka',
-    tag: 'Best Value',
-    image:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
-  },
-  {
-    id: 'tropical-paradise',
-    title: 'Tropical Paradise Getaway',
-    duration: '5 Days, 4 Nights',
-    description:
-      'Escape to pristine beaches and crystal-clear waters for a relaxing tropical vacation on the beautiful coasts of Sri Lanka.',
-    location: 'Sri Lanka',
-    tag: null,
-    image:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg',
-  },
-  {
-    id: 'mountain-adventure',
-    title: 'Hill Country Adventure',
-    duration: '6 Days, 5 Nights',
-    description:
-      'Challenge yourself with thrilling hikes and breathtaking mountain views in the central highlands of Sri Lanka.',
-    location: 'Sri Lanka',
-    tag: null,
-    image:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/umKpchjBUtECmnTjGTnjYM/nature6.jpg',
-  },
-  {
-    id: 'city-explorer',
-    title: 'Colonial Heritage Explorer',
-    duration: '4 Days, 3 Nights',
-    description:
-      "Discover the vibrant culture, cuisine, and architecture of Sri Lanka's colonial cities and heritage sites.",
-    location: 'Sri Lanka',
-    tag: 'Popular',
-    image:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
-  },
-  {
-    id: 'wildlife-safari',
-    title: 'Wildlife Safari',
-    duration: '8 Days, 7 Nights',
-    description:
-      "Witness majestic wildlife in their natural habitat on an unforgettable safari adventure through Sri Lanka's national parks.",
-    location: 'Sri Lanka',
-    tag: null,
-    image:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
-  },
+  
 ]
 export default Packages

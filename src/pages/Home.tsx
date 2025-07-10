@@ -266,7 +266,7 @@ const Home = () => {
                 WinTours Sri Lanka
               </h3>
             </div>
-            <p className="text-sm text-gray-600 mt-2">Quick Navigation</p>
+            
           </div>
           <div className="overflow-y-auto flex-grow">
             <nav className="p-4">

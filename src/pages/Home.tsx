@@ -767,12 +767,7 @@ const Home = () => {
               transitionDelay: '0.15s',
             }}
           >
-            <Link
-              to="/packages"
-              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[180px] h-[48px] text-base"
-            >
-              Explore All Packages <ArrowRight size={16} className="ml-2" />
-            </Link>
+            
           </div>
         </div>
       </section>

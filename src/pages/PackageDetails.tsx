@@ -92,10 +92,6 @@ const PackageDetails = () => {
                 <span>{packageData.duration}</span>
               </div>
               <div className="flex items-center">
-                <MapPin size={18} className="mr-1" />
-                <span>{packageData.location}</span>
-              </div>
-              <div className="flex items-center">
                 <div className="flex">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star
@@ -118,7 +114,7 @@ const PackageDetails = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Main Content */}
-            <AnimateOnScroll animation="fade-right" className="lg:w-2/3">
+            <AnimateOnScroll animation="fade-right" className="w-full">
               {/* Tabs */}
               <div className="border-b border-gray-200 mb-8">
                 <nav className="flex space-x-8">
@@ -172,25 +168,6 @@ const PackageDetails = () => {
                         </AnimateOnScroll>
                       ))}
                     </div>
-                    <h3 className="text-xl font-bold mb-4">Gallery</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-                      {packageData.gallery.map((image, index) => (
-                        <AnimateOnScroll
-                          key={index}
-                          animation="zoom-out"
-                          delay={index * 0.1}
-                          className="rounded-lg overflow-hidden h-40 md:h-48 transition-all duration-300 hover:shadow-xl hover:scale-105"
-                        >
-                          <div className="img-hover-zoom h-full">
-                            <img
-                              src={image}
-                              alt={`${packageData.title} - Gallery ${index + 1}`}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        </AnimateOnScroll>
-                      ))}
-                    </div>
                   </div>
                 )}
                 {activeTab === 'itinerary' && (
@@ -227,12 +204,6 @@ const PackageDetails = () => {
                                   </li>
                                 ))}
                               </ul>
-                            </div>
-                          )}
-                          {day.meals && (
-                            <div className="text-sm text-gray-600">
-                              <span className="font-medium">Meals:</span>{' '}
-                              {day.meals}
                             </div>
                           )}
                           {day.accommodation && (
@@ -306,65 +277,6 @@ const PackageDetails = () => {
                 )}
               </div>
             </AnimateOnScroll>
-            {/* Sidebar */}
-            <AnimateOnScroll
-              animation="fade-left"
-              delay={0.3}
-              className="lg:w-1/3"
-            >
-              <div className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden sticky top-24 card-hover-effect">
-                <div className="p-6">
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-start">
-                      <Clock size={18} className="text-green-600 mr-3 mt-0.5" />
-                      <div>
-                        <h4 className="font-medium">Duration</h4>
-                        <p className="text-gray-600">{packageData.duration}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <MapPin
-                        size={18}
-                        className="text-green-600 mr-3 mt-0.5"
-                      />
-                      <div>
-                        <p className="text-gray-600">{packageData.location}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="space-y-3 mb-6">
-                    <Link
-                      to="/inquiry"
-                      className="block w-full bg-green-600 hover:bg-green-700 text-white text-center py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md h-[48px] flex items-center justify-center btn-hover-effect"
-                    >
-                      Book Now
-                    </Link>
-                    <Link
-                      to="/short-inquiry"
-                      className="block w-full bg-black hover:bg-gray-800 text-white text-center py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md h-[48px] flex items-center justify-center btn-hover-effect"
-                    >
-                      Quick Inquiry
-                    </Link>
-                    <Link
-                      to="/contact"
-                      className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md h-[48px] flex items-center justify-center btn-hover-effect"
-                    >
-                      Visit Our Office
-                    </Link>
-                  </div>
-                  <div className="text-sm text-gray-600 text-center">
-                    Need help planning?{' '}
-                    <a
-                      href="/contact"
-                      className="text-green-600 hover:underline"
-                    >
-                      Contact us
-                    </a>{' '}
-                    for personalized assistance.
-                  </div>
-                </div>
-              </div>
-            </AnimateOnScroll>
           </div>
         </div>
       </section>
@@ -406,6 +318,10 @@ const packageDetails = {
     tag: 'Best Seller',
     duration: '14 Days, 13 Nights',
     location: 'Sri Lanka',
+    maxPeople: 12,
+    price: 2999,
+    oldPrice: 3499,
+    discount: 14,
     rating: 5,
     reviewCount: 128,
     heroImage:
@@ -434,7 +350,14 @@ const packageDetails = {
           'Relax on stunning beaches and explore the historic Dutch fort in Galle along the southern coast.',
       },
     ],
-    
+    gallery: [
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/umKpchjBUtECmnTjGTnjYM/nature6.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
+    ],
     itinerary: [
       {
         day: 1,
@@ -447,7 +370,7 @@ const packageDetails = {
           'Hotel check-in',
           'Leisure time at Negombo Beach',
         ],
-        
+        meals: 'Dinner',
         accommodation: 'Overnight stay at Negombo Hotel',
       },
       {
@@ -462,7 +385,7 @@ const packageDetails = {
           'Sri Maha Bodhi (sacred fig tree)',
           'Ruwanwelisaya Stupa',
         ],
-       
+        meals: 'Breakfast, Dinner',
         accommodation: 'Overnight stay at Anuradhapura Hotel',
       },
       {
@@ -476,7 +399,7 @@ const packageDetails = {
           'Visit local markets',
           'Evening leisure time',
         ],
-        
+        meals: 'Breakfast, Dinner',
         accommodation: 'Overnight stay at Habarana Hotel',
       },
       {
@@ -491,7 +414,7 @@ const packageDetails = {
           'Traditional village tour',
           'Pidurangala Rock sunset hike',
         ],
-        
+        meals: 'Breakfast, Lunch, Dinner',
         accommodation: 'Overnight stay at Habarana Hotel',
       },
       {
@@ -505,7 +428,7 @@ const packageDetails = {
           'Knuckles Range trekking tour',
           'Dambulla Cave Temple exploration',
         ],
-       
+        meals: 'Breakfast, Lunch, Dinner',
         accommodation: 'Overnight stay at Matale Hotel',
       },
       {
@@ -522,7 +445,7 @@ const packageDetails = {
           'Gem Museum visit',
           'Udawattakale Sanctuary walk',
         ],
-        
+        meals: 'Breakfast, Dinner',
         accommodation: 'Overnight stay at Kandy Hotel',
       },
       {
@@ -538,7 +461,7 @@ const packageDetails = {
           'Victoria Park exploration',
           'Nuwara Eliya town tour',
         ],
-        
+        meals: 'Breakfast, Dinner',
         accommodation: 'Overnight stay at Nuwara Eliya Hotel',
       },
       {
@@ -553,7 +476,7 @@ const packageDetails = {
           'Tea plantation visit',
           'Leisure time in Nuwara Eliya',
         ],
-       
+        meals: 'Breakfast, Dinner',
         accommodation: 'Overnight stay at Nuwara Eliya Hotel',
       },
       {
@@ -567,7 +490,7 @@ const packageDetails = {
           'Udawalawe National Park safari',
           'Elephant Transit Home visit (milk feeding for baby elephants)',
         ],
-       
+        meals: 'Breakfast, Dinner',
         accommodation: 'Overnight stay at Udawalawe Hotel',
       },
       {
@@ -581,7 +504,7 @@ const packageDetails = {
           'Galle Dutch Fort exploration',
           'Unawatuna Beach relaxation',
         ],
-        
+        meals: 'Breakfast, Dinner',
         accommodation: 'Overnight stay at Galle Hotel',
       },
       {
@@ -596,7 +519,7 @@ const packageDetails = {
           'Meetiyagoda Moonstone mines visit',
           'Turtle hatchery tour',
         ],
-        
+        meals: 'Breakfast, Dinner',
         accommodation: 'Overnight stay at Bentota Hotel',
       },
       {
@@ -610,7 +533,7 @@ const packageDetails = {
           'Optional water sports',
           'Optional Ayurvedic spa treatments',
         ],
-       
+        meals: 'Breakfast, Dinner',
         accommodation: 'Overnight stay at Bentota Hotel',
       },
       {
@@ -627,7 +550,7 @@ const packageDetails = {
           'National Museum visit',
           'Shopping time',
         ],
-        
+        meals: 'Breakfast, Farewell Dinner',
         accommodation: 'Overnight stay at Colombo Hotel',
       },
       {
@@ -637,7 +560,7 @@ const packageDetails = {
         description:
           'After breakfast, check out from your hotel and transfer to Bandaranaike International Airport for your departure flight. End of our services.',
         activities: ['Airport transfer'],
-       
+        meals: 'Breakfast',
         accommodation: null,
       },
     ],
@@ -684,16 +607,6 @@ const packageDetails = {
       },
     ],
     relatedPackages: [
-      {
-        id: '09-days-08-nights',
-        title: 'Beach & Safari Expedition',
-        duration: '9 Days, 8 Nights',
-        description:
-          'The perfect blend of relaxation and adventure with pristine beaches and thrilling wildlife safaris.',
-        tag: 'Popular',
-        image:
-          'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
-      },
       {
         id: 'wildlife-safari',
         title: 'Wildlife Safari',
@@ -745,7 +658,14 @@ const packageDetails = {
           'Visit traditional villages and explore the historic sites along the southern coast.',
       },
     ],
-   
+    gallery: [
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/umKpchjBUtECmnTjGTnjYM/nature6.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
+    ],
     itinerary: [
       {
         day: 1,
@@ -754,7 +674,7 @@ const packageDetails = {
         description:
           "Upon arrival at Bandaranaike International Airport, you'll be met by our representative and transferred to your hotel in Colombo. Enjoy a welcome dinner and briefing about your safari adventure.",
         activities: ['Airport pickup', 'Hotel check-in', 'Welcome dinner'],
-        
+        meals: 'Dinner',
         accommodation: '4-star hotel in Colombo',
       },
       {
@@ -764,7 +684,7 @@ const packageDetails = {
         description:
           'After breakfast, drive to Habarana in the Cultural Triangle. In the afternoon, enjoy a safari in Minneriya National Park, famous for its large gatherings of Asian elephants during the dry season. This natural phenomenon, known as "The Gathering," is one of the most spectacular wildlife events in Asia.',
         activities: ['Drive to Habarana', 'Afternoon safari in Minneriya'],
-        
+        meals: 'Breakfast, Lunch, Dinner',
         accommodation: 'Safari lodge in Habarana',
       },
       {
@@ -778,7 +698,7 @@ const packageDetails = {
           'Afternoon wildlife safari',
           'Evening relaxation',
         ],
-        
+        meals: 'Breakfast, Lunch, Dinner',
         accommodation: 'Safari lodge in Habarana',
       },
       {
@@ -793,7 +713,7 @@ const packageDetails = {
           'Temple of the Tooth Relic',
           'Cultural dance performance',
         ],
-        
+        meals: 'Breakfast, Dinner',
         accommodation: 'Hotel in Kandy',
       },
       {
@@ -807,8 +727,8 @@ const packageDetails = {
           'Afternoon safari in Udawalawe National Park',
           'Elephant Transit Home visit',
         ],
-       
-        accommodation: 'Hotel in Udawalawe',
+        meals: 'Breakfast, Lunch, Dinner',
+        accommodation: 'Safari lodge in Udawalawe',
       },
       {
         day: 6,
@@ -817,8 +737,8 @@ const packageDetails = {
         description:
           'After breakfast, drive to Yala National Park. Enjoy an afternoon safari in Yala, which boasts the highest density of leopards in the world. The park is also home to elephants, sloth bears, crocodiles, and over 200 bird species.',
         activities: ['Drive to Yala', 'Afternoon safari in Yala National Park'],
-        
-        accommodation: 'Hotel in Yala',
+        meals: 'Breakfast, Lunch, Dinner',
+        accommodation: 'Safari lodge near Yala',
       },
       {
         day: 7,
@@ -831,8 +751,8 @@ const packageDetails = {
           'Drive to southern coast',
           'Beach relaxation',
         ],
-        
-        accommodation: 'Hotel in Tangalle/Mirissa',
+        meals: 'Breakfast, Dinner',
+        accommodation: 'Beach resort in Tangalle/Mirissa',
       },
       {
         day: 8,
@@ -845,8 +765,8 @@ const packageDetails = {
           'Galle Fort exploration',
           'Farewell dinner',
         ],
-        
-        accommodation: 'Hotel in Tangalle/Mirissa',
+        meals: 'Breakfast, Dinner',
+        accommodation: 'Beach resort in Tangalle/Mirissa',
       },
       {
         day: 9,
@@ -855,7 +775,7 @@ const packageDetails = {
         description:
           'After breakfast, transfer to Bandaranaike International Airport for your departure flight. End of our services.',
         activities: ['Airport transfer'],
-        
+        meals: 'Breakfast',
         accommodation: null,
       },
     ],
@@ -899,16 +819,6 @@ const packageDetails = {
     ],
     relatedPackages: [
       {
-        id: '14-days-13-nights',
-        title: 'Complete Heritage Explorer',
-        duration: '14 Days, 13 Nights',
-        description:
-          'Experience the rich cultural heritage with our comprehensive 14-day tour package that covers all major historical sites.',
-        tag: 'Best Seller',
-        image:
-          'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
-      },
-      {
         id: 'wildlife-safari',
         title: 'Wildlife Safari',
         duration: '8 Days, 7 Nights',
@@ -926,7 +836,10 @@ const packageDetails = {
       'Experience the best of Sri Lanka with this compact tour covering all major highlights of the island in just 8 days.',
     tag: 'Best Value',
     duration: '8 Days, 7 Nights',
-    
+    location: 'Sri Lanka',
+    maxPeople: 12,
+    price: 1599,
+    oldPrice: 1899,
     discount: 16,
     rating: 5,
     reviewCount: 87,
@@ -956,7 +869,14 @@ const packageDetails = {
           'Explore the historic Galle Fort and relax on the beautiful beaches of southern Sri Lanka.',
       },
     ],
-  
+    gallery: [
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/umKpchjBUtECmnTjGTnjYM/nature6.jpg',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
+    ],
     itinerary: [
       {
         day: 1,
@@ -1030,7 +950,7 @@ const packageDetails = {
           'Ravana Falls stop',
           'Drive to Tissamaharama',
         ],
-        
+        meals: 'Breakfast, Dinner',
         accommodation: 'Hotel in Tissamaharama',
       },
       {
@@ -1045,7 +965,7 @@ const packageDetails = {
           'Galle Fort exploration or beach time in Mirissa',
           'Evening relaxation',
         ],
-        
+        meals: 'Breakfast, Dinner',
         accommodation: 'Hotel in Galle or Mirissa',
       },
       {
@@ -1061,7 +981,7 @@ const packageDetails = {
           'Colombo city tour',
           'Farewell dinner',
         ],
-        
+        meals: 'Breakfast, Farewell Dinner',
         accommodation: 'Hotel in Colombo',
       },
       {
@@ -1071,7 +991,7 @@ const packageDetails = {
         description:
           'After breakfast, depending on your flight time, you may have some free time for last-minute shopping at Paradise Road, Barefoot, or Odel shopping centers. At the appropriate time, transfer to Bandaranaike International Airport for your departure flight. End of our services.',
         activities: ['Optional shopping time', 'Airport transfer'],
-       
+        meals: 'Breakfast',
         accommodation: null,
       },
     ],
@@ -1092,7 +1012,7 @@ const packageDetails = {
           'Pack lightweight, breathable clothing for hot and humid conditions. Include modest attire (covering shoulders and knees) for visiting temples and religious sites. Bring comfortable walking shoes, a hat, sunglasses, sunscreen, insect repellent, and a light rain jacket. A swimsuit is essential for beach days, and a light sweater or jacket for the cooler climate in Nuwara Eliya.',
       },
       {
-        question: 'Is it safe to drink tap water in Sri Lanka?',
+        q: 'Is it safe to drink tap water in Sri Lanka?',
         answer:
           'It is recommended to drink bottled or filtered water throughout your journey in Sri Lanka. Bottled water will be provided during tours and is readily available at hotels and restaurants.',
       },
@@ -1119,24 +1039,14 @@ const packageDetails = {
     ],
     relatedPackages: [
       {
-        id: '14-days-13-nights',
-        title: 'Complete Heritage Explorer',
-        duration: '14 Days, 13 Nights',
+        id: 'wildlife-safari',
+        title: 'Wildlife Safari',
+        duration: '8 Days, 7 Nights',
         description:
-          'Experience the rich cultural heritage with our comprehensive 14-day tour package that covers all major historical sites.',
-        tag: 'Best Seller',
+          'Witness majestic wildlife in their natural habitat on an unforgettable safari adventure.',
+        tag: null,
         image:
-          'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
-      },
-      {
-        id: '09-days-08-nights',
-        title: 'Beach & Safari Expedition',
-        duration: '9 Days, 8 Nights',
-        description:
-          'The perfect blend of relaxation and adventure with pristine beaches and thrilling wildlife safaris.',
-        tag: 'Popular',
-        image:
-          'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
+          'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
       },
     ],
   },

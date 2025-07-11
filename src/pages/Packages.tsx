@@ -156,46 +156,7 @@ const Packages = () => {
                   Popular
                 </div>
               </div>
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="flex items-center mb-2">
-                  <Calendar size={16} className="text-green-600 mr-1" />
-                  <span className="text-gray-600 text-sm">
-                    9 Days, 8 Nights
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">
-                  Beach & Safari Expedition
-                </h3>
-                <p className="text-gray-600 mb-4 flex-grow">
-                  The perfect blend of relaxation and adventure with pristine
-                  beaches and thrilling wildlife safaris in one package.
-                </p>
-                <div className="flex items-center mb-4">
-                  <div className="flex">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <svg
-                        key={star}
-                        className="w-4 h-4 text-yellow-400 fill-current"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <span className="text-gray-600 text-sm ml-2">96 Reviews</span>
-                </div>
-                <div className="flex justify-end mt-auto">
-                  <Link
-                    to="/packages/09-days-08-nights"
-                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all transform hover:scale-105 hover:shadow-md"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
+              
           {/* All Packages */}
           <div
             ref={observerRefs.allPackages}

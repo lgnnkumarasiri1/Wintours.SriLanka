@@ -244,13 +244,7 @@ const Home = () => {
         ogImage="https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png"
       />
       {/* Mobile Sidebar Menu */}
-      <button
-        className="fixed bottom-6 right-6 bg-green-600 text-white p-3 rounded-full shadow-lg z-50 md:hidden mobile-sidebar-toggle"
-        onClick={() => setShowMobileSidebar(!showMobileSidebar)}
-        aria-label="Toggle sidebar menu"
-      >
-        {showMobileSidebar ? <X size={24} /> : <Menu size={24} />}
-      </button>
+     
       <div
         className={`fixed inset-y-0 left-0 w-64 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden mobile-sidebar ${showMobileSidebar ? 'translate-x-0' : '-translate-x-full'}`}
       >

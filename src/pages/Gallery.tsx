@@ -1,13 +1,22 @@
 import React, { useEffect, useState, useRef, lazy } from 'react'
 import { useLocation } from 'react-router-dom'
-import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ZoomIn,
+  ZoomOut,
+  Move,
+} from 'lucide-react'
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState('all')
   const [filteredImages, setFilteredImages] = useState([])
   const [selectedImage, setSelectedImage] = useState(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [imageZoomed, setImageZoomed] = useState(false)
   const galleryGridRef = useRef(null)
   const topRef = useRef(null)
+  const zoomedImageRef = useRef(null)
   const location = useLocation()
   useEffect(() => {
     // Scroll to top when component mounts or location changes
@@ -44,11 +53,13 @@ const Gallery = () => {
   const openLightbox = (image, index) => {
     setSelectedImage(image)
     setCurrentImageIndex(index)
+    setImageZoomed(false)
     // Prevent body scrolling when lightbox is open
     document.body.style.overflow = 'hidden'
   }
   const closeLightbox = () => {
     setSelectedImage(null)
+    setImageZoomed(false)
     // Restore body scrolling
     document.body.style.overflow = 'auto'
   }
@@ -58,12 +69,18 @@ const Gallery = () => {
       (currentImageIndex - 1 + filteredImages.length) % filteredImages.length
     setCurrentImageIndex(newIndex)
     setSelectedImage(filteredImages[newIndex])
+    setImageZoomed(false)
   }
   const goToNext = (e) => {
     e.stopPropagation()
     const newIndex = (currentImageIndex + 1) % filteredImages.length
     setCurrentImageIndex(newIndex)
     setSelectedImage(filteredImages[newIndex])
+    setImageZoomed(false)
+  }
+  const toggleZoom = (e) => {
+    e.stopPropagation()
+    setImageZoomed(!imageZoomed)
   }
   // Handle keyboard navigation
   useEffect(() => {
@@ -84,34 +101,12 @@ const Gallery = () => {
   }, [selectedImage, currentImageIndex, filteredImages])
   return (
     <div className="w-full pt-24 pb-16" ref={topRef}>
-      {/* Hero Section */}
-      <section className="relative py-20 bg-black text-white">
-        <div
-          className="absolute inset-0 opacity-30 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg')",
-          }}
-        ></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Sri Lanka Gallery
-            </h1>
-            <p className="text-xl">
-              Explore stunning photos from our beautiful island. Get inspired
-              for your next adventure.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Gallery Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 text-gray-800">
-              Destination Photos
+              Sri Lanka Gallery
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Browse through our collection of beautiful photos from various
@@ -144,12 +139,6 @@ const Gallery = () => {
               className={`px-4 py-2 rounded-full ${activeCategory === 'nature' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
             >
               Nature
-            </button>
-            <button
-              onClick={() => handleCategoryChange('wildlife')}
-              className={`px-4 py-2 rounded-full ${activeCategory === 'wildlife' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
-            >
-              Wildlife
             </button>
             <button
               onClick={() => handleCategoryChange('tea')}
@@ -209,26 +198,51 @@ const Gallery = () => {
       {/* Lightbox Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4 animate-fadeIn"
+          className="fixed inset-0 bg-black bg-opacity-90 z-[200] flex items-center justify-center p-4 animate-fadeIn"
           onClick={closeLightbox}
         >
           <div
             className="relative w-full max-w-5xl max-h-[90vh] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Close button - Improved with larger clickable area and higher z-index */}
             <button
-              onClick={closeLightbox}
-              className="absolute right-2 top-2 text-white hover:text-gray-300 transition-colors z-10 bg-black bg-opacity-50 p-2 rounded-full"
+              onClick={(e) => {
+                e.stopPropagation()
+                closeLightbox()
+              }}
+              className="absolute right-2 top-2 text-white hover:text-gray-300 transition-colors z-50 bg-black bg-opacity-70 p-3 rounded-full cursor-pointer"
               aria-label="Close lightbox"
+              style={{
+                minWidth: '44px',
+                minHeight: '44px',
+              }}
             >
               <X size={24} />
             </button>
-            <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-              <img
-                src={selectedImage.url}
-                alt={selectedImage.title}
-                className="max-h-[80vh] max-w-full object-contain"
-              />
+            {/* Zoom instruction indicator */}
+            {imageZoomed && (
+              <div className="absolute top-2 left-2 bg-black bg-opacity-70 text-white px-3 py-2 rounded-md z-40 flex items-center">
+                <Move size={16} className="mr-2" />
+                <span className="text-sm">Scroll to pan image</span>
+              </div>
+            )}
+            <div className="relative w-full h-full flex items-center justify-center">
+              <div
+                className={`relative ${imageZoomed ? 'overflow-auto max-h-[70vh] max-w-full' : 'overflow-hidden max-h-[70vh] max-w-full'} ${imageZoomed ? 'cursor-move' : 'cursor-zoom-in'}`}
+                style={{
+                  overscrollBehavior: 'contain',
+                  WebkitOverflowScrolling: 'touch',
+                }}
+                ref={zoomedImageRef}
+              >
+                <img
+                  src={selectedImage.url}
+                  alt={selectedImage.title}
+                  className={`${imageZoomed ? 'max-h-none max-w-none w-[250%] h-auto' : 'max-h-[70vh] max-w-full'} object-contain transition-all duration-300`}
+                  onClick={toggleZoom}
+                />
+              </div>
               <button
                 onClick={goToPrevious}
                 className="absolute left-2 text-white hover:text-gray-300 transition-colors z-10 bg-black bg-opacity-50 p-2 rounded-full"
@@ -245,11 +259,33 @@ const Gallery = () => {
               </button>
             </div>
             <div className="bg-black bg-opacity-70 p-4 rounded-b-lg text-white w-full mt-2">
-              <h3 className="text-xl font-bold">{selectedImage.title}</h3>
-              <p className="text-gray-300">{selectedImage.location}</p>
-              <p className="text-sm text-gray-400 mt-1">
-                Image {currentImageIndex + 1} of {filteredImages.length}
-              </p>
+              <div className="flex justify-between items-center">
+                <div>
+                  <h3 className="text-xl font-bold">{selectedImage.title}</h3>
+                  <p className="text-gray-300">{selectedImage.location}</p>
+                </div>
+                <div className="flex items-center">
+                  <button
+                    onClick={toggleZoom}
+                    className="flex items-center bg-gray-800 hover:bg-gray-700 px-3 py-1 rounded-md text-sm"
+                  >
+                    {imageZoomed ? (
+                      <>
+                        <ZoomOut size={16} className="mr-1" />
+                        Zoom Out
+                      </>
+                    ) : (
+                      <>
+                        <ZoomIn size={16} className="mr-1" />
+                        Zoom In
+                      </>
+                    )}
+                  </button>
+                  <p className="text-sm text-gray-400 ml-4">
+                    Image {currentImageIndex + 1} of {filteredImages.length}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -280,7 +316,12 @@ const Gallery = () => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center cursor-pointer hover:bg-opacity-100 transition-all">
+                    <a
+                      href={video.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-16 h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center cursor-pointer hover:bg-opacity-100 transition-all"
+                    >
                       <svg
                         className="w-8 h-8 text-green-600"
                         fill="currentColor"
@@ -288,7 +329,7 @@ const Gallery = () => {
                       >
                         <path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                       </svg>
-                    </div>
+                    </a>
                   </div>
                 </div>
                 <div className="p-4">
@@ -329,7 +370,7 @@ const Gallery = () => {
     </div>
   )
 }
-// Updated gallery data with Sri Lanka images - only uploaded images
+// Updated gallery data with Sri Lanka images - removed wildlife safari card as requested
 const galleryImages = [
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
@@ -384,42 +425,6 @@ const galleryImages = [
     title: 'Spiritual Discussion with Monk',
     location: 'Buddhist Temple, Sri Lanka',
     category: 'cultural',
-  },
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
-    title: 'Elephant Family with Calf',
-    location: 'Udawalawe National Park, Sri Lanka',
-    category: 'wildlife',
-  },
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
-    title: 'Elephants Bathing',
-    location: 'Minneriya National Park, Sri Lanka',
-    category: 'wildlife',
-  },
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/6GJfbstMWpn11EAPCreBGN/safari6.jpg',
-    title: 'Saltwater Crocodile',
-    location: 'Yala National Park, Sri Lanka',
-    category: 'wildlife',
-  },
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/qfL1X7HLLPeLCTNrjqm62R/safari7.jpg',
-    title: 'Spot-billed Pelican',
-    location: 'Bundala National Park, Sri Lanka',
-    category: 'wildlife',
-  },
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/iVeCLxa7UgTjYjCLu7Svry/nature3.jpg',
-    title: 'Elephant Herd with Calves',
-    location: 'Kaudulla National Park, Sri Lanka',
-    category: 'wildlife',
-  },
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/8UmpucGHRWAJqHqn92q8E2/safari4.jpg',
-    title: 'Spotted Deer Herd',
-    location: 'Wilpattu National Park, Sri Lanka',
-    category: 'wildlife',
   },
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg',
@@ -596,7 +601,7 @@ const galleryImages = [
     category: 'guests',
   },
 ]
-// Updated videos data with Sri Lanka content using uploaded images
+// Updated videos data with non-copyrighted video links
 const videos = [
   {
     title: 'Exploring Sri Lanka',
@@ -605,14 +610,8 @@ const videos = [
       'Journey through the diverse landscapes and cultural heritage of Sri Lanka, from ancient ruins to pristine beaches.',
     thumbnail:
       'https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png',
-  },
-  {
-    title: 'Wildlife Safari',
-    location: 'Yala National Park, Sri Lanka',
-    description:
-      "Experience the thrill of witnessing Sri Lanka's magnificent wildlife including elephants, leopards, and diverse bird species in their natural habitat.",
-    thumbnail:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
+    videoUrl:
+      'https://www.pexels.com/video/aerial-view-of-a-beach-resort-in-sri-lanka-3156228/',
   },
   {
     title: 'Cultural Heritage',
@@ -621,6 +620,18 @@ const videos = [
       'Discover the rich cultural heritage of Sri Lanka through its ancient temples, colorful festivals, and traditional arts and crafts.',
     thumbnail:
       'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
+    videoUrl:
+      'https://www.pexels.com/video/drone-footage-of-a-temple-in-sri-lanka-8819322/',
+  },
+  {
+    title: 'Tea Plantations',
+    location: 'Nuwara Eliya, Sri Lanka',
+    description:
+      "Experience the lush green tea plantations of Sri Lanka, where some of the world's finest tea is produced in stunning highland landscapes.",
+    thumbnail:
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/qp59CEpji28dA7HGvQfsp3/happy_custormer_8.jpg',
+    videoUrl:
+      'https://www.pexels.com/video/drone-footage-of-tea-plantations-in-sri-lanka-8819312/',
   },
 ]
 export default Gallery

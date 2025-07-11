@@ -41,6 +41,7 @@ import AnimateOnScroll from '../components/AnimateOnScroll'
 const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [showFeedbackForm, setShowFeedbackForm] = useState(false)
+  const [showMobileSidebar, setShowMobileSidebar] = useState(false)
   const [feedbackFormData, setFeedbackFormData] = useState({
     name: '',
     location: '',
@@ -62,7 +63,6 @@ const Home = () => {
   const [contactSubmitSuccess, setContactSubmitSuccess] = useState(false)
   const [isTestimonialsExpanded, setIsTestimonialsExpanded] = useState(false)
   const [expandedDestinations, setExpandedDestinations] = useState({})
-  const [showMobileSidebar, setShowMobileSidebar] = useState(false)
   const visibleSections = useRef({})
   const observerRefs = {
     quickInfo: useRef(null),
@@ -180,7 +180,6 @@ const Home = () => {
       sectionRef.current.scrollIntoView({
         behavior: 'smooth',
       })
-      setShowMobileSidebar(false)
     }
   }
   useEffect(() => {
@@ -219,22 +218,6 @@ const Home = () => {
       })
     }
   }, [])
-  // Close sidebar when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (
-        showMobileSidebar &&
-        !e.target.closest('.mobile-sidebar') &&
-        !e.target.closest('.mobile-sidebar-toggle')
-      ) {
-        setShowMobileSidebar(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [showMobileSidebar])
   return (
     <div className="w-full">
       <SEO
@@ -243,109 +226,6 @@ const Home = () => {
         keywords="Sri Lanka tours, travel packages, Sri Lankan adventures, cultural tours, wildlife safari, beach holidays"
         ogImage="https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png"
       />
-      {/* Mobile Sidebar Menu */}
-     
-      <div
-        className={`fixed inset-y-0 left-0 w-64 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden mobile-sidebar ${showMobileSidebar ? 'translate-x-0' : '-translate-x-full'}`}
-      >
-        <div className="flex flex-col h-full">
-          <div className="p-4 border-b border-gray-200">
-            <div className="flex items-center mb-2">
-              <img
-                src="https://uploadthingy.s3.us-west-1.amazonaws.com/u54FezGT7mEQfifZEYkdks/winTourlogo.png"
-                alt="WinTours Sri Lanka Logo"
-                className="h-10 mr-2 bg-white rounded-full p-1"
-              />
-              <h3 className="text-xl font-bold text-green-600">
-                WinTours Sri Lanka
-              </h3>
-            </div>
-          </div>
-          <div className="overflow-y-auto flex-grow">
-            <nav className="p-4">
-              <ul className="space-y-2">
-                <li>
-                  <button
-                    onClick={() =>
-                      scrollToSection({
-                        current: document.body,
-                      })
-                    }
-                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
-                  >
-                    <HomeIcon size={18} className="mr-3 text-green-500" />
-                    <span>Top</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection(observerRefs.introduction)}
-                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
-                  >
-                    <Info size={18} className="mr-3 text-green-500" />
-                    <span>About Sri Lanka</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection(observerRefs.destinations)}
-                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
-                  >
-                    <MapPin size={18} className="mr-3 text-green-500" />
-                    <span>Destinations</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection(observerRefs.packages)}
-                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
-                  >
-                    <Package size={18} className="mr-3 text-green-500" />
-                    <span>Tour Packages</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection(observerRefs.whyChoose)}
-                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
-                  >
-                    <Award size={18} className="mr-3 text-green-500" />
-                    <span>Why Choose Us</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection(observerRefs.testimonials)}
-                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
-                  >
-                    <MessageSquare size={18} className="mr-3 text-green-500" />
-                    <span>Testimonials</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => scrollToSection(observerRefs.contactUs)}
-                    className="flex items-center w-full p-2 text-gray-700 rounded hover:bg-green-50 hover:text-green-600 transition-colors"
-                  >
-                    <Phone size={18} className="mr-3 text-green-500" />
-                    <span>Contact Us</span>
-                  </button>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div className="p-4 border-t border-gray-200">
-            <Link
-              to="/packages"
-              className="flex items-center justify-center w-full p-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
-              onClick={() => setShowMobileSidebar(false)}
-            >
-              <Package size={18} className="mr-2" />
-              <span>View All Packages</span>
-            </Link>
-          </div>
-        </div>
-      </div>
       {/* Hero Section - Enhanced with better visual hierarchy and increased padding */}
       <section className="relative min-h-[100vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/40 z-10"></div>
@@ -749,19 +629,6 @@ const Home = () => {
                 </div>
               </div>
             ))}
-          </div>
-          <div
-            className={`text-center mt-12 transition-all duration-700 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-            style={{
-              transitionDelay: '0.8s',
-            }}
-          >
-            <Link
-              to="/packages"
-              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[180px] h-[48px] text-base"
-            >
-              View All Destinations <ArrowRight size={16} className="ml-2" />
-            </Link>
           </div>
         </div>
       </section>

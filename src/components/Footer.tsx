@@ -137,32 +137,10 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
-                >
-                  <ArrowRight size={14} className="mr-2" />
-                  Sri Lanka Explorer
-                </a>
+                
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
-                >
-                  <ArrowRight size={14} className="mr-2" />
-                  Beach Getaway
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
-                >
-                  <ArrowRight size={14} className="mr-2" />
-                  Cultural Tour
-                </a>
-              </li>
+              
+              
             </ul>
           </div>
           <div>
@@ -176,7 +154,7 @@ const Footer = () => {
                   className="mr-3 text-green-400 flex-shrink-0 mt-1"
                 />
                 <span className="text-gray-300">
-                  No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
+                  No 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
                 </span>
               </li>
               <li className="flex items-center">

@@ -4,8 +4,8 @@ import { Calendar, MapPin, ArrowRight } from 'lucide-react'
 const Packages = () => {
   const [visibleSections, setVisibleSections] = useState({})
   const observerRefs = {
+    hero: useRef(null),
     featured: useRef(null),
-    allPackages: useRef(null),
   }
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -39,29 +39,33 @@ const Packages = () => {
     }
   }, [])
   return (
-    <div className="w-full pt-24 pb-16">
+    <div className="w-full">
       {/* Hero Section */}
-      <section className="relative py-20 bg-black text-white">
+      <section
+        ref={observerRefs.hero}
+        className="relative pt-24 pb-16 bg-black text-white"
+      >
         <div
-          className="absolute inset-0 opacity-30 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center opacity-40"
           style={{
             backgroundImage:
-              "url('https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg')",
+              "url('https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png')",
           }}
         ></div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 py-16">
           <div
-            className="max-w-2xl animate-fadeInUp"
-            style={{
-              animationDuration: '1s',
-            }}
+            className={`max-w-3xl mx-auto text-center transition-all duration-700 ${visibleSections.hero ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <div className="inline-block bg-green-600 text-white px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Explore Sri Lanka
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 font-display">
               Our Travel Packages
             </h1>
-            <p className="text-xl">
-              Discover our carefully crafted travel packages designed to provide
-              you with unforgettable experiences around the world.
+            <p className="text-xl mb-6 max-w-2xl mx-auto">
+              Discover our carefully crafted travel experiences designed to
+              showcase the best of Sri Lanka's natural beauty, rich culture, and
+              warm hospitality.
             </p>
           </div>
         </div>
@@ -74,7 +78,7 @@ const Packages = () => {
             className={`text-center mb-12 transition-all duration-700 ${visibleSections.featured ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
           >
             <h2 className="text-3xl font-bold mb-4 text-gray-800">
-              Featured Packages
+              Featured Travel Experiences
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Choose from our selection of premium travel packages, each
@@ -195,63 +199,6 @@ const Packages = () => {
               </div>
             </div>
           </div>
-
-          {/* All Packages */}
-          <div
-            ref={observerRefs.allPackages}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {packages.map((pkg, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200 transition-all duration-700 hover:shadow-xl hover:-translate-y-2 ${visibleSections.allPackages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                style={{
-                  transitionDelay: `${0.02 + index * 0.02}s`,
-                }}
-              >
-                <div className="relative h-60 overflow-hidden">
-                  <img
-                    src={pkg.image}
-                    alt={pkg.title}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                  />
-                  {pkg.tag && (
-                    <div
-                      className={`absolute top-4 left-4 ${pkg.tag === 'Best Value' ? 'bg-green-600' : 'bg-black'} text-white px-3 py-1 rounded-full text-sm font-medium`}
-                    >
-                      {pkg.tag}
-                    </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center mb-2">
-                    <Calendar size={16} className="text-green-600 mr-1" />
-                    <span className="text-gray-600 text-sm">
-                      {pkg.duration}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{pkg.title}</h3>
-                  <p className="text-gray-600 mb-4">{pkg.description}</p>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center">
-                      <MapPin size={16} className="text-green-600 mr-1" />
-                      <span className="text-gray-600 text-sm">
-                        {pkg.location}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <Link
-                      to={`/packages/${pkg.id}`}
-                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all transform hover:scale-105 hover:shadow-md"
-                    >
-                      View Details
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -284,18 +231,4 @@ const Packages = () => {
     </div>
   )
 }
-// Sample packages data
-const packages = [
-  {
-    id: 'wildlife-safari',
-    title: 'Wildlife Safari',
-    duration: '8 Days, 7 Nights',
-    description:
-      'Witness majestic wildlife in their natural habitat on an unforgettable safari adventure.',
-    location: 'Sri Lanka',
-    tag: null,
-    image:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
-  },
-]
 export default Packages

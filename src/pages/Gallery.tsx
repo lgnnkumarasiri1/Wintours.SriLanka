@@ -291,58 +291,6 @@ const Gallery = () => {
         </div>
       )}
 
-      {/* Video Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">
-              Sri Lanka Videos
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Watch our curated collection of videos to get a better feel for
-              the beauty of Sri Lanka.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {videos.map((video, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg overflow-hidden shadow-lg"
-              >
-                <div className="relative aspect-video">
-                  <img
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <a
-                      href={video.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-16 h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center cursor-pointer hover:bg-opacity-100 transition-all"
-                    >
-                      <svg
-                        className="w-8 h-8 text-green-600"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-bold mb-1">{video.title}</h3>
-                  <p className="text-gray-600 text-sm mb-2">{video.location}</p>
-                  <p className="text-gray-700">{video.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-16 bg-green-600 text-white">
         <div className="container mx-auto px-4 text-center">
@@ -599,39 +547,6 @@ const galleryImages = [
     title: 'Zipline Adventure Experience',
     location: 'Ella Adventure Park, Sri Lanka',
     category: 'guests',
-  },
-]
-// Updated videos data with non-copyrighted video links
-const videos = [
-  {
-    title: 'Exploring Sri Lanka',
-    location: 'Various Locations, Sri Lanka',
-    description:
-      'Journey through the diverse landscapes and cultural heritage of Sri Lanka, from ancient ruins to pristine beaches.',
-    thumbnail:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png',
-    videoUrl:
-      'https://www.pexels.com/video/aerial-view-of-a-beach-resort-in-sri-lanka-3156228/',
-  },
-  {
-    title: 'Cultural Heritage',
-    location: 'Kandy, Sri Lanka',
-    description:
-      'Discover the rich cultural heritage of Sri Lanka through its ancient temples, colorful festivals, and traditional arts and crafts.',
-    thumbnail:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
-    videoUrl:
-      'https://www.pexels.com/video/drone-footage-of-a-temple-in-sri-lanka-8819322/',
-  },
-  {
-    title: 'Tea Plantations',
-    location: 'Nuwara Eliya, Sri Lanka',
-    description:
-      "Experience the lush green tea plantations of Sri Lanka, where some of the world's finest tea is produced in stunning highland landscapes.",
-    thumbnail:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/qp59CEpji28dA7HGvQfsp3/happy_custormer_8.jpg',
-    videoUrl:
-      'https://www.pexels.com/video/drone-footage-of-tea-plantations-in-sri-lanka-8819312/',
   },
 ]
 export default Gallery

@@ -328,7 +328,6 @@ const PackageDetails = () => {
                         className="text-green-600 mr-3 mt-0.5"
                       />
                       <div>
-                        <h4 className="font-medium">Destinations</h4>
                         <p className="text-gray-600">{packageData.location}</p>
                       </div>
                     </div>
@@ -407,10 +406,6 @@ const packageDetails = {
     tag: 'Best Seller',
     duration: '14 Days, 13 Nights',
     location: 'Sri Lanka',
-    maxPeople: 12,
-    price: 2999,
-    oldPrice: 3499,
-    discount: 14,
     rating: 5,
     reviewCount: 128,
     heroImage:
@@ -439,14 +434,7 @@ const packageDetails = {
           'Relax on stunning beaches and explore the historic Dutch fort in Galle along the southern coast.',
       },
     ],
-    gallery: [
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/umKpchjBUtECmnTjGTnjYM/nature6.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
-    ],
+    
     itinerary: [
       {
         day: 1,
@@ -459,7 +447,7 @@ const packageDetails = {
           'Hotel check-in',
           'Leisure time at Negombo Beach',
         ],
-        meals: 'Dinner',
+        
         accommodation: 'Overnight stay at Negombo Hotel',
       },
       {
@@ -474,7 +462,7 @@ const packageDetails = {
           'Sri Maha Bodhi (sacred fig tree)',
           'Ruwanwelisaya Stupa',
         ],
-        meals: 'Breakfast, Dinner',
+       
         accommodation: 'Overnight stay at Anuradhapura Hotel',
       },
       {
@@ -488,7 +476,7 @@ const packageDetails = {
           'Visit local markets',
           'Evening leisure time',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Overnight stay at Habarana Hotel',
       },
       {
@@ -503,7 +491,7 @@ const packageDetails = {
           'Traditional village tour',
           'Pidurangala Rock sunset hike',
         ],
-        meals: 'Breakfast, Lunch, Dinner',
+        
         accommodation: 'Overnight stay at Habarana Hotel',
       },
       {
@@ -517,7 +505,7 @@ const packageDetails = {
           'Knuckles Range trekking tour',
           'Dambulla Cave Temple exploration',
         ],
-        meals: 'Breakfast, Lunch, Dinner',
+       
         accommodation: 'Overnight stay at Matale Hotel',
       },
       {
@@ -534,7 +522,7 @@ const packageDetails = {
           'Gem Museum visit',
           'Udawattakale Sanctuary walk',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Overnight stay at Kandy Hotel',
       },
       {
@@ -550,7 +538,7 @@ const packageDetails = {
           'Victoria Park exploration',
           'Nuwara Eliya town tour',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Overnight stay at Nuwara Eliya Hotel',
       },
       {
@@ -565,7 +553,7 @@ const packageDetails = {
           'Tea plantation visit',
           'Leisure time in Nuwara Eliya',
         ],
-        meals: 'Breakfast, Dinner',
+       
         accommodation: 'Overnight stay at Nuwara Eliya Hotel',
       },
       {
@@ -579,7 +567,7 @@ const packageDetails = {
           'Udawalawe National Park safari',
           'Elephant Transit Home visit (milk feeding for baby elephants)',
         ],
-        meals: 'Breakfast, Dinner',
+       
         accommodation: 'Overnight stay at Udawalawe Hotel',
       },
       {
@@ -593,7 +581,7 @@ const packageDetails = {
           'Galle Dutch Fort exploration',
           'Unawatuna Beach relaxation',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Overnight stay at Galle Hotel',
       },
       {
@@ -608,7 +596,7 @@ const packageDetails = {
           'Meetiyagoda Moonstone mines visit',
           'Turtle hatchery tour',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Overnight stay at Bentota Hotel',
       },
       {
@@ -622,7 +610,7 @@ const packageDetails = {
           'Optional water sports',
           'Optional Ayurvedic spa treatments',
         ],
-        meals: 'Breakfast, Dinner',
+       
         accommodation: 'Overnight stay at Bentota Hotel',
       },
       {
@@ -639,7 +627,7 @@ const packageDetails = {
           'National Museum visit',
           'Shopping time',
         ],
-        meals: 'Breakfast, Farewell Dinner',
+        
         accommodation: 'Overnight stay at Colombo Hotel',
       },
       {
@@ -649,7 +637,7 @@ const packageDetails = {
         description:
           'After breakfast, check out from your hotel and transfer to Bandaranaike International Airport for your departure flight. End of our services.',
         activities: ['Airport transfer'],
-        meals: 'Breakfast',
+       
         accommodation: null,
       },
     ],
@@ -757,14 +745,7 @@ const packageDetails = {
           'Visit traditional villages and explore the historic sites along the southern coast.',
       },
     ],
-    gallery: [
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/umKpchjBUtECmnTjGTnjYM/nature6.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
-    ],
+   
     itinerary: [
       {
         day: 1,
@@ -773,7 +754,7 @@ const packageDetails = {
         description:
           "Upon arrival at Bandaranaike International Airport, you'll be met by our representative and transferred to your hotel in Colombo. Enjoy a welcome dinner and briefing about your safari adventure.",
         activities: ['Airport pickup', 'Hotel check-in', 'Welcome dinner'],
-        meals: 'Dinner',
+        
         accommodation: '4-star hotel in Colombo',
       },
       {
@@ -783,7 +764,7 @@ const packageDetails = {
         description:
           'After breakfast, drive to Habarana in the Cultural Triangle. In the afternoon, enjoy a safari in Minneriya National Park, famous for its large gatherings of Asian elephants during the dry season. This natural phenomenon, known as "The Gathering," is one of the most spectacular wildlife events in Asia.',
         activities: ['Drive to Habarana', 'Afternoon safari in Minneriya'],
-        meals: 'Breakfast, Lunch, Dinner',
+        
         accommodation: 'Safari lodge in Habarana',
       },
       {
@@ -797,7 +778,7 @@ const packageDetails = {
           'Afternoon wildlife safari',
           'Evening relaxation',
         ],
-        meals: 'Breakfast, Lunch, Dinner',
+        
         accommodation: 'Safari lodge in Habarana',
       },
       {
@@ -812,7 +793,7 @@ const packageDetails = {
           'Temple of the Tooth Relic',
           'Cultural dance performance',
         ],
-        meals: 'Breakfast, Lunch, Dinner',
+        
         accommodation: 'Hotel in Kandy',
       },
       {
@@ -826,8 +807,8 @@ const packageDetails = {
           'Afternoon safari in Udawalawe National Park',
           'Elephant Transit Home visit',
         ],
-        meals: 'Breakfast, Lunch, Dinner',
-        accommodation: 'Safari lodge in Udawalawe',
+       
+        accommodation: 'Hotel in Udawalawe',
       },
       {
         day: 6,
@@ -836,8 +817,8 @@ const packageDetails = {
         description:
           'After breakfast, drive to Yala National Park. Enjoy an afternoon safari in Yala, which boasts the highest density of leopards in the world. The park is also home to elephants, sloth bears, crocodiles, and over 200 bird species.',
         activities: ['Drive to Yala', 'Afternoon safari in Yala National Park'],
-        meals: 'Breakfast, Lunch, Dinner',
-        accommodation: 'Safari lodge near Yala',
+        
+        accommodation: 'Hotel in Yala',
       },
       {
         day: 7,
@@ -850,8 +831,8 @@ const packageDetails = {
           'Drive to southern coast',
           'Beach relaxation',
         ],
-        meals: 'Breakfast, Dinner',
-        accommodation: 'Beach resort in Tangalle/Mirissa',
+        
+        accommodation: 'Hotel in Tangalle/Mirissa',
       },
       {
         day: 8,
@@ -864,8 +845,8 @@ const packageDetails = {
           'Galle Fort exploration',
           'Farewell dinner',
         ],
-        meals: 'Breakfast, Dinner',
-        accommodation: 'Beach resort in Tangalle/Mirissa',
+        
+        accommodation: 'Hotel in Tangalle/Mirissa',
       },
       {
         day: 9,
@@ -874,7 +855,7 @@ const packageDetails = {
         description:
           'After breakfast, transfer to Bandaranaike International Airport for your departure flight. End of our services.',
         activities: ['Airport transfer'],
-        meals: 'Breakfast',
+        
         accommodation: null,
       },
     ],
@@ -945,10 +926,7 @@ const packageDetails = {
       'Experience the best of Sri Lanka with this compact tour covering all major highlights of the island in just 8 days.',
     tag: 'Best Value',
     duration: '8 Days, 7 Nights',
-    location: 'Sri Lanka',
-    maxPeople: 12,
-    price: 1599,
-    oldPrice: 1899,
+    
     discount: 16,
     rating: 5,
     reviewCount: 87,
@@ -978,14 +956,7 @@ const packageDetails = {
           'Explore the historic Galle Fort and relax on the beautiful beaches of southern Sri Lanka.',
       },
     ],
-    gallery: [
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/aTZSB7mBzfn66eDfENGjXR/beach1.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/umKpchjBUtECmnTjGTnjYM/nature6.jpg',
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg',
-    ],
+  
     itinerary: [
       {
         day: 1,
@@ -1059,7 +1030,7 @@ const packageDetails = {
           'Ravana Falls stop',
           'Drive to Tissamaharama',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Hotel in Tissamaharama',
       },
       {
@@ -1074,7 +1045,7 @@ const packageDetails = {
           'Galle Fort exploration or beach time in Mirissa',
           'Evening relaxation',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Hotel in Galle or Mirissa',
       },
       {
@@ -1090,7 +1061,7 @@ const packageDetails = {
           'Colombo city tour',
           'Farewell dinner',
         ],
-        meals: 'Breakfast, Farewell Dinner',
+        
         accommodation: 'Hotel in Colombo',
       },
       {
@@ -1100,7 +1071,7 @@ const packageDetails = {
         description:
           'After breakfast, depending on your flight time, you may have some free time for last-minute shopping at Paradise Road, Barefoot, or Odel shopping centers. At the appropriate time, transfer to Bandaranaike International Airport for your departure flight. End of our services.',
         activities: ['Optional shopping time', 'Airport transfer'],
-        meals: 'Breakfast',
+       
         accommodation: null,
       },
     ],

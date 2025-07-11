@@ -156,63 +156,48 @@ const Packages = () => {
                   Popular
                 </div>
               </div>
-              
-          {/* All Packages */}
-          <div
-            ref={observerRefs.allPackages}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {packages.map((pkg, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200 transition-all duration-700 hover:shadow-xl hover:-translate-y-2 ${visibleSections.allPackages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                style={{
-                  transitionDelay: `${0.02 + index * 0.02}s`,
-                }}
-              >
-                <div className="relative h-60 overflow-hidden">
-                  <img
-                    src={pkg.image}
-                    alt={pkg.title}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                  />
-                  {pkg.tag && (
-                    <div
-                      className={`absolute top-4 left-4 ${pkg.tag === 'Best Value' ? 'bg-green-600' : 'bg-black'} text-white px-3 py-1 rounded-full text-sm font-medium`}
-                    >
-                      {pkg.tag}
-                    </div>
-                  )}
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex items-center mb-2">
+                  <Calendar size={16} className="text-green-600 mr-1" />
+                  <span className="text-gray-600 text-sm">
+                    9 Days, 8 Nights
+                  </span>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center mb-2">
-                    <Calendar size={16} className="text-green-600 mr-1" />
-                    <span className="text-gray-600 text-sm">
-                      {pkg.duration}
-                    </span>
+                <h3 className="text-xl font-bold mb-2">
+                  Beach & Safari Expedition
+                </h3>
+                <p className="text-gray-600 mb-4 flex-grow">
+                  The perfect blend of relaxation and adventure with pristine
+                  beaches and thrilling wildlife safaris in one package.
+                </p>
+                <div className="flex items-center mb-4">
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <svg
+                        key={star}
+                        className="w-4 h-4 text-yellow-400 fill-current"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                      </svg>
+                    ))}
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{pkg.title}</h3>
-                  <p className="text-gray-600 mb-4">{pkg.description}</p>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center">
-                      <MapPin size={16} className="text-green-600 mr-1" />
-                      <span className="text-gray-600 text-sm">
-                        {pkg.location}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <Link
-                      to={`/packages/${pkg.id}`}
-                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all transform hover:scale-105 hover:shadow-md"
-                    >
-                      View Details
-                    </Link>
-                  </div>
+                  <span className="text-gray-600 text-sm ml-2">96 Reviews</span>
+                </div>
+                <div className="flex justify-end mt-auto">
+                  <Link
+                    to="/packages/09-days-08-nights"
+                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all transform hover:scale-105 hover:shadow-md"
+                  >
+                    View Details
+                  </Link>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
+
+          {/* All Packages */}
+         
         </div>
       </section>
 

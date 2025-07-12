@@ -271,9 +271,11 @@ const Home = () => {
                 willChange: 'transform, opacity',
               }}
             >
-              Explore the paradise island with our expertly crafted tours. From
-              ancient temples to pristine beaches, experience the true essence
-              of Sri Lanka.
+              Our skillfully planned tours will take you to 
+              the idyllic island.  Experience the real Sri Lanka, 
+              from its old temples to its beautiful beaches. 
+               Enjoy real local food, a lively culture, 
+               and activities you'll never forget at every step.
             </p>
             <div
               className="flex flex-wrap gap-4 opacity-100 md:opacity-0 animate-fadeInUp"
@@ -282,18 +284,7 @@ const Home = () => {
                 animationFillMode: 'forwards',
               }}
             >
-              <Link
-                to="/packages"
-                className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center h-[40px] text-sm btn-hover-effect"
-              >
-                Explore Packages <ArrowRight size={14} className="ml-2" />
-              </Link>
-              <Link
-                to="/short-inquiry"
-                className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg h-[40px] flex items-center justify-center text-sm btn-hover-effect"
-              >
-                Quick Inquiry
-              </Link>
+             
             </div>
           </div>
         </div>

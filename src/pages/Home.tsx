@@ -266,7 +266,7 @@ const Home = () => {
             <p
               className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 opacity-0 animate-fadeInUp max-w-2xl mt-4 sm:mt-6 text-center sm:text-left mx-auto sm:mx-0"
               style={{
-                animationDelay: '0.08s',
+                animationDelay: '0.04s',
                 animationFillMode: 'forwards',
                 willChange: 'transform, opacity',
               }}

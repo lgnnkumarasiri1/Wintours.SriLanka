@@ -556,7 +556,7 @@ const Home = () => {
                 key={index}
                 className={`bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                 style={{
-                  transitionDelay: `${0.05 + index * 0.05}s`,
+                  transitionDelay: `${0.03 + index * 0.03}s`,
                   willChange: 'transform, opacity',
                 }}
               >
@@ -625,7 +625,7 @@ const Home = () => {
             <div
               className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
               style={{
-                transitionDelay: '0.05s',
+                transitionDelay: '0.01s',
               }}
             >
               <div className="md:w-2/5 relative">

@@ -111,11 +111,11 @@ const Packages = () => {
                   </span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">
-                  Complete Heritage Explorer
+                  "Sri Lanka Grand Discovery: From the Highlands to the Coast"
                 </h3>
                 <p className="text-gray-600 mb-4 flex-grow">
-                  Experience the rich cultural heritage with our comprehensive
-                  14-day tour package that covers all major historical sites.
+                  A full two-week trip to Sri Lanka's beautiful
+                   beaches, rich culture, and lush surroundings.
                 </p>
                 <div className="flex items-center mb-4">
                   <div className="flex">
@@ -168,11 +168,11 @@ const Packages = () => {
                   </span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">
-                  Beach & Safari Expedition
+                  "Essence of Sri Lanka: A 9-Day Tropical Getaway"
                 </h3>
                 <p className="text-gray-600 mb-4 flex-grow">
-                  The perfect blend of relaxation and adventure with pristine
-                  beaches and thrilling wildlife safaris in one package.
+                  In just over a week, you may see the best of Sri Lanka, 
+                  from its ancient towns to its peaceful tea fields and beautiful beaches.
                 </p>
                 <div className="flex items-center mb-4">
                   <div className="flex">

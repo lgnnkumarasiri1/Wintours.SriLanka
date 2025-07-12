@@ -318,10 +318,6 @@ const packageDetails = {
     tag: 'Best Seller',
     duration: '14 Days, 13 Nights',
     location: 'Sri Lanka',
-    maxPeople: 12,
-    price: 2999,
-    oldPrice: 3499,
-    discount: 14,
     rating: 5,
     reviewCount: 128,
     heroImage:
@@ -370,7 +366,7 @@ const packageDetails = {
           'Hotel check-in',
           'Leisure time at Negombo Beach',
         ],
-        meals: 'Dinner',
+        
         accommodation: 'Overnight stay at Negombo Hotel',
       },
       {
@@ -385,7 +381,7 @@ const packageDetails = {
           'Sri Maha Bodhi (sacred fig tree)',
           'Ruwanwelisaya Stupa',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Overnight stay at Anuradhapura Hotel',
       },
       {
@@ -399,7 +395,7 @@ const packageDetails = {
           'Visit local markets',
           'Evening leisure time',
         ],
-        meals: 'Breakfast, Dinner',
+       
         accommodation: 'Overnight stay at Habarana Hotel',
       },
       {
@@ -414,7 +410,7 @@ const packageDetails = {
           'Traditional village tour',
           'Pidurangala Rock sunset hike',
         ],
-        meals: 'Breakfast, Lunch, Dinner',
+        
         accommodation: 'Overnight stay at Habarana Hotel',
       },
       {
@@ -428,7 +424,7 @@ const packageDetails = {
           'Knuckles Range trekking tour',
           'Dambulla Cave Temple exploration',
         ],
-        meals: 'Breakfast, Lunch, Dinner',
+       
         accommodation: 'Overnight stay at Matale Hotel',
       },
       {
@@ -445,7 +441,7 @@ const packageDetails = {
           'Gem Museum visit',
           'Udawattakale Sanctuary walk',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Overnight stay at Kandy Hotel',
       },
       {
@@ -461,7 +457,7 @@ const packageDetails = {
           'Victoria Park exploration',
           'Nuwara Eliya town tour',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Overnight stay at Nuwara Eliya Hotel',
       },
       {
@@ -476,7 +472,7 @@ const packageDetails = {
           'Tea plantation visit',
           'Leisure time in Nuwara Eliya',
         ],
-        meals: 'Breakfast, Dinner',
+       
         accommodation: 'Overnight stay at Nuwara Eliya Hotel',
       },
       {
@@ -490,7 +486,7 @@ const packageDetails = {
           'Udawalawe National Park safari',
           'Elephant Transit Home visit (milk feeding for baby elephants)',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Overnight stay at Udawalawe Hotel',
       },
       {
@@ -504,7 +500,7 @@ const packageDetails = {
           'Galle Dutch Fort exploration',
           'Unawatuna Beach relaxation',
         ],
-        meals: 'Breakfast, Dinner',
+       
         accommodation: 'Overnight stay at Galle Hotel',
       },
       {
@@ -519,7 +515,7 @@ const packageDetails = {
           'Meetiyagoda Moonstone mines visit',
           'Turtle hatchery tour',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Overnight stay at Bentota Hotel',
       },
       {
@@ -533,7 +529,7 @@ const packageDetails = {
           'Optional water sports',
           'Optional Ayurvedic spa treatments',
         ],
-        meals: 'Breakfast, Dinner',
+       
         accommodation: 'Overnight stay at Bentota Hotel',
       },
       {
@@ -550,7 +546,7 @@ const packageDetails = {
           'National Museum visit',
           'Shopping time',
         ],
-        meals: 'Breakfast, Farewell Dinner',
+        
         accommodation: 'Overnight stay at Colombo Hotel',
       },
       {
@@ -626,10 +622,6 @@ const packageDetails = {
     tag: 'Popular',
     duration: '9 Days, 8 Nights',
     location: 'Sri Lanka',
-    maxPeople: 10,
-    price: 1899,
-    oldPrice: 2299,
-    discount: 17,
     rating: 4,
     reviewCount: 96,
     heroImage:
@@ -670,112 +662,111 @@ const packageDetails = {
       {
         day: 1,
         title: 'Arrival in Colombo',
-        location: 'Colombo, Sri Lanka',
+        location: 'Airport - Sigiriya, Sri Lanka',
         description:
-          "Upon arrival at Bandaranaike International Airport, you'll be met by our representative and transferred to your hotel in Colombo. Enjoy a welcome dinner and briefing about your safari adventure.",
-        activities: ['Airport pickup', 'Hotel check-in', 'Welcome dinner'],
-        meals: 'Dinner',
-        accommodation: '4-star hotel in Colombo',
+          "Arrive in Sri Lanka and go to Sigiriya.  Stop by the famous Dambulla Cave Temple on the way. It is one of the largest and best-preserved temple complexes in Sri Lanka. ",
+        activities: ['Airport pickup', 'Dambulla Temple'],
+        
+        accommodation: 'over night stay at Sigiriya',
       },
       {
         day: 2,
-        title: 'Minneriya National Park',
-        location: 'Colombo - Habarana, Sri Lanka',
+        title: 'Sigiriya Rock & Spice Garden',
+        location: 'Sigiriya - Kandy, Sri Lanka',
         description:
-          'After breakfast, drive to Habarana in the Cultural Triangle. In the afternoon, enjoy a safari in Minneriya National Park, famous for its large gatherings of Asian elephants during the dry season. This natural phenomenon, known as "The Gathering," is one of the most spectacular wildlife events in Asia.',
-        activities: ['Drive to Habarana', 'Afternoon safari in Minneriya'],
-        meals: 'Breakfast, Lunch, Dinner',
-        accommodation: 'Safari lodge in Habarana',
+          'Climb the famous Sigiriya Rock Fortress in the morning. Then continue to Kandy via Matale, stopping at a spice garden. Explore Kandy city in the evening.',
+        activities: ['Climb Sigiriya Rock', 'Visit spice Garden', 'Kandy City tour'],
+        
+        accommodation: 'Over night stay at kandy',
       },
       {
         day: 3,
-        title: 'Cultural Exploration and Wildlife',
-        location: 'Habarana, Sri Lanka',
+        title: 'Hill Country & Tea Experience',
+        location: 'kandy - Nuwara Eliya, Sri Lanka',
         description:
-          'Morning visit to the ancient rock fortress of Sigiriya, a UNESCO World Heritage site. After lunch, enjoy another safari in either Minneriya or Kaudulla National Park, depending on the season and elephant movements. The evening is at leisure to relax at your lodge.',
+          'Drive through lush hill country to Nuwara Eliya. Along the way, visit Peradeniya Botanical Garden, a tea factory, and scenic waterfalls.',
         activities: [
-          'Sigiriya Rock Fortress visit',
-          'Afternoon wildlife safari',
-          'Evening relaxation',
+          'Visit Botanical Garden',
+          'Tea Factory Tour',
+          'See Waterfalls',
         ],
-        meals: 'Breakfast, Lunch, Dinner',
-        accommodation: 'Safari lodge in Habarana',
+        
+        accommodation: 'Over night stay at Nuwara Eliya',
       },
       {
         day: 4,
-        title: 'Journey to Kandy',
-        location: 'Habarana - Kandy, Sri Lanka',
+        title: 'Scenic Train to Ella',
+        location: 'Nuwara Eliya - Ella, Sri Lanka',
         description:
-          "After breakfast, drive to the cultural capital of Kandy. En route, visit a spice garden to learn about Sri Lanka's famous spices. In Kandy, visit the sacred Temple of the Tooth Relic and enjoy a cultural dance performance in the evening.",
+          "'Enjoy a beautiful morning by Gregory Lake before boarding the famous hill country train to Ella. Take in the stunning views on this scenic ride.",
         activities: [
-          'Drive to Kandy',
-          'Spice garden visit',
-          'Temple of the Tooth Relic',
-          'Cultural dance performance',
+          'Visit Gregory Lake',
+          'Train ride to Ella',
+          
         ],
-        meals: 'Breakfast, Dinner',
-        accommodation: 'Hotel in Kandy',
+        
+        accommodation: 'Over night stay at Ella ',
       },
       {
         day: 5,
-        title: 'Udawalawe National Park',
-        location: 'Kandy - Udawalawe, Sri Lanka',
+        title: 'Wildlife Safari & Baby Elephants',
+        location: 'Ella - Udawalawa, Sri Lanka',
         description:
-          'Journey from Kandy to Udawalawe National Park. In the afternoon, enjoy a safari in this park known for its large elephant population. The park is also home to water buffalo, sambar deer, monkeys, and numerous bird species. Visit the Elephant Transit Home, where orphaned baby elephants are rehabilitated before being released back into the wild.',
+          'Depart Ella and travel to Udawalawe. Visit the Baby Elephant Transit Home and enjoy an exciting safari in Udawalawe National Park.',
         activities: [
           'Drive to Udawalawe',
-          'Afternoon safari in Udawalawe National Park',
           'Elephant Transit Home visit',
+          'Evining Safari in Udawalawe National Park',
         ],
-        meals: 'Breakfast, Lunch, Dinner',
-        accommodation: 'Safari lodge in Udawalawe',
+        
+        accommodation: 'Over night at Tissa ',
       },
       {
         day: 6,
-        title: 'Yala National Park',
-        location: 'Udawalawe - Yala, Sri Lanka',
+        title: 'Beach Bliss & Whale Watching',
+        location: 'Udawalawa - Mirissa, Sri Lanka',
         description:
-          'After breakfast, drive to Yala National Park. Enjoy an afternoon safari in Yala, which boasts the highest density of leopards in the world. The park is also home to elephants, sloth bears, crocodiles, and over 200 bird species.',
-        activities: ['Drive to Yala', 'Afternoon safari in Yala National Park'],
-        meals: 'Breakfast, Lunch, Dinner',
-        accommodation: 'Safari lodge near Yala',
+         'Travel from Udawalawe to Mirissa, a coastal town famous for its beach and marine life. Relax by the beach and go whale watching if the season allows.',
+        activities: ['Drive to Mirissa', 'Relax on the Beach', 'Wale watching (Seasonal)'],
+        
+        accommodation: 'Over night stay at near Tissa',
       },
       {
         day: 7,
-        title: 'Beach Relaxation',
-        location: 'Yala - Tangalle/Mirissa, Sri Lanka',
+         title: 'Historical galle & River Safari',
+        location: 'Mirissa - Benthota, Sri Lanka',
         description:
-          'Early morning safari in Yala National Park for another chance to spot leopards and other wildlife. After the safari, drive to the southern coast. Depending on your preference, stay in either Tangalle or Mirissa, both known for their beautiful beaches. Afternoon at leisure to relax on the beach.',
+         'Explore the UNESCO-listed Galle Dutch Fort, visit a turtle hatchery, and enjoy a scenic Madu River boat safari before heading to Bentota.',
         activities: [
-          'Morning safari in Yala National Park',
-          'Drive to southern coast',
-          'Beach relaxation',
+          'Visit Galle Fort',
+          'Turtle Hatchery Visit',
+          'Madu River Boat Safari',
         ],
-        meals: 'Breakfast, Dinner',
-        accommodation: 'Beach resort in Tangalle/Mirissa',
+       
+        accommodation: 'Over night stay at Bentota',
       },
       {
         day: 8,
-        title: 'Galle Exploration',
-        location: 'Tangalle/Mirissa - Galle - Tangalle/Mirissa, Sri Lanka',
+        title: 'City Tour & Shopping',
+        location: 'bentota - Colombo, Sri Lanka',
         description:
-          'Morning at leisure on the beach. In the afternoon, visit the historic Galle Fort, a UNESCO World Heritage site with a fascinating blend of European and South Asian architectural styles. Explore the narrow streets, visit boutique shops, and walk along the ramparts for stunning ocean views. Return to your beach resort for a farewell dinner.',
+          'Travel to Colombo, the commercial capital. Enjoy a guided city tour and spend time shopping in popular markets and malls.',
         activities: [
-          'Beach relaxation',
-          'Galle Fort exploration',
-          'Farewell dinner',
+          'Drive to Colombo',
+          'City Tour',
+          'shopping',
         ],
-        meals: 'Breakfast, Dinner',
-        accommodation: 'Beach resort in Tangalle/Mirissa',
+        
+        accommodation: 'Over night stay at Colombo',
       },
       {
         day: 9,
         title: 'Departure',
-        location: 'Tangalle/Mirissa - Colombo, Sri Lanka',
+        location: 'Colombo - Airport, Sri Lanka',
         description:
           'After breakfast, transfer to Bandaranaike International Airport for your departure flight. End of our services.',
         activities: ['Airport transfer'],
-        meals: 'Breakfast',
+        
         accommodation: null,
       },
     ],
@@ -791,16 +782,8 @@ const packageDetails = {
         answer:
           'While there are no mandatory vaccinations for Sri Lanka, it is recommended to be up to date with routine vaccinations. Hepatitis A, Typhoid, and Tetanus vaccinations are also recommended. Please consult your healthcare provider for personalized advice.',
       },
-      {
-        question: 'What type of clothing should I pack?',
-        answer:
-          'For safaris: neutral-colored clothing (beige, khaki, olive), long-sleeved shirts and pants for protection from sun and insects, a hat, and comfortable closed shoes. For beaches: light, breathable clothing, swimwear, and a cover-up. A modest outfit is recommended for visiting temples.',
-      },
-      {
-        question: 'What is the accommodation like during the safari portion?',
-        answer:
-          'We use a mix of comfortable safari lodges and tented camps, all with private bathrooms and essential amenities. The accommodations are chosen for their proximity to national parks and quality of service.',
-      },
+      
+      
       {
         question: 'Is it safe to swim in the ocean in Sri Lanka?',
         answer:

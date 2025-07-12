@@ -217,6 +217,20 @@ const Footer = () => {
               </a>
             </div>
           </div>
+          <div className="mt-4 text-center">
+            <p className="text-gray-500 text-xs">
+             Powered by {' '}
+              <a
+                href="https://wa.me/94783655655"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-400 hover:text-green-300 transition-colors inline-flex items-center"
+              >
+                Olee Tech and Design Hub{' '}
+                <ExternalLink size={12} className="ml-1" />
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

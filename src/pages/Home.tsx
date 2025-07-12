@@ -665,7 +665,7 @@ const Home = () => {
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 font-display">
-                  Complete Heritage Explorer
+                  Sri Lanka Grand Discovery: From Highlands to Coastlines
                 </h3>
                 <p className="text-gray-600 mb-6 text-base">
                   Experience the rich cultural heritage with our comprehensive
@@ -721,12 +721,14 @@ const Home = () => {
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 font-display">
-                  Beach & Safari Expedition
+                  Essence of Sri Lanka: A 9-Day Tropical Escape
                 </h3>
                 <p className="text-gray-600 mb-6 text-base">
-                  The perfect blend of relaxation and adventure with pristine
-                  beaches and thrilling wildlife safaris in one package. Ideal
-                  for nature lovers and beach enthusiasts.
+                  Experience the heart of Sri Lanka in just over a week — from ancient 
+                  cities to serene tea plantations and coastal beauty.
+                  This well-balanced journey combines cultural heritage,
+                   wildlife safaris, breathtaking highland train rides, and 
+                   golden beaches for an unforgettable island adventure.
                 </p>
                 <div className="flex items-center mb-6">
                   <div className="flex">

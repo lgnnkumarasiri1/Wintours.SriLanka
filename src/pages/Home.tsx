@@ -273,12 +273,12 @@ const Home = () => {
             >
               Our expertly organized trips will take you 
               to the beautiful island.   Visit Sri Lanka's historical
-               temples and stunning beaches.   You may find 
-               true local food, a lively culture, and activities
-                you'll never forget around every corner.   The foggy hills, 
-                the lush tea plantations, and the national 
-                parks full with animals will astound you.   Every step of your
-                trip will show you how beautiful and warm this tropical gem is..
+              temples and stunning beaches.   You may find 
+              true local food, a lively culture, and activities
+              you'll never forget around every corner.   The foggy hills, 
+              the lush tea plantations, and the national 
+              parks full with animals will astound you.   Every step of your
+              trip will show you how beautiful and warm this tropical gem is..
             </p>
             <div
               className="flex flex-wrap gap-4 opacity-100 md:opacity-0 animate-fadeInUp"
@@ -314,7 +314,7 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.03}
+              delay={0.02}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -333,7 +333,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.05}
+              delay={0.02}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -352,7 +352,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.08}
+              delay={0.03}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -436,7 +436,7 @@ const Home = () => {
               <div className="grid grid-cols-3 gap-4 mt-4">
                 <AnimateOnScroll
                   animation="fade-up"
-                  delay={0.05}
+                  delay={0.03}
                   className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="img-hover-zoom h-32 sm:h-36 md:h-40">
@@ -462,7 +462,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-up"
-                  delay={0.15}
+                  delay={0.7}
                   className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="img-hover-zoom h-32 sm:h-36 md:h-40">
@@ -477,7 +477,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-left"
-              delay={0.3}
+              delay={0.2}
               className="w-full md:w-1/2"
             >
               <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-6">
@@ -513,7 +513,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.15}
+                  delay={0.7}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -526,7 +526,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.2}
+                  delay={0.1}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check

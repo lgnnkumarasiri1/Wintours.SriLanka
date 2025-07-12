@@ -10,6 +10,7 @@ import {
   ArrowRight,
   Music,
   ExternalLink,
+  Youtube,
 } from 'lucide-react'
 const Footer = () => {
   return (
@@ -59,6 +60,15 @@ const Footer = () => {
                 aria-label="TikTok Page"
               >
                 <Music size={18} />
+              </a>
+              <a
+                href="https://youtube.com/@wintourssrilanka"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
+                aria-label="Youtube Page"
+              >
+                <Youtube size={18} />
               </a>
             </div>
           </div>
@@ -174,7 +184,7 @@ const Footer = () => {
                   className="mr-3 text-green-400 flex-shrink-0 mt-1"
                 />
                 <span className="text-gray-300">
-                  No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
+                  No 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
                 </span>
               </li>
               <li className="flex items-center">

@@ -10,6 +10,7 @@ import {
   ArrowRight,
   Music,
   Youtube,
+  ExternalLink,
 } from 'lucide-react'
 const Footer = () => {
   return (

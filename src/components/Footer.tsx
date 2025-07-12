@@ -158,42 +158,9 @@ const Footer = () => {
                   09 Days, 08 Nights
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/packages"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
-                >
-                  <ArrowRight
-                    size={14}
-                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
-                  />
-                  Sri Lanka Explorer
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/packages"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
-                >
-                  <ArrowRight
-                    size={14}
-                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
-                  />
-                  Beach Getaway
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/packages"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
-                >
-                  <ArrowRight
-                    size={14}
-                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
-                  />
-                  Cultural Tour
-                </Link>
-              </li>
+             
+             
+             
             </ul>
           </div>
           <div>
@@ -253,7 +220,7 @@ const Footer = () => {
               <div className="flex items-center sm:ml-4">
                 <span className="mx-2 text-gray-600 hidden sm:inline">|</span>
                 <p className="text-gray-500 text-xs flex items-center whitespace-normal text-center">
-                  Website by{' '}
+                  Powered by{' '}
                   <a
                     href="https://wa.me/94783655655"
                     target="_blank"

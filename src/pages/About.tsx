@@ -28,7 +28,7 @@ const About = () => {
                 About TravelEase
               </h1>
               <p className="text-xl">
-                Crafting unforgettable travel experiences since 2005. Our
+                Crafting unforgettable travel experiences since 2015. Our
                 passion is connecting travelers with authentic experiences
                 around the world.
               </p>

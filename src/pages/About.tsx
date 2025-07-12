@@ -163,32 +163,7 @@ const About = () => {
             </div>
           </div>
         </section>
-        {/* CTA Section */}
-        <section className="py-16 bg-black text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Start Your Journey?
-            </h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Contact us today to plan your dream vacation. Our travel experts
-              are waiting to assist you.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="/contact"
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-md font-medium transition-all"
-              >
-                Contact Us
-              </a>
-              <a
-                href="/packages"
-                className="bg-white text-black hover:bg-gray-100 px-8 py-3 rounded-md font-medium transition-all"
-              >
-                Explore Packages
-              </a>
-            </div>
-          </div>
-        </section>
+        
       </div>
     </div>
   )

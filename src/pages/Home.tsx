@@ -272,12 +272,12 @@ const Home = () => {
               }}
             >
               Our expertly organized trips will take you 
-              to the beautiful island.   Visit Sri Lanka's historical
-              temples and stunning beaches.   You may find 
+              to the beautiful island. Visit Sri Lanka's historical
+              temples and stunning beaches. You may find 
               true local food, a lively culture, and activities
-              you'll never forget around every corner.   The foggy hills, 
+              you'll never forget around every corner. The foggy hills, 
               the lush tea plantations, and the national 
-              parks full with animals will astound you.   Every step of your
+              parks full with animals will astound you. Every step of your
               trip will show you how beautiful and warm this tropical gem is..
             </p>
             <div

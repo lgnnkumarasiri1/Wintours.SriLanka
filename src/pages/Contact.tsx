@@ -84,7 +84,7 @@ const Contact = () => {
                 Our Location
               </h3>
               <p className="text-gray-600">
-                No, 10, Kalalpitiya,
+                No 10, Kalalpitiya,
                 <br />
                 Ukuwela, Matale,
                 <br />
@@ -111,8 +111,6 @@ const Contact = () => {
               <h3 className="text-xl font-bold mb-2 text-gray-800">Email</h3>
               <p className="text-gray-600">
                 info@wintours.com
-                <br />
-                support@wintours.com
                 <br />
                 bookings@wintours.com
               </p>

@@ -1101,13 +1101,13 @@ const Home = () => {
               rel="noopener noreferrer"
               className="bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[160px] h-[48px] flex items-center justify-center text-base"
             >
-              Make an Inquiry
+              Message Us
             </a>
             <a
               href="mailto:info@wintours.com"
               className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[160px] h-[48px] flex items-center justify-center text-base"
             >
-              Contact Us
+              Email Us
             </a>
           </div>
         </div>

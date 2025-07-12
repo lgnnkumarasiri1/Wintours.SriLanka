@@ -720,7 +720,7 @@ const packageDetails = {
           'Evining Safari in Udawalawe National Park',
         ],
         
-        accommodation: 'Over night at Tissa ',
+        accommodation: 'Over night at udawalawa ',
       },
       {
         day: 6,
@@ -728,9 +728,9 @@ const packageDetails = {
         location: 'Udawalawa - Mirissa, Sri Lanka',
         description:
          'Travel from Udawalawe to Mirissa, a coastal town famous for its beach and marine life. Relax by the beach and go whale watching if the season allows.',
-        activities: ['Drive to Mirissa', 'Relax on the Beach', 'Wale watching (Seasonal)'],
+        activities: ['Drive to Mirissa', 'Relax on the Beach', 'Whale watching (Seasonal)'],
         
-        accommodation: 'Over night stay at near Tissa',
+        accommodation: 'Over night stay at near Udawalawa',
       },
       {
         day: 7,

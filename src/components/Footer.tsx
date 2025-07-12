@@ -197,6 +197,22 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} WinTours Sri Lanka. All rights
               reserved.
             </p>
+              <div className="flex items-center sm:ml-4">
+                <span className="mx-2 text-gray-600 hidden sm:inline">|</span>
+                <p className="text-gray-500 text-xs flex items-center">
+                  Website by{' '}
+                  <a
+                    href="https://wa.me/94783655655"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-400 hover:text-green-300 transition-colors inline-flex items-center ml-1"
+                  >
+                    Olee Tech and Design Hub{' '}
+                    <ExternalLink size={12} className="ml-1" />
+                  </a>
+                </p>
+              </div>
+           
             <div className="flex space-x-6">
               <a
                 href="#"
@@ -218,20 +234,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="mt-4 text-center">
-            <p className="text-gray-500 text-xs">
-             Powered by {' '}
-              <a
-                href="https://wa.me/94783655655"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-green-400 hover:text-green-300 transition-colors inline-flex items-center"
-              >
-                Olee Tech and Design Hub{' '}
-                <ExternalLink size={12} className="ml-1" />
-              </a>
-            </p>
-          </div>
+         
         </div>
       </div>
     </footer>

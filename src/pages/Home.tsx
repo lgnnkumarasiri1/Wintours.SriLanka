@@ -195,17 +195,20 @@ const Home = () => {
   }, [heroImages.length])
   useEffect(() => {
     const observers = {}
-    // Create an intersection observer for each section
+    // Create an intersection observer for each section with lower threshold for quicker triggering
     Object.entries(observerRefs).forEach(([key, ref]) => {
       if (ref.current) {
         observers[key] = new IntersectionObserver(
           ([entry]) => {
             if (entry.isIntersecting) {
               visibleSections.current[key] = true
+              // Force re-render when section becomes visible
+              setCurrentImageIndex((prev) => prev)
             }
           },
           {
-            threshold: 0.1,
+            threshold: 0.05,
+            rootMargin: '100px', // Start loading before section is in view
           },
         )
         observers[key].observe(ref.current)
@@ -223,20 +226,7 @@ const Home = () => {
       <SEO
         title="WinTours Sri Lanka - Unforgettable Sri Lankan Adventures"
         description="Explore the paradise island of Sri Lanka with our expertly crafted tours. From ancient temples to pristine beaches, experience the true essence of Sri Lanka."
-        keywords="Sri Lanka tours, travel packages, 
-                  Sri Lankan adventures, cultural tours, wildlife safari, 
-                  beach holidays,Tour packages Sri Lanka, 
-                  Sri Lanka holiday packages,Best travel agency in Sri Lanka,
-                  ,Wintour Sri Lanka,Safari SRI Lanka,Adventure travel Sri Lanka,,
-                  Sri lanka Travel,Affordable Sri Lanka tour packages for couples,    
-                  Best time to visit Sri Lanka for wildlife,Adventure travel Sri Lanka,
-                  Customized Sri Lanka travel plan 2025,Custom travel Sri Lanka,Luxury tours Sri Lanka
-                  Group tours Sri Lanka,Private tours Sri Lanka,
-                  7-day Sri Lanka tour from Colombo,Family holidays in Sri Lanka,
-                  Sri Lanka travel agency with WhatsApp support,Book Sri Lanka tour online,"
-
-
-
+        keywords="Sri Lanka tours, travel packages, Sri Lankan adventures, cultural tours, wildlife safari, beach holidays"
         ogImage="https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png"
       />
       {/* Hero Section - Enhanced with better visual hierarchy and increased padding */}
@@ -277,21 +267,16 @@ const Home = () => {
               <span className="text-green-400">Adventures</span> Await
             </h1>
             <p
-              className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 opacity-0 animate-fadeInUp max-w-2xl mt-4 sm:mt-6 text-left sm:text-left mx-auto sm:mx-0"
+              className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 opacity-0 animate-fadeInUp max-w-2xl mt-4 sm:mt-6 text-center sm:text-left mx-auto sm:mx-0"
               style={{
-                animationDelay: '0.04s',
+                animationDelay: '0.08s',
                 animationFillMode: 'forwards',
                 willChange: 'transform, opacity',
               }}
             >
-              Our expertly organized trips will take you to the
-              beautiful island.Visit Sri Lanka's historical
-              temples and stunning beaches.You may find true local food, a lively
-              culture, and activities you'll never forget around every corner.
-              The foggy hills, the lush tea plantations, and the
-              national parks full with animals will astound you.
-              Every step of your trip will show you how
-              beautiful and warm this tropical gem is.
+              Explore the paradise island with our expertly crafted tours. From
+              ancient temples to pristine beaches, experience the true essence
+              of Sri Lanka.
             </p>
             <div
               className="flex flex-wrap gap-4 opacity-100 md:opacity-0 animate-fadeInUp"
@@ -300,7 +285,18 @@ const Home = () => {
                 animationFillMode: 'forwards',
               }}
             >
-
+              <Link
+                to="/packages"
+                className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center h-[40px] text-sm btn-hover-effect"
+              >
+                Explore Packages <ArrowRight size={14} className="ml-2" />
+              </Link>
+              <Link
+                to="/short-inquiry"
+                className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg h-[40px] flex items-center justify-center text-sm btn-hover-effect"
+              >
+                Quick Inquiry
+              </Link>
             </div>
           </div>
         </div>
@@ -327,7 +323,7 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.02}
+              delay={0.03}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -346,7 +342,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.02}
+              delay={0.05}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -365,7 +361,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.03}
+              delay={0.08}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -449,7 +445,7 @@ const Home = () => {
               <div className="grid grid-cols-3 gap-4 mt-4">
                 <AnimateOnScroll
                   animation="fade-up"
-                  delay={0.03}
+                  delay={0.05}
                   className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="img-hover-zoom h-32 sm:h-36 md:h-40">
@@ -475,7 +471,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-up"
-                  delay={0.7}
+                  delay={0.15}
                   className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="img-hover-zoom h-32 sm:h-36 md:h-40">
@@ -490,7 +486,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-left"
-              delay={0.2}
+              delay={0.3}
               className="w-full md:w-1/2"
             >
               <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-6">
@@ -526,7 +522,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.7}
+                  delay={0.15}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -539,7 +535,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.1}
+                  delay={0.2}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -551,19 +547,28 @@ const Home = () => {
                   </p>
                 </AnimateOnScroll>
               </div>
-
+              <Link
+                to="/packages"
+                className="inline-flex items-center text-green-600 hover:text-green-800 font-medium group text-lg"
+              >
+                Explore Our Sri Lanka Tours{' '}
+                <ArrowRight
+                  size={18}
+                  className="ml-2 transform group-hover:translate-x-1 transition-transform"
+                />
+              </Link>
             </AnimateOnScroll>
           </div>
         </div>
       </section>
-      {/* Featured Destinations - Enhanced card design */}
+      {/* Featured Destinations - Enhanced card design with quicker animations */}
       <section
         ref={observerRefs.destinations}
         className="py-16 md:py-24 bg-gray-50"
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div
-            className={`text-center mb-12 md:mb-16 transition-all duration-500 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
+            className={`text-center mb-12 md:mb-16 transition-all duration-300 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
           >
             <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Explore Sri Lanka
@@ -580,9 +585,9 @@ const Home = () => {
             {destinations.map((destination, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-xl hover:-translate-y-2 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                className={`bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                 style={{
-                  transitionDelay: `${0.1 + index * 0.1}s`,
+                  transitionDelay: `${0.05 + index * 0.05}s`,
                   willChange: 'transform, opacity',
                 }}
               >
@@ -630,11 +635,11 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* Featured Packages - Enhanced with better visuals */}
+      {/* Featured Packages - Enhanced with better visuals and quicker animations */}
       <section ref={observerRefs.packages} className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div
-            className={`text-center mb-12 md:mb-16 transition-all duration-700 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
+            className={`text-center mb-12 md:mb-16 transition-all duration-300 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
           >
             <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Travel Packages
@@ -649,7 +654,7 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-1 gap-10">
             <div
-              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-700 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
               style={{
                 transitionDelay: '0.05s',
               }}
@@ -672,7 +677,7 @@ const Home = () => {
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 font-display">
-                  Sri Lanka Grand Discovery: From Highlands to Coastlines
+                  Complete Heritage Explorer
                 </h3>
                 <p className="text-gray-600 mb-6 text-base">
                   Experience the rich cultural heritage with our comprehensive
@@ -705,7 +710,7 @@ const Home = () => {
               </div>
             </div>
             <div
-              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-700 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
               style={{
                 transitionDelay: '0.1s',
               }}
@@ -728,14 +733,12 @@ const Home = () => {
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 font-display">
-                  Essence of Sri Lanka: A 9-Day Tropical Escape
+                  Beach & Safari Expedition
                 </h3>
                 <p className="text-gray-600 mb-6 text-base">
-                  Experience the heart of Sri Lanka in just over a week — from ancient
-                  cities to serene tea plantations and coastal beauty.
-                  This well-balanced journey combines cultural heritage,
-                  wildlife safaris, breathtaking highland train rides, and
-                  golden beaches for an unforgettable island adventure.
+                  The perfect blend of relaxation and adventure with pristine
+                  beaches and thrilling wildlife safaris in one package. Ideal
+                  for nature lovers and beach enthusiasts.
                 </p>
                 <div className="flex items-center mb-6">
                   <div className="flex">
@@ -762,12 +765,17 @@ const Home = () => {
             </div>
           </div>
           <div
-            className={`text-center mt-12 transition-all duration-700 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            className={`text-center mt-12 transition-all duration-300 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
             style={{
               transitionDelay: '0.15s',
             }}
           >
-
+            <Link
+              to="/packages"
+              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[180px] h-[48px] text-base"
+            >
+              Explore All Packages <ArrowRight size={16} className="ml-2" />
+            </Link>
           </div>
         </div>
       </section>
@@ -856,7 +864,7 @@ const Home = () => {
                     fill="currentColor"
                     className="w-5 h-5 mr-2"
                   >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-8c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z" />
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
                   </svg>
                   Review on TripAdvisor
                 </a>
@@ -1089,7 +1097,230 @@ const Home = () => {
           </div>
         )}
       </section>
-
+      {/* Contact Us Section - Removed animations */}
+      <section
+        ref={observerRefs.contactUs}
+        className="py-16 md:py-24 bg-gray-900 text-white relative overflow-hidden"
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage:
+              "url('https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg')",
+          }}
+        ></div>
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-block bg-green-900 bg-opacity-50 text-green-400 px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Get In Touch
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-display">
+              Contact Us
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+              Have questions or ready to plan your next adventure? Reach out to
+              us and our team will be happy to assist you.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
+            <div className="h-full">
+              <div className="bg-black bg-opacity-40 p-8 rounded-2xl backdrop-blur-sm h-full flex flex-col">
+                <h3 className="text-2xl font-bold mb-6 text-green-400 font-display">
+                  Contact Information
+                </h3>
+                <div className="space-y-6 flex-grow">
+                  <div className="flex items-start">
+                    <div className="bg-green-600 p-3 rounded-full mr-4">
+                      <MapPin size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 text-base">
+                        Our Location
+                      </h4>
+                      <p className="text-gray-300 text-base">
+                        No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-green-600 p-3 rounded-full mr-4">
+                      <Phone size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 text-base">
+                        Phone
+                      </h4>
+                      <p className="text-gray-300 text-base">+94 778 289 862</p>
+                      <p className="text-gray-300 text-base">Hotline: 24/7</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-green-600 p-3 rounded-full mr-4">
+                      <Mail size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 text-base">
+                        Email
+                      </h4>
+                      <p className="text-gray-300 text-base">
+                        info@wintours.com
+                      </p>
+                      <p className="text-gray-300 text-base">
+                        support@wintours.com
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-green-600 p-3 rounded-full mr-4">
+                      <Clock size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 text-base">
+                        Office Hours
+                      </h4>
+                      <p className="text-gray-300 text-base">
+                        Monday - Saturday: 9am - 5pm
+                      </p>
+                      <p className="text-gray-300 text-base">
+                        Sunday: By Appointment
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="h-full">
+              <div className="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl h-full flex flex-col">
+                <h3 className="text-2xl font-bold mb-6 text-gray-800 font-display">
+                  Send us a message
+                </h3>
+                {contactSubmitSuccess ? (
+                  <div className="bg-green-50 border border-green-200 text-green-700 px-6 py-8 rounded-lg mb-6 animate-fadeIn flex-grow flex flex-col items-center justify-center">
+                    <div className="flex items-center mb-4">
+                      <svg
+                        className="w-6 h-6 mr-2 text-green-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M5 13l4 4L19 7"
+                        ></path>
+                      </svg>
+                      <h3 className="text-lg font-semibold">
+                        Message Sent Successfully!
+                      </h3>
+                    </div>
+                    <p className="text-base text-center">
+                      Thank you for contacting us. One of our travel experts
+                      will get back to you shortly.
+                    </p>
+                  </div>
+                ) : (
+                  <form
+                    onSubmit={handleContactSubmit}
+                    className="flex-grow flex flex-col"
+                  >
+                    <div className="mb-4">
+                      <label
+                        htmlFor="contact-name"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        id="contact-name"
+                        name="name"
+                        value={contactFormData.name}
+                        onChange={handleContactChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 text-base"
+                        placeholder="John Doe"
+                        required
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="contact-email"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        id="contact-email"
+                        name="email"
+                        value={contactFormData.email}
+                        onChange={handleContactChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 text-base"
+                        placeholder="john@example.com"
+                        required
+                      />
+                    </div>
+                    <div className="mb-6 flex-grow">
+                      <label
+                        htmlFor="contact-message"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        id="contact-message"
+                        name="message"
+                        rows={3}
+                        value={contactFormData.message}
+                        onChange={handleContactChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 text-base h-full min-h-[120px]"
+                        placeholder="How can we help you?"
+                        required
+                      ></textarea>
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-md font-medium flex items-center justify-center transition-colors text-base h-[48px] mt-auto"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <svg
+                            className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send size={18} className="mr-2" /> Send Message
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* CTA Section - Enhanced visual appeal */}
       <section className="py-16 md:py-24 bg-green-600 text-white relative overflow-hidden">
         <div
@@ -1114,13 +1345,13 @@ const Home = () => {
               rel="noopener noreferrer"
               className="bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[160px] h-[48px] flex items-center justify-center text-base"
             >
-              Message Us
+              Make an Inquiry
             </a>
             <a
               href="mailto:info@wintours.com"
               className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[160px] h-[48px] flex items-center justify-center text-base"
             >
-              Email Us
+              Contact Us
             </a>
           </div>
         </div>

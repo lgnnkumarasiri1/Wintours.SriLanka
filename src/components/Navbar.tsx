@@ -56,7 +56,7 @@ const Navbar = () => {
   }
   return (
     <header
-      className={`fixed w-full z-[100] transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2 sm:py-3' : 'bg-black/70 py-3 sm:py-5'}`}
+      className={`fixed w-full z-[100] transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2 sm:py-3' : location.pathname === '/' ? 'bg-black/70 py-3 sm:py-5' : 'bg-black py-3 sm:py-5'}`}
     >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center">

@@ -49,11 +49,20 @@ const Contact = () => {
     }, 1500)
   }
   return (
-    <div className="w-full pt-24 pb-16">
+    <div className="w-full pt-16 pb-16">
       {/* Hero Section */}
-      <section className="bg-black text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+      <section className="bg-green-600 text-white py-16 relative">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage:
+              "url('https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg')",
+          }}
+        ></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-display">
+            Contact Us
+          </h1>
           <p className="text-xl max-w-2xl mx-auto">
             Have questions or ready to plan your next adventure? Our team is
             here to help you every step of the way.
@@ -315,23 +324,22 @@ const Contact = () => {
                 </p>
                 <div className="flex items-center text-green-600">
                   <Mail size={18} className="mr-2" />
-                 <div className="flex gap-4">
-  <a
-    href="mailto:info@wintours.com"
-    className="bg-green-600 hover:bg-green-700 text-white py-3 px-8 rounded-md font-medium flex items-center justify-center transition-colors"
-  >
-    Email Us
-  </a>
-  <a
-    href="https://wa.me/94778289862"
-    className="bg-black text-white hover:bg-gray-900 py-3 px-8 rounded-md font-medium flex items-center justify-center transition-colors"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    WhatsApp
-  </a>
-</div>
-
+                  <div className="flex gap-4">
+                    <a
+                      href="mailto:info@wintours.com"
+                      className="bg-green-600 hover:bg-green-700 text-white py-3 px-8 rounded-md font-medium flex items-center justify-center transition-colors"
+                    >
+                      Email Us
+                    </a>
+                    <a
+                      href="https://wa.me/94778289862"
+                      className="bg-black text-white hover:bg-gray-900 py-3 px-8 rounded-md font-medium flex items-center justify-center transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      WhatsApp
+                    </a>
+                  </div>
                 </div>
                 <div className="mt-4">
                   <span>No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka</span>

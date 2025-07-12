@@ -616,7 +616,7 @@ const packageDetails = {
     ],
   },
   safari: {
-    title: 'Beach & Safari Expedition',
+    title: 'Sri Lanka Highlights Tour: From Ancient Cities to Ocean Shores',
     subtitle:
       'The perfect blend of relaxation and adventure with pristine beaches and thrilling wildlife safaris in one package.',
     tag: 'Popular',

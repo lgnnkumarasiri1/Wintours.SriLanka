@@ -630,25 +630,26 @@ const packageDetails = {
       "This 9-day expedition combines the best of both worlds: the thrill of wildlife safaris and the relaxation of pristine beaches. Begin your journey with exciting game drives in Sri Lanka's famous wildlife parks, where you'll witness the incredible diversity of wildlife in their natural habitat. Then unwind on the beautiful beaches of the southern coast, enjoying crystal-clear waters and white sand beaches. This perfectly balanced itinerary offers adventure, relaxation, and unforgettable experiences.",
     highlights: [
       {
-        title: 'Big Five Safari',
-        description:
-          'Spot elephants, leopards, sloth bears, water buffalo, and numerous bird species in their natural habitat during game drives.',
-      },
-      {
-        title: 'Wildlife Encounters',
-        description:
-          'Witness spectacular wildlife across multiple national parks including Yala, Udawalawe, and Minneriya.',
-      },
-      {
-        title: 'Tropical Paradise',
-        description:
-          'Relax on the pristine white sand beaches of southern Sri Lanka with crystal-clear turquoise waters.',
-      },
-      {
-        title: 'Cultural Experiences',
-        description:
-          'Visit traditional villages and explore the historic sites along the southern coast.',
-      },
+  title: 'Safari Adventures',
+  description:
+    'Explore the wild side of Sri Lanka with unforgettable safaris in Udawalawe National Park and a visit to the Elephant Transit Home.',
+},
+{
+  title: 'Hill Country Wonders',
+  description:
+    'Travel through Sri Lanka’s lush hill country—visit tea plantations, waterfalls, Gregory Lake, and take the scenic train ride to Ella.',
+},
+{
+  title: 'Coastal Bliss',
+  description:
+    'Unwind in Mirissa and Bentota with golden beaches, whale watching (seasonal), and a serene boat safari along the Madu River.',
+},
+{
+  title: 'Cultural Gems',
+  description:
+    'Climb the Sigiriya Rock Fortress, discover sacred temples, and stroll through the colonial charm of Galle Fort and vibrant Colombo.',
+},
+
     ],
     gallery: [
       'https://uploadthingy.s3.us-west-1.amazonaws.com/v28W2BPQ8qMpZvG8piC1mz/safari5.jpg',
@@ -664,7 +665,7 @@ const packageDetails = {
         title: 'Arrival in Colombo',
         location: 'Airport - Sigiriya, Sri Lanka',
         description:
-          "Arrive in Sri Lanka and go to Sigiriya.  Stop by the famous Dambulla Cave Temple on the way. It is one of the largest and best-preserved temple complexes in Sri Lanka. ",
+          "Arrive intitle: 'Big Five Safari Sri Lanka and go to Sigiriya.  Stop by the famous Dambulla Cave Temple on the way. It is one of the largest and best-preserved temple complexes in Sri Lanka. ",
         activities: ['Airport pickup', 'Dambulla Temple'],
         
         accommodation: 'over night stay at Sigiriya',

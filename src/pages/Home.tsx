@@ -544,16 +544,7 @@ const Home = () => {
                   </p>
                 </AnimateOnScroll>
               </div>
-              <Link
-                to="/packages"
-                className="inline-flex items-center text-green-600 hover:text-green-800 font-medium group text-lg"
-              >
-                Explore Our Sri Lanka Tours{' '}
-                <ArrowRight
-                  size={18}
-                  className="ml-2 transform group-hover:translate-x-1 transition-transform"
-                />
-              </Link>
+             
             </AnimateOnScroll>
           </div>
         </div>

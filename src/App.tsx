@@ -1,17 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Packages from './pages/Packages';
-import ShortInquiry from './pages/ShortInquiry';
-import Inquiry from './pages/Inquiry';
-import Gallery from './pages/Gallery';
-import Contact from './pages/Contact';
-import PackageDetails from './pages/PackageDetails';
-import { Helmet } from 'react-helmet';
-import PageTransition from './components/PageTransition';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import About from './pages/About'
+import Packages from './pages/Packages'
+import ShortInquiry from './pages/ShortInquiry'
+import Inquiry from './pages/Inquiry'
+import Gallery from './pages/Gallery'
+import Contact from './pages/Contact'
+import PackageDetails from './pages/PackageDetails'
+import { Helmet } from 'react-helmet'
+import PageTransition from './components/PageTransition'
+import ScrollToTop from './components/ScrollToTop'
 // Add global styles for animations
 const globalStyles = `
 @keyframes fadeIn {
@@ -177,9 +178,10 @@ const globalStyles = `
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
-`;
+`
 export function App() {
-  return <Router>
+  return (
+    <Router>
       <div className="flex flex-col min-h-screen bg-white">
         <Helmet>
           <meta charSet="utf-8" />
@@ -188,36 +190,78 @@ export function App() {
           <link rel="icon" href="/favicon.ico" />
         </Helmet>
         <style>{`{globalStyles}`}</style>
+        <ScrollToTop />
         <Navbar />
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<PageTransition>
+            <Route
+              path="/"
+              element={
+                <PageTransition>
                   <Home />
-                </PageTransition>} />
-            <Route path="/about" element={<PageTransition>
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <PageTransition>
                   <About />
-                </PageTransition>} />
-            <Route path="/packages" element={<PageTransition>
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/packages"
+              element={
+                <PageTransition>
                   <Packages />
-                </PageTransition>} />
-            <Route path="/packages/:duration" element={<PageTransition>
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/packages/:duration"
+              element={
+                <PageTransition>
                   <PackageDetails />
-                </PageTransition>} />
-            <Route path="/short-inquiry" element={<PageTransition>
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/short-inquiry"
+              element={
+                <PageTransition>
                   <ShortInquiry />
-                </PageTransition>} />
-            <Route path="/inquiry" element={<PageTransition>
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/inquiry"
+              element={
+                <PageTransition>
                   <Inquiry />
-                </PageTransition>} />
-            <Route path="/gallery" element={<PageTransition>
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/gallery"
+              element={
+                <PageTransition>
                   <Gallery />
-                </PageTransition>} />
-            <Route path="/contact" element={<PageTransition>
+                </PageTransition>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <PageTransition>
                   <Contact />
-                </PageTransition>} />
+                </PageTransition>
+              }
+            />
           </Routes>
         </main>
         <Footer />
       </div>
-    </Router>;
+    </Router>
+  )
 }

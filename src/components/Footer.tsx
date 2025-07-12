@@ -9,7 +9,6 @@ import {
   Clock,
   ArrowRight,
   Music,
-  Youtube,
   ExternalLink,
 } from 'lucide-react'
 const Footer = () => {
@@ -61,15 +60,6 @@ const Footer = () => {
               >
                 <Music size={18} />
               </a>
-              <a
-                href="https://youtube.com/@wintourssrilanka"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
-                aria-label="YouTube Page"
-              >
-                <Youtube size={18} />
-              </a>
             </div>
           </div>
           <div>
@@ -80,45 +70,60 @@ const Footer = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
                 >
-                  <ArrowRight size={14} className="mr-2" />
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
                   Home
                 </Link>
               </li>
               <li>
                 <Link
                   to="/about"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
                 >
-                  <ArrowRight size={14} className="mr-2" />
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
                   About Us
                 </Link>
               </li>
               <li>
                 <Link
                   to="/packages"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
                 >
-                  <ArrowRight size={14} className="mr-2" />
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
                   Packages
                 </Link>
               </li>
               <li>
                 <Link
                   to="/gallery"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
                 >
-                  <ArrowRight size={14} className="mr-2" />
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
                   Gallery
                 </Link>
               </li>
               <li>
                 <Link
                   to="/contact"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
                 >
-                  <ArrowRight size={14} className="mr-2" />
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
                   Contact
                 </Link>
               </li>
@@ -132,26 +137,63 @@ const Footer = () => {
               <li>
                 <Link
                   to="/packages/14-days-13-nights"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
                 >
-                  <ArrowRight size={14} className="mr-2" />
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
                   14 Days, 13 Nights
                 </Link>
               </li>
               <li>
                 <Link
                   to="/packages/09-days-08-nights"
-                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
                 >
-                  <ArrowRight size={14} className="mr-2" />
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
                   09 Days, 08 Nights
                 </Link>
               </li>
               <li>
-                
+                <Link
+                  to="/packages"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
+                >
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
+                  Sri Lanka Explorer
+                </Link>
               </li>
-              
-              
+              <li>
+                <Link
+                  to="/packages"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
+                >
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
+                  Beach Getaway
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/packages"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
+                >
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
+                  Cultural Tour
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
@@ -165,7 +207,7 @@ const Footer = () => {
                   className="mr-3 text-green-400 flex-shrink-0 mt-1"
                 />
                 <span className="text-gray-300">
-                  No 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
+                  No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
                 </span>
               </li>
               <li className="flex items-center">
@@ -173,11 +215,21 @@ const Footer = () => {
                   size={20}
                   className="mr-3 text-green-400 flex-shrink-0"
                 />
-                <span className="text-gray-300">+94 778 289 862</span>
+                <a
+                  href="tel:+94778289862"
+                  className="text-gray-300 hover:text-green-400 transition-colors"
+                >
+                  +94 778 289 862
+                </a>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="mr-3 text-green-400 flex-shrink-0" />
-                <span className="text-gray-300">info@wintours.com</span>
+                <a
+                  href="mailto:info@wintours.com"
+                  className="text-gray-300 hover:text-green-400 transition-colors"
+                >
+                  info@wintours.com
+                </a>
               </li>
               <li className="flex items-center">
                 <Clock
@@ -192,49 +244,49 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-gray-800 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} WinTours Sri Lanka. All rights
-              reserved.
-            </p>
+          <div className="flex flex-col sm:flex-row justify-between items-center">
+            <div className="flex flex-col sm:flex-row items-center mb-6 sm:mb-0">
+              <p className="text-gray-400 text-sm mb-4 sm:mb-0 text-center sm:text-left">
+                &copy; {new Date().getFullYear()} WinTours Sri Lanka. All rights
+                reserved.
+              </p>
               <div className="flex items-center sm:ml-4">
                 <span className="mx-2 text-gray-600 hidden sm:inline">|</span>
-                <p className="text-gray-500 text-xs flex items-center">
+                <p className="text-gray-500 text-xs flex items-center whitespace-normal text-center">
                   Website by{' '}
                   <a
                     href="https://wa.me/94783655655"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-green-400 hover:text-green-300 transition-colors inline-flex items-center ml-1"
+                    className="text-green-400 hover:text-green-300 transition-colors inline-flex items-center ml-1 flex-wrap"
                   >
-                    Olee Tech and Design Hub{' '}
-                    <ExternalLink size={12} className="ml-1" />
+                    <span className="mr-1">Olee Tech and Design Hub</span>
+                    <ExternalLink size={12} />
                   </a>
                 </p>
               </div>
-           
-            <div className="flex space-x-6">
-              <a
-                href="#"
+            </div>
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+              <Link
+                to="/privacy-policy"
                 className="text-gray-400 hover:text-green-400 text-sm"
               >
                 Privacy Policy
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/terms"
                 className="text-gray-400 hover:text-green-400 text-sm"
               >
                 Terms of Service
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/faq"
                 className="text-gray-400 hover:text-green-400 text-sm"
               >
                 FAQ
-              </a>
+              </Link>
             </div>
           </div>
-         
         </div>
       </div>
     </footer>

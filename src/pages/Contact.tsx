@@ -345,7 +345,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <span>No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka</span>
+                  <span>No 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka</span>
                 </div>
               </div>
             </div>

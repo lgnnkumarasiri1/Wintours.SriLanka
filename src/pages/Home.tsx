@@ -223,7 +223,20 @@ const Home = () => {
       <SEO
         title="WinTours Sri Lanka - Unforgettable Sri Lankan Adventures"
         description="Explore the paradise island of Sri Lanka with our expertly crafted tours. From ancient temples to pristine beaches, experience the true essence of Sri Lanka."
-        keywords="Sri Lanka tours, travel packages, Sri Lankan adventures, cultural tours, wildlife safari, beach holidays"
+        keywords="Sri Lanka tours, travel packages, 
+                  Sri Lankan adventures, cultural tours, wildlife safari, 
+                  beach holidays,Tour packages Sri Lanka, 
+                  Sri Lanka holiday packages,Best travel agency in Sri Lanka,
+                  ,Wintour Sri Lanka,Safari SRI Lanka,Adventure travel Sri Lanka,,
+                  Sri lanka Travel,Affordable Sri Lanka tour packages for couples,    
+                  Best time to visit Sri Lanka for wildlife,Adventure travel Sri Lanka,
+                  Customized Sri Lanka travel plan 2025,Custom travel Sri Lanka,Luxury tours Sri Lanka
+                  Group tours Sri Lanka,Private tours Sri Lanka,
+                  7-day Sri Lanka tour from Colombo,Family holidays in Sri Lanka,
+                  Sri Lanka travel agency with WhatsApp support,Book Sri Lanka tour online,"
+
+
+
         ogImage="https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png"
       />
       {/* Hero Section - Enhanced with better visual hierarchy and increased padding */}
@@ -264,21 +277,21 @@ const Home = () => {
               <span className="text-green-400">Adventures</span> Await
             </h1>
             <p
-              className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 opacity-0 animate-fadeInUp max-w-2xl mt-4 sm:mt-6 text-center sm:text-left mx-auto sm:mx-0"
+              className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 opacity-0 animate-fadeInUp max-w-2xl mt-4 sm:mt-6 text-left sm:text-left mx-auto sm:mx-0"
               style={{
                 animationDelay: '0.04s',
                 animationFillMode: 'forwards',
                 willChange: 'transform, opacity',
               }}
             >
-           Our expertly organized trips will take you to the 
-           beautiful island.Visit Sri Lanka's historical 
-           temples and stunning beaches.You may find true local food, a lively 
-           culture, and activities you'll never forget around every corner.
-           The foggy hills, the lush tea plantations, and the 
-           national parks full with animals will astound you.
-           Every step of your trip will show you how 
-           beautiful and warm this tropical gem is.
+              Our expertly organized trips will take you to the
+              beautiful island.Visit Sri Lanka's historical
+              temples and stunning beaches.You may find true local food, a lively
+              culture, and activities you'll never forget around every corner.
+              The foggy hills, the lush tea plantations, and the
+              national parks full with animals will astound you.
+              Every step of your trip will show you how
+              beautiful and warm this tropical gem is.
             </p>
             <div
               className="flex flex-wrap gap-4 opacity-100 md:opacity-0 animate-fadeInUp"
@@ -287,7 +300,7 @@ const Home = () => {
                 animationFillMode: 'forwards',
               }}
             >
-             
+
             </div>
           </div>
         </div>
@@ -538,7 +551,7 @@ const Home = () => {
                   </p>
                 </AnimateOnScroll>
               </div>
-             
+
             </AnimateOnScroll>
           </div>
         </div>
@@ -718,11 +731,11 @@ const Home = () => {
                   Essence of Sri Lanka: A 9-Day Tropical Escape
                 </h3>
                 <p className="text-gray-600 mb-6 text-base">
-                  Experience the heart of Sri Lanka in just over a week — from ancient 
+                  Experience the heart of Sri Lanka in just over a week — from ancient
                   cities to serene tea plantations and coastal beauty.
                   This well-balanced journey combines cultural heritage,
-                   wildlife safaris, breathtaking highland train rides, and 
-                   golden beaches for an unforgettable island adventure.
+                  wildlife safaris, breathtaking highland train rides, and
+                  golden beaches for an unforgettable island adventure.
                 </p>
                 <div className="flex items-center mb-6">
                   <div className="flex">
@@ -754,7 +767,7 @@ const Home = () => {
               transitionDelay: '0.15s',
             }}
           >
-            
+
           </div>
         </div>
       </section>
@@ -1076,7 +1089,7 @@ const Home = () => {
           </div>
         )}
       </section>
-     
+
       {/* CTA Section - Enhanced visual appeal */}
       <section className="py-16 md:py-24 bg-green-600 text-white relative overflow-hidden">
         <div

@@ -71,7 +71,6 @@ const Home = () => {
     packages: useRef(null),
     whyChoose: useRef(null),
     testimonials: useRef(null),
-    contactUs: useRef(null),
   }
   const heroImages = [
     'https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png',
@@ -242,7 +241,7 @@ const Home = () => {
           ></div>
         ))}
         <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-10 md:py-0">
-          <div className="max-w-3xl pt-28 sm:pt-32 md:pt-40 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
+          <div className="max-w-3xl mx-auto text-center pt-28 sm:pt-32 md:pt-40 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
             <span
               className="inline-block bg-green-600 text-white px-4 py-1 rounded-full text-sm font-medium mb-4 sm:mb-6 opacity-0 animate-fadeInUp"
               style={{
@@ -267,7 +266,7 @@ const Home = () => {
               <span className="text-green-400">Adventures</span> Await
             </h1>
             <p
-              className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 opacity-0 animate-fadeInUp max-w-2xl mt-4 sm:mt-6 text-center sm:text-left mx-auto sm:mx-0"
+              className="text-base sm:text-lg md:text-xl text-white mb-10 sm:mb-12 opacity-0 animate-fadeInUp max-w-2xl mt-6 sm:mt-8 mx-auto"
               style={{
                 animationDelay: '0.08s',
                 animationFillMode: 'forwards',
@@ -278,15 +277,6 @@ const Home = () => {
               ancient temples to pristine beaches, experience the true essence
               of Sri Lanka.
             </p>
-            <div
-              className="flex flex-wrap gap-4 opacity-100 md:opacity-0 animate-fadeInUp"
-              style={{
-                animationDelay: '0.1s',
-                animationFillMode: 'forwards',
-              }}
-            >
-            
-            </div>
           </div>
         </div>
         <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 animate-bounce hidden md:block">
@@ -536,16 +526,6 @@ const Home = () => {
                   </p>
                 </AnimateOnScroll>
               </div>
-              <Link
-                to="/packages"
-                className="inline-flex items-center text-green-600 hover:text-green-800 font-medium group text-lg"
-              >
-                Explore Our Sri Lanka Tours{' '}
-                <ArrowRight
-                  size={18}
-                  className="ml-2 transform group-hover:translate-x-1 transition-transform"
-                />
-              </Link>
             </AnimateOnScroll>
           </div>
         </div>
@@ -753,19 +733,6 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div
-            className={`text-center mt-12 transition-all duration-300 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-            style={{
-              transitionDelay: '0.15s',
-            }}
-          >
-            <Link
-              to="/packages"
-              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[180px] h-[48px] text-base"
-            >
-              Explore All Packages <ArrowRight size={16} className="ml-2" />
-            </Link>
-          </div>
         </div>
       </section>
       {/* Why Choose Us - Removed animations */}
@@ -840,7 +807,6 @@ const Home = () => {
                   <MessageCircle size={18} className="mr-2" />
                   Share Your Experience
                 </button>
-
                 <a
                   href="https://www.tripadvisor.com/UserReviewEdit"
                   target="_blank"
@@ -857,7 +823,6 @@ const Home = () => {
                   </svg>
                   Review on TripAdvisor
                 </a>
-
                 <button
                   onClick={() =>
                     setIsTestimonialsExpanded(!isTestimonialsExpanded)
@@ -1086,7 +1051,6 @@ const Home = () => {
           </div>
         )}
       </section>
-      
       {/* CTA Section - Enhanced visual appeal */}
       <section className="py-16 md:py-24 bg-green-600 text-white relative overflow-hidden">
         <div

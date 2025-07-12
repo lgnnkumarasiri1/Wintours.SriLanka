@@ -401,7 +401,7 @@ const galleryImages = [
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/7ZeCM38y7x8KydR9sXo9tA/happy_customer_4.jpg',
     title: 'Guests with Traditional Welcome',
-    location: 'Colombo, Sri Lanka',
+    location: 'Bandaranaike International Airport, Sri Lanka',
     category: 'guests',
   },
   {

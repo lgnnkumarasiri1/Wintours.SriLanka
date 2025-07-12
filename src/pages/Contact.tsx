@@ -1,4 +1,4 @@
-import React, { useState, lazy } from 'react'
+import React, { useEffect, useState, lazy } from 'react'
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react'
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +10,9 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [errors, setErrors] = useState({})
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({

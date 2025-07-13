@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 const PageTransition = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isVisible, setIsVisible] = useState(false)
+  const location = useLocation()
   useEffect(() => {
-    // First show loading state
+    // Reset states on location change or page refresh
     setIsLoading(true)
-    // When component mounts, simulate content loading
+    setIsVisible(false)
+    // Simulate content loading
     const loadingTimer = setTimeout(() => {
       setIsLoading(false)
       // After loading is complete, fade in the content
@@ -15,7 +18,7 @@ const PageTransition = ({ children }) => {
       return () => clearTimeout(visibilityTimer)
     }, 300) // Short loading time for better UX
     return () => clearTimeout(loadingTimer)
-  }, [])
+  }, [location.pathname, location.key]) // Re-run effect on route change or page refresh
   // If loading, show a simple loading indicator
   if (isLoading) {
     return (

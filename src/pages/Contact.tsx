@@ -399,32 +399,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
-      {/* CTA Section */}
-      <section className="py-16 bg-green-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Whether you have questions or are ready to book your next adventure,
-            we're here to help.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="/inquiry"
-              className="bg-white text-green-600 hover:bg-gray-100 px-8 py-3 rounded-md font-medium transition-all"
-            >
-              Make an Inquiry
-            </a>
-            <a
-              href="/packages"
-              className="bg-black text-white hover:bg-gray-900 px-8 py-3 rounded-md font-medium transition-all"
-            >
-              Explore Packages
-            </a>
-          </div>
-        </div>
-      </section>
+     
     </div>
   )
 }

@@ -653,7 +653,7 @@ const Home = () => {
             <div
               className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-200 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
               style={{
-                transitionDelay: '0.01s',
+                transitionDelay: '0.00s',
               }}
             >
               <div className="md:w-2/5 relative">

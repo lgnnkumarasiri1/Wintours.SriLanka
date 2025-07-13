@@ -210,7 +210,7 @@ const Home = () => {
             }
           },
           {
-            threshold: 0.05,
+            threshold: 0.01,
             rootMargin: '100px', // Start loading before section is in view
           },
         )
@@ -330,7 +330,7 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.03}
+              delay={0.01}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -368,7 +368,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.08}
+              delay={0.04}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -452,7 +452,7 @@ const Home = () => {
               <div className="grid grid-cols-3 gap-4 mt-4">
                 <AnimateOnScroll
                   animation="fade-up"
-                  delay={0.05}
+                  delay={0.02}
                   className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="img-hover-zoom h-32 sm:h-36 md:h-40">
@@ -478,7 +478,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-up"
-                  delay={0.15}
+                  delay={0.05}
                   className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="img-hover-zoom h-32 sm:h-36 md:h-40">
@@ -493,7 +493,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-left"
-              delay={0.3}
+              delay={0.1}
               className="w-full md:w-1/2"
             >
               <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-6">
@@ -516,7 +516,7 @@ const Home = () => {
               <div className="space-y-4 mb-8">
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.1}
+                  delay={0.05}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -529,7 +529,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.15}
+                  delay={0.05}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -542,7 +542,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.2}
+                  delay={0.05}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check

@@ -291,30 +291,7 @@ const Gallery = () => {
         </div>
       )}
 
-      {/* CTA Section */}
-      <section className="py-16 bg-green-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Inspired to Travel?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Contact us today to plan your dream vacation. Our travel experts are
-            waiting to assist you.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="/inquiry"
-              className="bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 min-w-[160px] h-[48px] flex items-center justify-center"
-            >
-              Make an Inquiry
-            </a>
-            <a
-              href="/packages"
-              className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 min-w-[160px] h-[48px] flex items-center justify-center"
-            >
-              Explore Packages
-            </a>
-          </div>
-        </div>
-      </section>
+     
     </div>
   )
 }

@@ -11,9 +11,9 @@ interface AnimateOnScrollProps {
 const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
   children,
   animation = 'fade-in',
-  duration = 0.2,
+  duration = 0.1,
   delay = 0,
-  threshold = 0.1,
+  threshold = 0.05,
   once = true,
   className = ''
 }) => {

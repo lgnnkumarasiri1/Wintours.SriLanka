@@ -42,6 +42,7 @@ const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [showFeedbackForm, setShowFeedbackForm] = useState(false)
   const [showMobileSidebar, setShowMobileSidebar] = useState(false)
+  const [showVideo, setShowVideo] = useState(true) // This is already true, which is good
   const [feedbackFormData, setFeedbackFormData] = useState({
     name: '',
     location: '',
@@ -185,13 +186,16 @@ const Home = () => {
     window.scrollTo(0, 0)
   }, [])
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1,
-      )
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [heroImages.length])
+    // Only start the image rotation if video is not showing
+    if (!showVideo) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) =>
+          prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1,
+        )
+      }, 5000)
+      return () => clearInterval(interval)
+    }
+  }, [heroImages.length, showVideo])
   useEffect(() => {
     const observers = {}
     // Create an intersection observer for each section with lower threshold for quicker triggering
@@ -228,18 +232,39 @@ const Home = () => {
         keywords="Sri Lanka tours, travel packages, Sri Lankan adventures, cultural tours, wildlife safari, beach holidays"
         ogImage="https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png"
       />
-      {/* Hero Section - Enhanced with better visual hierarchy and increased padding */}
+      {/* Hero Section with Video Background */}
       <section className="relative min-h-[100vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/40 z-10"></div>
-        {heroImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100 animate-zoomIn' : 'opacity-0'}`}
-            style={{
-              backgroundImage: `url('${image}')`,
-            }}
-          ></div>
-        ))}
+        {/* Video Background */}
+        <div
+          className={`absolute inset-0 ${showVideo ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={() => setShowVideo(false)} // Fallback to images if video fails
+          >
+            <source
+              src="https://player.vimeo.com/external/517090081.hd.mp4?s=90e95145af79b0925e5e1ce3e1c1a02dc72c7fee&profile_id=174"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        {/* Fallback Images */}
+        {!showVideo &&
+          heroImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100 animate-zoomIn' : 'opacity-0'}`}
+              style={{
+                backgroundImage: `url('${image}')`,
+              }}
+            ></div>
+          ))}
         <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-10 md:py-0">
           <div className="max-w-3xl mx-auto text-center pt-28 sm:pt-32 md:pt-40 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
             <span
@@ -282,16 +307,19 @@ const Home = () => {
         <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 animate-bounce hidden md:block">
           <ChevronDown size={40} className="text-white" />
         </div>
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
-          {heroImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentImageIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all ${index === currentImageIndex ? 'bg-green-400 scale-125' : 'bg-white/50 hover:bg-white/80'}`}
-              aria-label={`Go to slide ${index + 1}`}
-            ></button>
-          ))}
-        </div>
+        {/* Indicators only shown when using images */}
+        {!showVideo && (
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all ${index === currentImageIndex ? 'bg-green-400 scale-125' : 'bg-white/50 hover:bg-white/80'}`}
+                aria-label={`Go to slide ${index + 1}`}
+              ></button>
+            ))}
+          </div>
+        )}
       </section>
       {/* Quick Info Section - Improved card design */}
       <section
@@ -537,7 +565,7 @@ const Home = () => {
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div
-            className={`text-center mb-12 md:mb-16 transition-all duration-300 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
+            className={`text-center mb-12 md:mb-16 transition-all duration-200 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
           >
             <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Explore Sri Lanka
@@ -554,9 +582,9 @@ const Home = () => {
             {destinations.map((destination, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                className={`bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-2 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                 style={{
-                  transitionDelay: `${0.01 + index * 0.01}s`,
+                  transitionDelay: '0.01s',
                   willChange: 'transform, opacity',
                 }}
               >
@@ -608,7 +636,7 @@ const Home = () => {
       <section ref={observerRefs.packages} className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div
-            className={`text-center mb-12 md:mb-16 transition-all duration-300 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
+            className={`text-center mb-12 md:mb-16 transition-all duration-200 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
           >
             <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Travel Packages
@@ -623,9 +651,9 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-1 gap-10">
             <div
-              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-200 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
               style={{
-                transitionDelay: '0.00s',
+                transitionDelay: '0.01s',
               }}
             >
               <div className="md:w-2/5 relative">
@@ -679,9 +707,9 @@ const Home = () => {
               </div>
             </div>
             <div
-              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-200 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
               style={{
-                transitionDelay: '0.1s',
+                transitionDelay: '0.01s',
               }}
             >
               <div className="md:w-2/5 relative">
@@ -1069,20 +1097,18 @@ const Home = () => {
             waiting to assist you.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://wa.me/94778289862"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/short-inquiry"
               className="bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[160px] h-[48px] flex items-center justify-center text-base"
             >
               Make an Inquiry
-            </a>
-            <a
-              href="mailto:info@wintours.com"
+            </Link>
+            <Link
+              to="/contact"
               className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[160px] h-[48px] flex items-center justify-center text-base"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </section>

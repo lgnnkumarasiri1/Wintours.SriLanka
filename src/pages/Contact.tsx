@@ -84,7 +84,7 @@ const Contact = () => {
                 Our Location
               </h3>
               <p className="text-gray-600">
-                No 10, Kalalpitiya,
+                No, 10, Kalalpitiya,
                 <br />
                 Ukuwela, Matale,
                 <br />
@@ -111,6 +111,8 @@ const Contact = () => {
               <h3 className="text-xl font-bold mb-2 text-gray-800">Email</h3>
               <p className="text-gray-600">
                 info@wintours.com
+                <br />
+                support@wintours.com
                 <br />
                 bookings@wintours.com
               </p>
@@ -324,7 +326,6 @@ const Contact = () => {
                   discuss your travel plans in person.
                 </p>
                 <div className="flex items-center text-green-600">
-                  <Mail size={18} className="mr-2" />
                   <div className="flex gap-4">
                     <a
                       href="mailto:info@wintours.com"
@@ -343,7 +344,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <span>No 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka</span>
+                  <span>No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka</span>
                 </div>
               </div>
             </div>
@@ -399,7 +400,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
-     
+    
     </div>
   )
 }

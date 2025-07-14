@@ -377,11 +377,7 @@ const faqs = [
     answer:
       'You can book a travel package through our website by selecting your desired package and completing the booking form. Alternatively, you can contact our team via phone or email, or submit an inquiry form, and one of our travel experts will assist you with the booking process.',
   },
-  {
-    question: 'What payment methods do you accept?',
-    answer:
-      'We accept various payment methods including credit/debit cards (Visa, MasterCard, American Express), bank transfers, and PayPal. For certain destinations, we also offer payment plans to help you budget for your trip.',
-  },
+  
   {
     question: 'Can I customize a package to suit my preferences?',
     answer:

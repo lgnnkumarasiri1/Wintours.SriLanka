@@ -440,38 +440,38 @@ const galleryImages = [
   // Food & Beverage category
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/xsddLKeE6Z8TDiSg2rx4XQ/food1.png',
-    title: 'Traditional Sri Lankan Rice and Curry',
+    title: 'Traditional Sri Lankan Casava',
     location: 'Local Restaurant, Sri Lanka',
     category: 'food',
   },
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/s9aeoVG6A76CAuYTL7CrEe/food6.jpg',
-    title: 'Authentic Sri Lankan Hoppers',
+    title: 'Scenic Dining Experience with Mountain Views',
     location: 'Cultural Food Experience, Sri Lanka',
     category: 'food',
   },
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/oBAmJSwxc4FyeCoQwFy8iK/food7.jpg',
-    title: 'Traditional Meal Served on Lotus Leaf',
+    title: 'Traditional Meal ',
     location: 'Cultural Restaurant, Sri Lanka',
     category: 'food',
   },
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/sxtDYAHb7j4ySAmG3LHASq/food9.jpg',
-    title: 'Sri Lankan Rice with Curry Selection',
+    title: 'Traditional Meal Served on Lotus Leaf',
     location: 'Local Eatery, Sri Lanka',
     category: 'food',
   },
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/8Q4Phkxy5Q37NTSVbP84PH/food10.jpg',
-    title: 'Scenic Dining Experience with Mountain Views',
+    title: 'Authentic Sri Lankan Hoppers',
     location: 'Highland Restaurant, Sri Lanka',
     category: 'food',
   },
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/7ZeCM38y7x8KydR9sXo9tA/happy_customer_4.jpg',
     title: 'Guests with Traditional Welcome',
-    location: 'Colombo, Sri Lanka',
+    location: 'Bandaranaike International Airport, Sri Lanka',
     category: 'guests',
   },
   {

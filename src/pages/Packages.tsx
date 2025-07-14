@@ -92,7 +92,7 @@ const Packages = () => {
             <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row">
               <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/xsddLKeE6Z8TDiSg2rx4XQ/food1.png"
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/73AwLdEJo1TiQf7DgDmsKX/galle_fort.png"
                   alt="14 Days Adventure"
                   className="w-full h-64 md:h-full object-cover"
                 />
@@ -143,7 +143,7 @@ const Packages = () => {
             <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row">
               <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/73AwLdEJo1TiQf7DgDmsKX/galle_fort.png"
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/2dLrokYgGRzwkUB4U3PHpt/beach1.png"
                   alt="9 Days Adventure"
                   className="w-full h-64 md:h-full object-cover"
                 />

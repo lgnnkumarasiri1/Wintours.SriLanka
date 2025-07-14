@@ -1,4 +1,4 @@
-import React, {
+[⚠️ Suspicious Content] import React, {
   useEffect,
   useState,
   useRef,
@@ -210,7 +210,7 @@ const Home = () => {
             }
           },
           {
-            threshold: 0.01,
+            threshold: 0.05,
             rootMargin: '100px', // Start loading before section is in view
           },
         )
@@ -330,7 +330,7 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.01}
+              delay={0.03}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -349,7 +349,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.02}
+              delay={0.05}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -368,7 +368,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.02}
+              delay={0.08}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -452,7 +452,7 @@ const Home = () => {
               <div className="grid grid-cols-3 gap-4 mt-4">
                 <AnimateOnScroll
                   animation="fade-up"
-                  delay={0.01}
+                  delay={0.05}
                   className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="img-hover-zoom h-32 sm:h-36 md:h-40">
@@ -478,7 +478,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-up"
-                  delay={0.02}
+                  delay={0.15}
                   className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="img-hover-zoom h-32 sm:h-36 md:h-40">
@@ -493,7 +493,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-left"
-              delay={0.1}
+              delay={0.3}
               className="w-full md:w-1/2"
             >
               <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-6">
@@ -516,7 +516,7 @@ const Home = () => {
               <div className="space-y-4 mb-8">
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.02}
+                  delay={0.1}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -529,7 +529,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.02}
+                  delay={0.15}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -542,7 +542,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.02}
+                  delay={0.2}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -564,9 +564,7 @@ const Home = () => {
         className="py-16 md:py-24 bg-gray-50"
       >
         <div className="container mx-auto px-4 sm:px-6">
-          <div
-            className={`text-center mb-12 md:mb-16 transition-all duration-200 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
-          >
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Explore Sri Lanka
             </div>
@@ -582,11 +580,7 @@ const Home = () => {
             {destinations.map((destination, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-2 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                style={{
-                  transitionDelay: '0.00s',
-                  willChange: 'transform, opacity',
-                }}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg"
               >
                 <div className="relative h-64 overflow-hidden group">
                   <img
@@ -635,9 +629,7 @@ const Home = () => {
       {/* Featured Packages - Enhanced with better visuals and quicker animations */}
       <section ref={observerRefs.packages} className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <div
-            className={`text-center mb-12 md:mb-16 transition-all duration-200 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
-          >
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Travel Packages
             </div>
@@ -650,15 +642,10 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-10">
-            <div
-              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-200 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-              style={{
-                transitionDelay: '0.01s',
-              }}
-            >
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row">
               <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/cL7xw68aHBHs9vDboUf8kd/ancient3.jpg"
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/xsddLKeE6Z8TDiSg2rx4XQ/food1.png"
                   alt="14 Days Adventure"
                   className="w-full h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -706,12 +693,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div
-              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-200 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-              style={{
-                transitionDelay: '0.01s',
-              }}
-            >
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row">
               <div className="md:w-2/5 relative">
                 <img
                   src="https://uploadthingy.s3.us-west-1.amazonaws.com/73AwLdEJo1TiQf7DgDmsKX/galle_fort.png"
@@ -1089,7 +1071,7 @@ const Home = () => {
           }}
         ></div>
         <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 animate-pulse font-display">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-display">
             Ready to Start Your Adventure?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -1098,7 +1080,7 @@ const Home = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              to="/inquiry"
+              to="/short-inquiry"
               className="bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[160px] h-[48px] flex items-center justify-center text-base"
             >
               Make an Inquiry

@@ -405,7 +405,39 @@ const galleryImages = [
     location: 'Sinharaja Forest Reserve, Sri Lanka',
     category: 'nature',
   },
-  // Food & Beverage category - newly added
+  // Tea plantation images - newly added
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/tpz2nc6SsxhS21ghqPPNmW/Tea1.png',
+    title: 'Tea Leaf Picker at Work',
+    location: 'Nuwara Eliya, Sri Lanka',
+    category: 'tea',
+  },
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/pAnURtTpK87CFZiDg4FMhz/tea2.png',
+    title: 'Rolling Hills of Tea Plantations',
+    location: 'Central Highlands, Sri Lanka',
+    category: 'tea',
+  },
+  // Beach images - newly added
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/2dLrokYgGRzwkUB4U3PHpt/beach1.png',
+    title: 'Aerial View of Tropical Coastline',
+    location: 'Southern Coast, Sri Lanka',
+    category: 'beach',
+  },
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/sCdDjCCKmejhfJX3JU8Qer/beach2.png',
+    title: 'Pristine Tropical Beach with Fishing Boats',
+    location: 'Mirissa, Sri Lanka',
+    category: 'beach',
+  },
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/vZr3WgQur6FemySpyXyyXC/beach4.png',
+    title: 'Coconut Tree Hill',
+    location: 'Mirissa, Sri Lanka',
+    category: 'beach',
+  },
+  // Food & Beverage category
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/xsddLKeE6Z8TDiSg2rx4XQ/food1.png',
     title: 'Traditional Sri Lankan Rice and Curry',

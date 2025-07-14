@@ -307,7 +307,7 @@ Message: ${formData.message}
                       <option value="Mr">Mr</option>
                       <option value="Mrs">Mrs</option>
                       <option value="Miss">Miss</option>
-                       <option value="Ms">Miss</option>
+                       <option value="Ms">Ms</option>
                     </select>
                     {errors.title && <p className="mt-1 text-sm text-red-500">
                       {errors.title}

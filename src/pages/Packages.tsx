@@ -159,7 +159,7 @@ const Packages = () => {
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 font-display">
-                  Beach & Safari Expedition
+                  Essence of Sri Lanka: A 9-Day Tropical Escape
                 </h3>
                 <p className="text-gray-600 mb-6 text-base">
                   The perfect blend of relaxation and adventure with pristine

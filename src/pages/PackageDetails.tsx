@@ -616,7 +616,7 @@ const packageDetails = {
     ],
   },
   safari: {
-    title: 'Sri Lanka Highlights Tour: From Ancient Cities to Ocean Shores',
+    title: 'Essence of Sri Lanka: A 9-Day Tropical Escape',
     subtitle:
       'The perfect blend of relaxation and adventure with pristine beaches and thrilling wildlife safaris in one package.',
     tag: 'Popular',

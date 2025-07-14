@@ -146,6 +146,13 @@ const Gallery = () => {
             >
               Tea Plantations
             </button>
+<button
+              onClick={() => handleCategoryChange('foods')}
+              className={`px-4 py-2 rounded-full ${activeCategory === 'foods' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
+            >
+              Food & Beverage
+            </button>
+
             <button
               onClick={() => handleCategoryChange('guests')}
               className={`px-4 py-2 rounded-full ${activeCategory === 'guests' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}

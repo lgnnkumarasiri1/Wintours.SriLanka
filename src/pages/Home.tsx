@@ -349,7 +349,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.05}
+              delay={0.02}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -368,7 +368,7 @@ const Home = () => {
             </AnimateOnScroll>
             <AnimateOnScroll
               animation="fade-up"
-              delay={0.04}
+              delay={0.02}
               className="card-hover-effect h-full"
             >
               <div className="bg-gray-50 rounded-xl p-6 shadow-md flex items-center transform transition-transform hover:-translate-y-2 duration-300 h-full lg:h-[140px]">
@@ -452,7 +452,7 @@ const Home = () => {
               <div className="grid grid-cols-3 gap-4 mt-4">
                 <AnimateOnScroll
                   animation="fade-up"
-                  delay={0.02}
+                  delay={0.01}
                   className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="img-hover-zoom h-32 sm:h-36 md:h-40">
@@ -478,7 +478,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-up"
-                  delay={0.05}
+                  delay={0.02}
                   className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="img-hover-zoom h-32 sm:h-36 md:h-40">
@@ -516,7 +516,7 @@ const Home = () => {
               <div className="space-y-4 mb-8">
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.05}
+                  delay={0.02}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -529,7 +529,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.05}
+                  delay={0.02}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -542,7 +542,7 @@ const Home = () => {
                 </AnimateOnScroll>
                 <AnimateOnScroll
                   animation="fade-left"
-                  delay={0.05}
+                  delay={0.02}
                   className="flex items-start transform transition-transform hover:translate-x-2 duration-300"
                 >
                   <Check
@@ -584,7 +584,7 @@ const Home = () => {
                 key={index}
                 className={`bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-2 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                 style={{
-                  transitionDelay: '0.01s',
+                  transitionDelay: '0.00s',
                   willChange: 'transform, opacity',
                 }}
               >
@@ -653,12 +653,12 @@ const Home = () => {
             <div
               className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-200 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
               style={{
-                transitionDelay: '0.00s',
+                transitionDelay: '0.01s',
               }}
             >
               <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png"
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/cL7xw68aHBHs9vDboUf8kd/ancient3.jpg"
                   alt="14 Days Adventure"
                   className="w-full h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
                 />

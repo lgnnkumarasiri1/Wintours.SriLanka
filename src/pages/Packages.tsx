@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useRef, memo } from 'react'
+import React, { useEffect, useState, useRef, lazy, memo } from 'react'
 import { Link } from 'react-router-dom'
-import { Calendar, MapPin, ArrowRight } from 'lucide-react'
+import { Calendar, MapPin, ArrowRight, Star } from 'lucide-react'
 const Packages = () => {
   const [visibleSections, setVisibleSections] = useState({})
+  const [expandedDestinations, setExpandedDestinations] = useState({})
   const observerRefs = {
     hero: useRef(null),
     featured: useRef(null),
@@ -38,12 +39,18 @@ const Packages = () => {
       })
     }
   }, [])
+  const toggleDestinationDetails = (id) => {
+    setExpandedDestinations((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }))
+  }
   return (
     <div className="w-full">
-      {/* Hero Section */}
+      {/* Hero Section - Reduced padding to remove space */}
       <section
         ref={observerRefs.hero}
-        className="relative pt-24 pb-16 bg-black text-white"
+        className="relative mt-16 bg-black text-white"
       >
         <div
           className="absolute inset-0 bg-cover bg-center opacity-40"
@@ -52,7 +59,7 @@ const Packages = () => {
               "url('https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png')",
           }}
         ></div>
-        <div className="container mx-auto px-4 relative z-10 py-16">
+        <div className="container mx-auto px-4 relative z-10 py-8">
           <div
             className={`max-w-3xl mx-auto text-center transition-all duration-700 ${visibleSections.hero ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
           >
@@ -71,127 +78,182 @@ const Packages = () => {
         </div>
       </section>
 
-      {/* Featured Packages */}
-      <section ref={observerRefs.featured} className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div
-            className={`text-center mb-12 transition-all duration-700 ${visibleSections.featured ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
-          >
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">
-              Featured Travel Experiences
+      {/* Popular Destinations - Removed animations */}
+      <section
+        ref={observerRefs.destinations}
+        className="py-16 md:py-24 bg-gray-50"
+      >
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Explore Sri Lanka
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 font-display">
+              Popular Destinations
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Choose from our selection of premium travel packages, each
-              offering unique experiences and unforgettable memories.
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Explore our handpicked selection of the most breathtaking and
+              sought-after destinations in Sri Lanka.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {/* First Featured Package */}
-            <div
-              className={`bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200 flex flex-col h-full transition-all duration-700 hover:shadow-xl hover:-translate-y-2 ${visibleSections.featured ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}
-              style={{
-                transitionDelay: '0.05s',
-              }}
-            >
-              <div className="relative h-60">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {destinations.map((destination, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={destination.image}
+                    alt={destination.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 w-full p-6">
+                    <div className="flex items-center text-white mb-2">
+                      <MapPin size={18} className="mr-2 text-green-400" />
+                      <span className="text-sm font-medium">
+                        {destination.location}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white font-display">
+                      {destination.name}
+                    </h3>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 mb-4 text-base">
+                    {expandedDestinations[destination.id]
+                      ? destination.fullDescription || destination.description
+                      : `${destination.description.substring(0, 120)}...`}
+                  </p>
+                  <button
+                    onClick={() => toggleDestinationDetails(destination.id)}
+                    className="inline-flex items-center text-green-600 hover:text-green-800 font-medium text-sm"
+                  >
+                    {expandedDestinations[destination.id]
+                      ? 'Show Less'
+                      : 'Discover More'}{' '}
+                    <ArrowRight size={14} className="ml-1" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Packages - Removed animations */}
+      <section ref={observerRefs.packages} className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Travel Packages
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 font-display">
+              Our Popular Packages
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Choose from our carefully crafted travel packages designed to
+              provide you with the ultimate Sri Lanka experience.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-10">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row">
+              <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/j4eKVgUgWV71nCcAmRW6iS/dalada.jpg"
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/xsddLKeE6Z8TDiSg2rx4XQ/food1.png"
                   alt="14 Days Adventure"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  className="w-full h-64 md:h-full object-cover"
                 />
                 <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
                   Best Seller
                 </div>
               </div>
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="md:w-3/5 p-6 md:p-8">
                 <div className="flex items-center mb-2">
-                  <Calendar size={16} className="text-green-600 mr-1" />
+                  <Calendar size={16} className="text-green-600 mr-2" />
                   <span className="text-gray-600 text-sm">
                     14 Days, 13 Nights
                   </span>
                 </div>
-                <h3 className="text-xl font-bold mb-2">
-                  "Sri Lanka Grand Discovery: From the Highlands to the Coast"
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 font-display">
+                  Complete Heritage Explorer
                 </h3>
-                <p className="text-gray-600 mb-4 flex-grow">
-                  A full two-week trip to Sri Lanka's beautiful
-                   beaches, rich culture, and lush surroundings.
+                <p className="text-gray-600 mb-6 text-base">
+                  Experience the rich cultural heritage with our comprehensive
+                  14-day tour package that covers all major historical sites,
+                  ancient cities, and natural wonders of Sri Lanka.
                 </p>
-                <div className="flex items-center mb-4">
+                <div className="flex items-center mb-6">
                   <div className="flex">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <svg
+                      <Star
                         key={star}
-                        className="w-4 h-4 text-yellow-400 fill-current"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                      </svg>
+                        size={16}
+                        className={`${star <= 4 ? 'text-yellow-400 fill-current' : 'text-yellow-400'}`}
+                      />
                     ))}
                   </div>
                   <span className="text-gray-600 text-sm ml-2">
                     128 Reviews
                   </span>
                 </div>
-                <div className="flex justify-end mt-auto">
+                <div className="flex justify-between items-center">
+                  <div className="text-gray-900 font-bold text-xl"></div>
                   <Link
                     to="/packages/14-days-13-nights"
-                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all transform hover:scale-105 hover:shadow-md"
+                    className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md text-base font-medium min-w-[140px] h-[44px] flex items-center justify-center"
                   >
                     View Details
                   </Link>
                 </div>
               </div>
             </div>
-            {/* Second Featured Package */}
-            <div
-              className={`bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200 flex flex-col h-full transition-all duration-700 hover:shadow-xl hover:-translate-y-2 ${visibleSections.featured ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}
-              style={{
-                transitionDelay: '0.1s',
-              }}
-            >
-              <div className="relative h-60">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row">
+              <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/4iNbKQDGe98ZafS1FcUK9A/safari2.jpg"
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/73AwLdEJo1TiQf7DgDmsKX/galle_fort.png"
                   alt="9 Days Adventure"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  className="w-full h-64 md:h-full object-cover"
                 />
                 <div className="absolute top-4 left-4 bg-black text-white px-3 py-1 rounded-full text-sm font-medium">
                   Popular
                 </div>
               </div>
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="md:w-3/5 p-6 md:p-8">
                 <div className="flex items-center mb-2">
-                  <Calendar size={16} className="text-green-600 mr-1" />
+                  <Calendar size={16} className="text-green-600 mr-2" />
                   <span className="text-gray-600 text-sm">
                     9 Days, 8 Nights
                   </span>
                 </div>
-                <h3 className="text-xl font-bold mb-2">
-                  "Essence of Sri Lanka: A 9-Day Tropical Getaway"
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 font-display">
+                  Beach & Safari Expedition
                 </h3>
-                <p className="text-gray-600 mb-4 flex-grow">
-                  In just over a week, you may see the best of Sri Lanka, 
-                  from its ancient towns to its peaceful tea fields and beautiful beaches.
+                <p className="text-gray-600 mb-6 text-base">
+                  The perfect blend of relaxation and adventure with pristine
+                  beaches and thrilling wildlife safaris in one package. Ideal
+                  for nature lovers and beach enthusiasts.
                 </p>
-                <div className="flex items-center mb-4">
+                <div className="flex items-center mb-6">
                   <div className="flex">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <svg
+                      <Star
                         key={star}
-                        className="w-4 h-4 text-yellow-400 fill-current"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                      </svg>
+                        size={16}
+                        className={`${star <= 4 ? 'text-yellow-400 fill-current' : 'text-yellow-400'}`}
+                      />
                     ))}
                   </div>
                   <span className="text-gray-600 text-sm ml-2">96 Reviews</span>
                 </div>
-                <div className="flex justify-end mt-auto">
+                <div className="flex justify-between items-center">
+                  <div className="text-gray-900 font-bold text-xl"></div>
                   <Link
                     to="/packages/09-days-08-nights"
-                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all transform hover:scale-105 hover:shadow-md"
+                    className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md text-base font-medium min-w-[140px] h-[44px] flex items-center justify-center"
                   >
                     View Details
                   </Link>
@@ -205,7 +267,7 @@ const Packages = () => {
       {/* CTA Section */}
       <section className="py-16 bg-green-600 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 animate-pulse">
+          <h2 className="text-3xl font-bold mb-4">
             Ready to Start Your Adventure?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -231,4 +293,19 @@ const Packages = () => {
     </div>
   )
 }
+// Sample data - needed for the component to work
+const destinations = [
+  {
+    id: 'sigiriya',
+    name: 'Sigiriya Rock Fortress',
+    location: 'Central Province, Sri Lanka',
+    description:
+      'Explore this ancient rock fortress with its fascinating frescoes and spectacular views from the summit.',
+    fullDescription:
+      'Sigiriya, also known as the Lion Rock, is an ancient rock fortress and palace built by King Kasyapa during the 5th century AD. This UNESCO World Heritage site rises dramatically 200 meters above the surrounding plains and features remarkable frescoes, extensive gardens, and the remains of a once-magnificent palace. The climb to the summit rewards visitors with breathtaking panoramic views of the surrounding landscape. The sophisticated water gardens, boulder gardens, and terraced gardens showcase the advanced engineering and artistic achievements of ancient Sri Lankan civilization.',
+    image:
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png',
+  },
+  // ... other destinations would be here
+]
 export default Packages

@@ -37,16 +37,17 @@ const Gallery = () => {
         galleryImages.filter((img) => img.category === activeCategory),
       )
     }
-    // Scroll to the gallery grid after filtering
+    // Add null check and delay to ensure DOM is ready
     if (galleryGridRef.current) {
+      // Small delay to ensure DOM update is complete
       setTimeout(() => {
-        galleryGridRef.current.scrollIntoView({
+        galleryGridRef.current?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
         })
       }, 100)
     }
-  }, [activeCategory])
+  }, [activeCategory]) // Only trigger on category change
   const handleCategoryChange = (category) => {
     setActiveCategory(category)
   }
@@ -146,13 +147,12 @@ const Gallery = () => {
             >
               Tea Plantations
             </button>
-<button
-              onClick={() => handleCategoryChange('foods')}
-              className={`px-4 py-2 rounded-full ${activeCategory === 'foods' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
+            <button
+              onClick={() => handleCategoryChange('food')}
+              className={`px-4 py-2 rounded-full ${activeCategory === 'food' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
             >
               Food & Beverage
             </button>
-
             <button
               onClick={() => handleCategoryChange('guests')}
               className={`px-4 py-2 rounded-full ${activeCategory === 'guests' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
@@ -298,11 +298,34 @@ const Gallery = () => {
         </div>
       )}
 
-     
+      {/* CTA Section */}
+      <section className="py-16 bg-green-600 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Inspired to Travel?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Contact us today to plan your dream vacation. Our travel experts are
+            waiting to assist you.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="/inquiry"
+              className="bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 min-w-[160px] h-[48px] flex items-center justify-center"
+            >
+              Make an Inquiry
+            </a>
+            <a
+              href="/contact"
+              className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 min-w-[160px] h-[48px] flex items-center justify-center"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
-// Updated gallery data with Sri Lanka images - removed wildlife safari card as requested
+// Updated gallery data with Sri Lanka images and food category
 const galleryImages = [
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
@@ -382,10 +405,41 @@ const galleryImages = [
     location: 'Sinharaja Forest Reserve, Sri Lanka',
     category: 'nature',
   },
+  // Food & Beverage category - newly added
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/xsddLKeE6Z8TDiSg2rx4XQ/food1.png',
+    title: 'Traditional Sri Lankan Rice and Curry',
+    location: 'Local Restaurant, Sri Lanka',
+    category: 'food',
+  },
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/s9aeoVG6A76CAuYTL7CrEe/food6.jpg',
+    title: 'Authentic Sri Lankan Hoppers',
+    location: 'Cultural Food Experience, Sri Lanka',
+    category: 'food',
+  },
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/oBAmJSwxc4FyeCoQwFy8iK/food7.jpg',
+    title: 'Traditional Meal Served on Lotus Leaf',
+    location: 'Cultural Restaurant, Sri Lanka',
+    category: 'food',
+  },
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/sxtDYAHb7j4ySAmG3LHASq/food9.jpg',
+    title: 'Sri Lankan Rice with Curry Selection',
+    location: 'Local Eatery, Sri Lanka',
+    category: 'food',
+  },
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/8Q4Phkxy5Q37NTSVbP84PH/food10.jpg',
+    title: 'Scenic Dining Experience with Mountain Views',
+    location: 'Highland Restaurant, Sri Lanka',
+    category: 'food',
+  },
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/7ZeCM38y7x8KydR9sXo9tA/happy_customer_4.jpg',
     title: 'Guests with Traditional Welcome',
-    location: 'Bandaranaike International Airport, Sri Lanka',
+    location: 'Colombo, Sri Lanka',
     category: 'guests',
   },
   {

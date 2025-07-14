@@ -874,7 +874,7 @@ const packageDetails = {
           'Drive to Sigiriya',
           'Evening relaxation at hotel',
         ],
-        meals: 'Dinner',
+        
         accommodation: 'Hotel in Sigiriya',
       },
       {
@@ -889,7 +889,7 @@ const packageDetails = {
           'Spice garden tour in Matale',
           'Drive to Kandy',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Hotel in Kandy',
       },
       {
@@ -904,7 +904,7 @@ const packageDetails = {
           'Scenic drive to Nuwara Eliya',
           'Tea plantation and factory tour',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Hotel in Nuwara Eliya',
       },
       {
@@ -919,7 +919,7 @@ const packageDetails = {
           'Scenic train journey to Ella (if available)',
           'Evening at leisure in Ella',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Hotel in Ella',
       },
       {
@@ -934,7 +934,7 @@ const packageDetails = {
           'Ravana Falls stop',
           'Drive to Tissamaharama',
         ],
-        meals: 'Breakfast, Dinner',
+        
         accommodation: 'Hotel in Tissamaharama',
       },
       {
@@ -949,7 +949,7 @@ const packageDetails = {
           'Galle Fort exploration or beach time in Mirissa',
           'Evening relaxation',
         ],
-        meals: 'Breakfast, Dinner',
+      
         accommodation: 'Hotel in Galle or Mirissa',
       },
       {
@@ -965,7 +965,7 @@ const packageDetails = {
           'Colombo city tour',
           'Farewell dinner',
         ],
-        meals: 'Breakfast, Farewell Dinner',
+       
         accommodation: 'Hotel in Colombo',
       },
       {
@@ -975,7 +975,7 @@ const packageDetails = {
         description:
           'After breakfast, depending on your flight time, you may have some free time for last-minute shopping at Paradise Road, Barefoot, or Odel shopping centers. At the appropriate time, transfer to Bandaranaike International Airport for your departure flight. End of our services.',
         activities: ['Optional shopping time', 'Airport transfer'],
-        meals: 'Breakfast',
+        
         accommodation: null,
       },
     ],

@@ -572,8 +572,7 @@ const Home = () => {
               Popular Destinations
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Explore our handpicked selection of the most breathtaking and
-              sought-after destinations in Sri Lanka.
+              Discover the most delightful travel experience among the best and most popular destination choices in Sri Lanka.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -712,7 +711,7 @@ const Home = () => {
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 font-display">
-                  Essence of Sri Lanka: A 9-Day Tropical Escape
+                  Essence of Sri Lanka: A 9-Days Tropical Escape
                 </h3>
                 <p className="text-gray-600 mb-6 text-base">
                   The perfect blend of relaxation and adventure with pristine

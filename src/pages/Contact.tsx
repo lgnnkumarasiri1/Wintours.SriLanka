@@ -90,7 +90,7 @@ const Contact = () => {
                 Our Location
               </h3>
               <p className="text-gray-600">
-                No, 10, Kalalpitiya,
+                No 10, Kalalpitiya,
                 <br />
                 Ukuwela, Matale,
                 <br />
@@ -117,8 +117,6 @@ const Contact = () => {
               <h3 className="text-xl font-bold mb-2 text-gray-800">Email</h3>
               <p className="text-gray-600">
                 info@wintours.com
-                <br />
-                support@wintours.com
                 <br />
                 bookings@wintours.com
               </p>
@@ -275,17 +273,11 @@ const Contact = () => {
                   <button
                     type="button"
                     onClick={handleEmailClick}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md font-medium flex items-center justify-center transition-colors"
+                    className="flex-1 bg-gray-900 hover:bg-gray-500 text-white py-2 px-6 rounded-md font-medium flex items-center justify-center transition-colors"
                   >
                     <Mail size={18} className="mr-2" /> Email Us
                   </button>
-                  <button
-                    type="button"
-                    onClick={handleWhatsAppClick}
-                    className="flex-1 bg-black hover:bg-gray-900 text-white py-2 px-6 rounded-md font-medium flex items-center justify-center transition-colors"
-                  >
-                    <Globe size={18} className="mr-2" /> WhatsApp
-                  </button>
+                  
                 </div>
               </form>
             )}

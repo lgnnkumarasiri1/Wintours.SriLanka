@@ -78,86 +78,15 @@ const Packages = () => {
         </div>
       </section>
 
-      {/* Popular Destinations - Removed animations */}
-      <section
-        ref={observerRefs.destinations}
-        className="py-16 md:py-24 bg-gray-50"
-      >
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 md:mb-16">
-            <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
-              Explore Sri Lanka
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 font-display">
-              Popular Destinations
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Explore our handpicked selection of the most breathtaking and
-              sought-after destinations in Sri Lanka.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {destinations.map((destination, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={destination.image}
-                    alt={destination.name}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 w-full p-6">
-                    <div className="flex items-center text-white mb-2">
-                      <MapPin size={18} className="mr-2 text-green-400" />
-                      <span className="text-sm font-medium">
-                        {destination.location}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-white font-display">
-                      {destination.name}
-                    </h3>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 mb-4 text-base">
-                    {expandedDestinations[destination.id]
-                      ? destination.fullDescription || destination.description
-                      : `${destination.description.substring(0, 120)}...`}
-                  </p>
-                  <button
-                    onClick={() => toggleDestinationDetails(destination.id)}
-                    className="inline-flex items-center text-green-600 hover:text-green-800 font-medium text-sm"
-                  >
-                    {expandedDestinations[destination.id]
-                      ? 'Show Less'
-                      : 'Discover More'}{' '}
-                    <ArrowRight size={14} className="ml-1" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Popular Packages - Removed animations */}
       <section ref={observerRefs.packages} className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
-            <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
-              Travel Packages
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 font-display">
-              Our Popular Packages
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Choose from our carefully crafted travel packages designed to
-              provide you with the ultimate Sri Lanka experience.
-            </p>
+           
+            
+            
           </div>
           <div className="grid grid-cols-1 gap-10">
             <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row">

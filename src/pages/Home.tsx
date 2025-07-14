@@ -1,4 +1,4 @@
- import React, {
+import React, {
   useEffect,
   useState,
   useRef,
@@ -265,8 +265,8 @@ const Home = () => {
               }}
             ></div>
           ))}
-        <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-10 md:py-0">
-          <div className="max-w-3xl mx-auto text-center pt-28 sm:pt-32 md:pt-40 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
+        <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full flex flex-col justify-start py-10 md:py-0">
+          <div className="max-w-3xl text-left pt-28 sm:pt-32 md:pt-40 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
             <span
               className="inline-block bg-green-600 text-white px-4 py-1 rounded-full text-sm font-medium mb-4 sm:mb-6 opacity-0 animate-fadeInUp"
               style={{
@@ -276,6 +276,7 @@ const Home = () => {
             >
               Discover Sri Lanka with Us
             </span>
+
             <h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white opacity-0 animate-fadeInUp font-display leading-tight"
               style={{
@@ -290,8 +291,9 @@ const Home = () => {
               <br />
               <span className="text-green-400">Adventures</span> Await
             </h1>
+
             <p
-              className="text-base sm:text-lg md:text-xl text-white mb-10 sm:mb-12 opacity-0 animate-fadeInUp max-w-2xl mt-6 sm:mt-8 mx-auto"
+              className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 opacity-0 animate-fadeInUp max-w-2xl mt-6 sm:mt-8"
               style={{
                 animationDelay: '0.08s',
                 animationFillMode: 'forwards',
@@ -302,8 +304,27 @@ const Home = () => {
               ancient temples to pristine beaches, experience the true essence
               of Sri Lanka.
             </p>
+
+            {/* Button row */}
+            <div className="flex flex-wrap items-center gap-4 mt-4">
+              <Link
+                to="/packages"
+                className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center h-[40px] text-sm btn-hover-effect"
+              >
+                Explore Packages <ArrowRight size={14} className="ml-2" />
+              </Link>
+
+              <Link
+                to="/short-inquiry"
+                className="bg-white hover:bg-gray-100 text-gray-900 px-3 py-1.5 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg text-sm btn-hover-effect"
+              >
+                Quick Inquiry
+              </Link>
+            </div>
           </div>
         </div>
+
+
         <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 animate-bounce hidden md:block">
           <ChevronDown size={40} className="text-white" />
         </div>

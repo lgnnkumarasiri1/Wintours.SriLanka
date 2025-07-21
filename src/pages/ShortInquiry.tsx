@@ -110,7 +110,7 @@ const ShortInquiry = () => {
                     Processing...
                   </> : <>
                     <Mail size={18} className="mr-2" />
-                    <a href="mailto:info@wintours.com">
+                    <a href="mailto:info@wintourssrilanka.com">
                       Submit via Email
                     </a>
                   </>}

@@ -52,7 +52,7 @@ const Contact = () => {
     }, 1500)
   }
   const handleEmailClick = () => {
-    window.location.href = 'mailto:info@wintours.com'
+    window.location.href = 'mailto:info@wintourssrilanka.com'
   }
   const handleWhatsAppClick = () => {
     window.open('https://wa.me/94778289862', '_blank')
@@ -117,8 +117,7 @@ const Contact = () => {
               <h3 className="text-xl font-bold mb-2 text-gray-800">Email</h3>
               <p className="text-gray-600">
                 info@wintours.com
-                <br />
-                bookings@wintours.com
+                
               </p>
             </div>
             <div className="bg-gray-50 p-6 rounded-lg text-center hover:shadow-lg transition-shadow">

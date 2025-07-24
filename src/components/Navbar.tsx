@@ -73,7 +73,7 @@ const Navbar = () => {
             </span>
           </Link>
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-4 lg:space-x-8 mx-4">
+          <nav className="hidden md:flex items-center space-x-2 lg:space-x-6 flex-nowrap">
             <NavLink to="/" isScrolled={isScrolled}>
               Home
             </NavLink>
@@ -194,7 +194,7 @@ const NavLink = ({ to, children, mobile = false, isScrolled = true }) => {
   return (
     <Link
       to={to}
-      className={`${mobile ? 'block py-2 text-base' : 'py-2 text-sm lg:text-base'} ${isActive ? 'text-green-600 font-medium' : mobile ? 'text-black hover:text-green-600' : isScrolled ? 'text-black hover:text-green-600' : 'text-white hover:text-green-400'} transition-colors`}
+      className={`${mobile ? 'block py-2 text-base' : 'py-2 text-sm whitespace-nowrap'} ${isActive ? 'text-green-600 font-medium' : mobile ? 'text-black hover:text-green-600' : isScrolled ? 'text-black hover:text-green-600' : 'text-white hover:text-green-400'} transition-colors`}
     >
       {children}
     </Link>

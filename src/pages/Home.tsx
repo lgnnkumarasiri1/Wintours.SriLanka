@@ -42,7 +42,6 @@ const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [showFeedbackForm, setShowFeedbackForm] = useState(false)
   const [showMobileSidebar, setShowMobileSidebar] = useState(false)
-  const [showVideo, setShowVideo] = useState(true) // This is already true, which is good
   const [feedbackFormData, setFeedbackFormData] = useState({
     name: '',
     location: '',
@@ -72,6 +71,7 @@ const Home = () => {
     packages: useRef(null),
     whyChoose: useRef(null),
     testimonials: useRef(null),
+    contactUs: useRef(null),
   }
   const heroImages = [
     'https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png',
@@ -186,16 +186,13 @@ const Home = () => {
     window.scrollTo(0, 0)
   }, [])
   useEffect(() => {
-    // Only start the image rotation if video is not showing
-    if (!showVideo) {
-      const interval = setInterval(() => {
-        setCurrentImageIndex((prevIndex) =>
-          prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1,
-        )
-      }, 5000)
-      return () => clearInterval(interval)
-    }
-  }, [heroImages.length, showVideo])
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1,
+      )
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [heroImages.length])
   useEffect(() => {
     const observers = {}
     // Create an intersection observer for each section with lower threshold for quicker triggering
@@ -232,41 +229,20 @@ const Home = () => {
         keywords="Sri Lanka tours, travel packages, Sri Lankan adventures, cultural tours, wildlife safari, beach holidays"
         ogImage="https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png"
       />
-      {/* Hero Section with Video Background */}
+      {/* Hero Section - Enhanced with better visual hierarchy and increased padding */}
       <section className="relative min-h-[100vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/40 z-10"></div>
-        {/* Video Background */}
-        <div
-          className={`absolute inset-0 ${showVideo ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
-        >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-            onError={() => setShowVideo(false)} // Fallback to images if video fails
-          >
-            <source
-              src="https://player.vimeo.com/external/517090081.hd.mp4?s=90e95145af79b0925e5e1ce3e1c1a02dc72c7fee&profile_id=174"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        {/* Fallback Images */}
-        {!showVideo &&
-          heroImages.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100 animate-zoomIn' : 'opacity-0'}`}
-              style={{
-                backgroundImage: `url('${image}')`,
-              }}
-            ></div>
-          ))}
-        <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full flex flex-col justify-start py-10 md:py-0">
-          <div className="max-w-3xl text-left pt-28 sm:pt-32 md:pt-40 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100 animate-zoomIn' : 'opacity-0'}`}
+            style={{
+              backgroundImage: `url('${image}')`,
+            }}
+          ></div>
+        ))}
+        <div className="relative z-20 container mx-auto px-4 sm:px-6 h-full flex flex-col justify-center py-10 md:py-0">
+          <div className="max-w-3xl pt-28 sm:pt-32 md:pt-40 lg:pt-44 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
             <span
               className="inline-block bg-green-600 text-white px-4 py-1 rounded-full text-sm font-medium mb-4 sm:mb-6 opacity-0 animate-fadeInUp"
               style={{
@@ -276,7 +252,6 @@ const Home = () => {
             >
               Discover Sri Lanka with Us
             </span>
-
             <h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white opacity-0 animate-fadeInUp font-display leading-tight"
               style={{
@@ -291,9 +266,8 @@ const Home = () => {
               <br />
               <span className="text-green-400">Adventures</span> Await
             </h1>
-
             <p
-              className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 opacity-0 animate-fadeInUp max-w-2xl mt-6 sm:mt-8"
+              className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 opacity-0 animate-fadeInUp max-w-2xl mt-4 sm:mt-6 text-center sm:text-left mx-auto sm:mx-0"
               style={{
                 animationDelay: '0.08s',
                 animationFillMode: 'forwards',
@@ -304,43 +278,42 @@ const Home = () => {
               ancient temples to pristine beaches, experience the true essence
               of Sri Lanka.
             </p>
-
-            {/* Button row */}
-            <div className="flex flex-wrap items-center gap-4 mt-4">
+            <div
+              className="flex flex-wrap gap-4 opacity-100 md:opacity-0 animate-fadeInUp"
+              style={{
+                animationDelay: '0.1s',
+                animationFillMode: 'forwards',
+              }}
+            >
               <Link
                 to="/packages"
-                className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center h-[40px] text-sm btn-hover-effect"
+                className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg h-[40px] flex items-center justify-center text-sm btn-hover-effect min-w-[160px]"
               >
                 Explore Packages <ArrowRight size={14} className="ml-2" />
               </Link>
-
               <Link
                 to="/short-inquiry"
-                className="bg-white hover:bg-gray-100 text-gray-900 px-3 py-1.5 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg text-sm btn-hover-effect"
+                className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg h-[40px] flex items-center justify-center text-sm btn-hover-effect min-w-[160px]"
               >
                 Quick Inquiry
               </Link>
+
             </div>
           </div>
         </div>
-
-
         <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 animate-bounce hidden md:block">
           <ChevronDown size={40} className="text-white" />
         </div>
-        {/* Indicators only shown when using images */}
-        {!showVideo && (
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
-            {heroImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${index === currentImageIndex ? 'bg-green-400 scale-125' : 'bg-white/50 hover:bg-white/80'}`}
-                aria-label={`Go to slide ${index + 1}`}
-              ></button>
-            ))}
-          </div>
-        )}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all ${index === currentImageIndex ? 'bg-green-400 scale-125' : 'bg-white/50 hover:bg-white/80'}`}
+              aria-label={`Go to slide ${index + 1}`}
+            ></button>
+          ))}
+        </div>
       </section>
       {/* Quick Info Section - Improved card design */}
       <section
@@ -575,6 +548,16 @@ const Home = () => {
                   </p>
                 </AnimateOnScroll>
               </div>
+              <Link
+                to="/packages"
+                className="inline-flex items-center text-green-600 hover:text-green-800 font-medium group text-lg"
+              >
+                Explore Our Sri Lanka Tours{' '}
+                <ArrowRight
+                  size={18}
+                  className="ml-2 transform group-hover:translate-x-1 transition-transform"
+                />
+              </Link>
             </AnimateOnScroll>
           </div>
         </div>
@@ -585,7 +568,9 @@ const Home = () => {
         className="py-16 md:py-24 bg-gray-50"
       >
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 md:mb-16">
+          <div
+            className={`text-center mb-12 md:mb-16 transition-all duration-300 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
+          >
             <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Explore Sri Lanka
             </div>
@@ -593,14 +578,19 @@ const Home = () => {
               Popular Destinations
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Discover the most delightful travel experience among the best and most popular destination choices in Sri Lanka.
+              Explore our handpicked selection of the most breathtaking and
+              sought-after destinations in Sri Lanka.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {destinations.map((destination, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg"
+                className={`bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${visibleSections.current.destinations ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                style={{
+                  transitionDelay: `${0.05 + index * 0.05}s`,
+                  willChange: 'transform, opacity',
+                }}
               >
                 <div className="relative h-64 overflow-hidden group">
                   <img
@@ -649,7 +639,9 @@ const Home = () => {
       {/* Featured Packages - Enhanced with better visuals and quicker animations */}
       <section ref={observerRefs.packages} className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 md:mb-16">
+          <div
+            className={`text-center mb-12 md:mb-16 transition-all duration-300 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}
+          >
             <div className="inline-block bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Travel Packages
             </div>
@@ -662,10 +654,15 @@ const Home = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-10">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row">
+            <div
+              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+              style={{
+                transitionDelay: '0.05s',
+              }}
+            >
               <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/73AwLdEJo1TiQf7DgDmsKX/galle_fort.png"
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png"
                   alt="14 Days Adventure"
                   className="w-full h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -713,10 +710,15 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row">
+            <div
+              className={`bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+              style={{
+                transitionDelay: '0.1s',
+              }}
+            >
               <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/2dLrokYgGRzwkUB4U3PHpt/beach1.png"
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/73AwLdEJo1TiQf7DgDmsKX/galle_fort.png"
                   alt="9 Days Adventure"
                   className="w-full h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -732,7 +734,7 @@ const Home = () => {
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 font-display">
-                  Essence of Sri Lanka: A 9-Days Tropical Escape
+                  Beach & Safari Expedition
                 </h3>
                 <p className="text-gray-600 mb-6 text-base">
                   The perfect blend of relaxation and adventure with pristine
@@ -762,6 +764,19 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div
+            className={`text-center mt-12 transition-all duration-300 ${visibleSections.current.packages ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            style={{
+              transitionDelay: '0.15s',
+            }}
+          >
+            <Link
+              to="/packages"
+              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[180px] h-[48px] text-base"
+            >
+              Explore All Packages <ArrowRight size={16} className="ml-2" />
+            </Link>
           </div>
         </div>
       </section>
@@ -837,22 +852,9 @@ const Home = () => {
                   <MessageCircle size={18} className="mr-2" />
                   Share Your Experience
                 </button>
-                <a
-                  href="https://www.tripadvisor.com/UserReviewEdit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-[#00aa6c] hover:bg-[#00956d] text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-5 h-5 mr-2"
-                  >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-                  </svg>
-                  Review on TripAdvisor
-                </a>
+
+
+
                 <button
                   onClick={() =>
                     setIsTestimonialsExpanded(!isTestimonialsExpanded)
@@ -906,14 +908,14 @@ const Home = () => {
         </div>
         {/* Feedback Form Modal */}
         {showFeedbackForm && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 animate-fadeIn">
+          <div className="fixed inset-0 bg-black bg-opacity-70 z-[200] flex items-center justify-center p-4 animate-fadeIn">
             <div className="bg-white rounded-xl shadow-xl w-full max-w-md relative animate-scaleIn max-h-[90vh] flex flex-col">
               <button
                 onClick={closeFeedbackForm}
-                className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 transition-colors"
+                className="absolute right-4 top-4 text-gray-800 hover:text-gray-900 transition-colors bg-gray-200 hover:bg-gray-300 rounded-full p-2 z-[210]"
                 aria-label="Close feedback form"
               >
-                <X size={20} />
+                <X size={24} />
               </button>
               <div className="p-6 overflow-y-auto">
                 <h3 className="text-2xl font-bold mb-4 text-gray-800 font-display">
@@ -1041,10 +1043,13 @@ const Home = () => {
                         required
                       ></textarea>
                     </div>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md font-medium transition-colors text-base h-[44px] flex items-center justify-center"
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        handleFeedbackSubmit(e)
+                      }}
+                      className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md font-medium transition-colors text-base flex items-center justify-center w-44 h-12"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center justify-center">
@@ -1073,13 +1078,240 @@ const Home = () => {
                       ) : (
                         'Submit Your Review'
                       )}
-                    </button>
+                    </a>
                   </form>
                 )}
               </div>
             </div>
           </div>
         )}
+      </section>
+      {/* Contact Us Section - Removed animations */}
+      <section
+        ref={observerRefs.contactUs}
+        className="py-16 md:py-24 bg-gray-900 text-white relative overflow-hidden"
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage:
+              "url('https://uploadthingy.s3.us-west-1.amazonaws.com/jh8EH1fsnWUQZd1GUr5t9h/nature.jpg')",
+          }}
+        ></div>
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-block bg-green-900 bg-opacity-50 text-green-400 px-4 py-1 rounded-full text-sm font-medium mb-4">
+              Get In Touch
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-display">
+              Contact Us
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+              Have questions or ready to plan your next adventure? Reach out to
+              us and our team will be happy to assist you.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch">
+            <div className="h-full">
+              <div className="bg-black bg-opacity-40 p-8 rounded-2xl backdrop-blur-sm h-full flex flex-col">
+                <h3 className="text-2xl font-bold mb-6 text-green-400 font-display">
+                  Contact Information
+                </h3>
+                <div className="space-y-6 flex-grow">
+                  <div className="flex items-start">
+                    <div className="bg-green-600 p-3 rounded-full mr-4">
+                      <MapPin size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 text-base">
+                        Our Location
+                      </h4>
+                      <p className="text-gray-300 text-base">
+                        No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-green-600 p-3 rounded-full mr-4">
+                      <Phone size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 text-base">
+                        Phone
+                      </h4>
+                      <p className="text-gray-300 text-base">+94 778 289 862</p>
+                      <p className="text-gray-300 text-base">Hotline: 24/7</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-green-600 p-3 rounded-full mr-4">
+                      <Mail size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 text-base">
+                        Email
+                      </h4>
+                      <p className="text-gray-300 text-base">
+                        info@wintours.com
+                      </p>
+                      <p className="text-gray-300 text-base">
+                        support@wintours.com
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="bg-green-600 p-3 rounded-full mr-4">
+                      <Clock size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1 text-base">
+                        Office Hours
+                      </h4>
+                      <p className="text-gray-300 text-base">
+                        Monday - Saturday: 9am - 5pm
+                      </p>
+                      <p className="text-gray-300 text-base">
+                        Sunday: By Appointment
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="h-full">
+              <div className="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl h-full flex flex-col">
+                <h3 className="text-2xl font-bold mb-6 text-gray-800 font-display">
+                  Send us a message
+                </h3>
+                {contactSubmitSuccess ? (
+                  <div className="bg-green-50 border border-green-200 text-green-700 px-6 py-8 rounded-lg mb-6 animate-fadeIn flex-grow flex flex-col items-center justify-center">
+                    <div className="flex items-center mb-4">
+                      <svg
+                        className="w-6 h-6 mr-2 text-green-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M5 13l4 4L19 7"
+                        ></path>
+                      </svg>
+                      <h3 className="text-lg font-semibold">
+                        Message Sent Successfully!
+                      </h3>
+                    </div>
+                    <p className="text-base text-center">
+                      Thank you for contacting us. One of our travel experts
+                      will get back to you shortly.
+                    </p>
+                  </div>
+                ) : (
+                  <form
+                    onSubmit={handleContactSubmit}
+                    className="flex-grow flex flex-col"
+                  >
+                    <div className="mb-4">
+                      <label
+                        htmlFor="contact-name"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        id="contact-name"
+                        name="name"
+                        value={contactFormData.name}
+                        onChange={handleContactChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 text-base"
+                        placeholder="John Doe"
+                        required
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="contact-email"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        id="contact-email"
+                        name="email"
+                        value={contactFormData.email}
+                        onChange={handleContactChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 text-base"
+                        placeholder="john@example.com"
+                        required
+                      />
+                    </div>
+                    <div className="mb-6 flex-grow">
+                      <label
+                        htmlFor="contact-message"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        id="contact-message"
+                        name="message"
+                        rows={3}
+                        value={contactFormData.message}
+                        onChange={handleContactChange}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 text-base h-full min-h-[120px]"
+                        placeholder="How can we help you?"
+                        required
+                      ></textarea>
+                    </div>
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        handleContactSubmit(e)
+                      }}
+                      className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-md font-medium flex items-center justify-center transition-colors text-base h-12"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <svg
+                            className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send size={18} className="mr-2" /> Send Message
+                        </>
+                      )}
+                    </a>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       {/* CTA Section - Enhanced visual appeal */}
       <section className="py-16 md:py-24 bg-green-600 text-white relative overflow-hidden">
@@ -1091,7 +1323,7 @@ const Home = () => {
           }}
         ></div>
         <div className="container mx-auto px-4 sm:px-6 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-display">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 animate-pulse font-display">
             Ready to Start Your Adventure?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -1099,18 +1331,20 @@ const Home = () => {
             waiting to assist you.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/inquiry"
-              className="bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[160px] h-[48px] flex items-center justify-center text-base"
+            <a
+              href="https://wa.me/94778289862"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-44 h-12 text-base"
             >
               Make an Inquiry
-            </Link>
-            <Link
-              to="/contact"
-              className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg min-w-[160px] h-[48px] flex items-center justify-center text-base"
+            </a>
+            <a
+              href="mailto:info@wintours.com"
+              className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-44 h-12 text-base"
             >
               Contact Us
-            </Link>
+            </a>
           </div>
         </div>
       </section>

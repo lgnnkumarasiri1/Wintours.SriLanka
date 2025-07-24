@@ -8,12 +8,15 @@ import {
   ZoomOut,
   Move,
 } from 'lucide-react'
+import ImageLoader from '../components/ImageLoader'
+import LoadingSpinner from '../components/LoadingSpinner'
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState('all')
   const [filteredImages, setFilteredImages] = useState([])
   const [selectedImage, setSelectedImage] = useState(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [imageZoomed, setImageZoomed] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const galleryGridRef = useRef(null)
   const topRef = useRef(null)
   const zoomedImageRef = useRef(null)
@@ -28,6 +31,45 @@ const Gallery = () => {
         galleryImages.filter((img) => img.category === activeCategory),
       )
     }
+    // Set loading state
+    setIsLoading(true)
+    // Check if images are cached and ready
+    const checkImagesLoaded = () => {
+      const imagesToCheck =
+        activeCategory === 'all'
+          ? galleryImages
+          : galleryImages.filter((img) => img.category === activeCategory)
+      let loadedCount = 0
+      const totalImages = Math.min(imagesToCheck.length, 8) // Check first 8 images
+      imagesToCheck.slice(0, 8).forEach((image) => {
+        const img = new Image()
+        img.onload = () => {
+          loadedCount++
+          if (loadedCount >= totalImages) {
+            setIsLoading(false)
+          }
+        }
+        img.onerror = () => {
+          loadedCount++
+          if (loadedCount >= totalImages) {
+            setIsLoading(false)
+          }
+        }
+        img.src = image.url
+        // If image is already cached
+        if (img.complete) {
+          loadedCount++
+          if (loadedCount >= totalImages) {
+            setIsLoading(false)
+          }
+        }
+      })
+      // Fallback timer
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 2000)
+    }
+    checkImagesLoaded()
   }, [location])
   useEffect(() => {
     if (activeCategory === 'all') {
@@ -37,17 +79,65 @@ const Gallery = () => {
         galleryImages.filter((img) => img.category === activeCategory),
       )
     }
-    // Add null check and delay to ensure DOM is ready
-    if (galleryGridRef.current) {
-      // Small delay to ensure DOM update is complete
+    // Set loading state when category changes
+    setIsLoading(true)
+    // Check if images in new category are loaded
+    const checkCategoryImagesLoaded = () => {
+      const imagesToCheck =
+        activeCategory === 'all'
+          ? galleryImages
+          : galleryImages.filter((img) => img.category === activeCategory)
+      let loadedCount = 0
+      const totalImages = Math.min(imagesToCheck.length, 8) // Check first 8 images
+      if (totalImages === 0) {
+        setIsLoading(false)
+        return
+      }
+      imagesToCheck.slice(0, 8).forEach((image) => {
+        const img = new Image()
+        img.onload = () => {
+          loadedCount++
+          if (loadedCount >= totalImages) {
+            setIsLoading(false)
+            scrollToGalleryGrid()
+          }
+        }
+        img.onerror = () => {
+          loadedCount++
+          if (loadedCount >= totalImages) {
+            setIsLoading(false)
+            scrollToGalleryGrid()
+          }
+        }
+        img.src = image.url
+        // If image is already cached
+        if (img.complete) {
+          loadedCount++
+          if (loadedCount >= totalImages) {
+            setIsLoading(false)
+            scrollToGalleryGrid()
+          }
+        }
+      })
+      // Fallback timer
       setTimeout(() => {
-        galleryGridRef.current?.scrollIntoView({
+        setIsLoading(false)
+        scrollToGalleryGrid()
+      }, 2000)
+    }
+    checkCategoryImagesLoaded()
+  }, [activeCategory])
+  const scrollToGalleryGrid = () => {
+    // Scroll to the gallery grid after filtering and loading
+    if (galleryGridRef.current) {
+      setTimeout(() => {
+        galleryGridRef.current.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
         })
       }, 100)
     }
-  }, [activeCategory]) // Only trigger on category change
+  }
   const handleCategoryChange = (category) => {
     setActiveCategory(category)
   }
@@ -123,12 +213,7 @@ const Gallery = () => {
             >
               All
             </button>
-            <button
-              onClick={() => handleCategoryChange('beach')}
-              className={`px-4 py-2 rounded-full ${activeCategory === 'beach' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
-            >
-              Beaches
-            </button>
+            
             <button
               onClick={() => handleCategoryChange('cultural')}
               className={`px-4 py-2 rounded-full ${activeCategory === 'cultural' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
@@ -141,18 +226,7 @@ const Gallery = () => {
             >
               Nature
             </button>
-            <button
-              onClick={() => handleCategoryChange('tea')}
-              className={`px-4 py-2 rounded-full ${activeCategory === 'tea' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
-            >
-              Tea Plantations
-            </button>
-            <button
-              onClick={() => handleCategoryChange('food')}
-              className={`px-4 py-2 rounded-full ${activeCategory === 'food' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
-            >
-              Food & Beverage
-            </button>
+            
             <button
               onClick={() => handleCategoryChange('guests')}
               className={`px-4 py-2 rounded-full ${activeCategory === 'guests' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}
@@ -161,10 +235,17 @@ const Gallery = () => {
             </button>
           </div>
 
+          {/* Loading indicator */}
+          {isLoading && (
+            <div className="flex justify-center my-12">
+              <LoadingSpinner size="large" />
+            </div>
+          )}
+
           {/* Gallery Grid */}
           <div
             ref={galleryGridRef}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+            className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ${isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}
           >
             {filteredImages.map((image, index) => (
               <div
@@ -173,11 +254,11 @@ const Gallery = () => {
                 onClick={() => openLightbox(image, index)}
               >
                 <div className="relative group h-64">
-                  <img
+                  <ImageLoader
                     src={image.url}
                     alt={image.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
+                    loadingClassName="bg-gray-100 w-full h-full"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 w-full p-6">
@@ -314,10 +395,10 @@ const Gallery = () => {
               Make an Inquiry
             </a>
             <a
-              href="/contact"
+              href="/packages"
               className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 min-w-[160px] h-[48px] flex items-center justify-center"
             >
-              Contact Us
+              Explore Packages
             </a>
           </div>
         </div>
@@ -325,7 +406,7 @@ const Gallery = () => {
     </div>
   )
 }
-// Updated gallery data with Sri Lanka images and food category
+// Gallery images data remains the same
 const galleryImages = [
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/uAozGnBab3LdZQ7d1fn3sg/sigiriya1.jpg',
@@ -405,49 +486,6 @@ const galleryImages = [
     location: 'Sinharaja Forest Reserve, Sri Lanka',
     category: 'nature',
   },
-  // Tea plantation images - newly added
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/tpz2nc6SsxhS21ghqPPNmW/Tea1.png',
-    title: 'Tea Leaf Picker at Work',
-    location: 'Nuwara Eliya, Sri Lanka',
-    category: 'tea',
-  },
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/pAnURtTpK87CFZiDg4FMhz/tea2.png',
-    title: 'Rolling Hills of Tea Plantations',
-    location: 'Central Highlands, Sri Lanka',
-    category: 'tea',
-  },
-  // Beach images - newly added
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/2dLrokYgGRzwkUB4U3PHpt/beach1.png',
-    title: 'Aerial View of Tropical Coastline',
-    location: 'Southern Coast, Sri Lanka',
-    category: 'beach',
-  },
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/sCdDjCCKmejhfJX3JU8Qer/beach2.png',
-    title: 'Pristine Tropical Beach with Fishing Boats',
-    location: 'Mirissa, Sri Lanka',
-    category: 'beach',
-  },
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/vZr3WgQur6FemySpyXyyXC/beach4.png',
-    title: 'Coconut Tree Hill',
-    location: 'Mirissa, Sri Lanka',
-    category: 'beach',
-  },
-  // Food & Beverage category
- 
-  {
-    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/s9aeoVG6A76CAuYTL7CrEe/food6.jpg',
-    title: 'Scenic Dining Experience with Mountain Views',
-    location: 'Cultural Food Experience, Sri Lanka',
-    category: 'food',
-  },
-  
-
- 
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/7ZeCM38y7x8KydR9sXo9tA/happy_customer_4.jpg',
     title: 'Guests with Traditional Welcome',
@@ -490,7 +528,12 @@ const galleryImages = [
     location: 'Kandy, Sri Lanka',
     category: 'guests',
   },
-
+  {
+    url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/qp59CEpji28dA7HGvQfsp3/happy_custormer_8.jpg',
+    title: 'Tea Plantation Visit',
+    location: 'Nuwara Eliya, Sri Lanka',
+    category: 'guests',
+  },
   {
     url: 'https://uploadthingy.s3.us-west-1.amazonaws.com/vWqnxLQHgLogF1io3TfVo5/happy_custormer_10.jpg',
     title: 'Evening Dinner with Guide',

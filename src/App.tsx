@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -13,6 +13,7 @@ import PackageDetails from './pages/PackageDetails'
 import { Helmet } from 'react-helmet'
 import PageTransition from './components/PageTransition'
 import ScrollToTop from './components/ScrollToTop'
+import PageLoader from './components/PageLoader'
 // Add global styles for animations
 const globalStyles = `
 @keyframes fadeIn {
@@ -180,88 +181,133 @@ const globalStyles = `
 }
 `
 export function App() {
+  const [imagesPreloaded, setImagesPreloaded] = useState(false)
+  // Preload critical images
+  useEffect(() => {
+    const criticalImages = [
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/gGzvCMaMXFDWcQtL9LQkh3/waterfall.png',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/mPYWjQ8E2nPaESZwKPpVUN/waterflower.png',
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/d1JoSmq7L47akESbiX8JGT/bg1.png',
+    ]
+    let loadedCount = 0
+    const totalImages = criticalImages.length
+    // Check if images are already cached
+    criticalImages.forEach((src) => {
+      const img = new Image()
+      img.onload = () => {
+        loadedCount++
+        if (loadedCount === totalImages) {
+          setImagesPreloaded(true)
+        }
+      }
+      img.onerror = () => {
+        loadedCount++
+        if (loadedCount === totalImages) {
+          setImagesPreloaded(true)
+        }
+      }
+      img.src = src
+      // If image is already cached, onload won't fire
+      if (img.complete) {
+        loadedCount++
+        if (loadedCount === totalImages) {
+          setImagesPreloaded(true)
+        }
+      }
+    })
+    // Fallback in case something goes wrong
+    const timer = setTimeout(() => {
+      setImagesPreloaded(true)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-white">
-        <Helmet>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="theme-color" content="#16a34a" />
-          <link rel="icon" href="/favicon.ico" />
-        </Helmet>
-        <style>{`{globalStyles}`}</style>
-        <ScrollToTop />
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <PageTransition>
-                  <Home />
-                </PageTransition>
-              }
+      <PageLoader>
+        <div className="flex flex-col min-h-screen bg-white">
+          <Helmet>
+            <meta charSet="utf-8" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
             />
-            <Route
-              path="/about"
-              element={
-                <PageTransition>
-                  <About />
-                </PageTransition>
-              }
-            />
-            <Route
-              path="/packages"
-              element={
-                <PageTransition>
-                  <Packages />
-                </PageTransition>
-              }
-            />
-            <Route
-              path="/packages/:duration"
-              element={
-                <PageTransition>
-                  <PackageDetails />
-                </PageTransition>
-              }
-            />
-            <Route
-              path="/short-inquiry"
-              element={
-                <PageTransition>
-                  <ShortInquiry />
-                </PageTransition>
-              }
-            />
-            <Route
-              path="/inquiry"
-              element={
-                <PageTransition>
-                  <Inquiry />
-                </PageTransition>
-              }
-            />
-            <Route
-              path="/gallery"
-              element={
-                <PageTransition>
-                  <Gallery />
-                </PageTransition>
-              }
-            />
-            <Route
-              path="/contact"
-              element={
-                <PageTransition>
-                  <Contact />
-                </PageTransition>
-              }
-            />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+            <meta name="theme-color" content="#16a34a" />
+            <link rel="icon" href="/favicon.ico" />
+          </Helmet>
+          <style>{`{globalStyles}`}</style>
+          <ScrollToTop />
+          <Navbar />
+          <main className="flex-grow">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <PageTransition>
+                    <Home />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <PageTransition>
+                    <About />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/packages"
+                element={
+                  <PageTransition>
+                    <Packages />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/packages/:duration"
+                element={
+                  <PageTransition>
+                    <PackageDetails />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/short-inquiry"
+                element={
+                  <PageTransition>
+                    <ShortInquiry />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/inquiry"
+                element={
+                  <PageTransition>
+                    <Inquiry />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/gallery"
+                element={
+                  <PageTransition>
+                    <Gallery />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/contact"
+                element={
+                  <PageTransition>
+                    <Contact />
+                  </PageTransition>
+                }
+              />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </PageLoader>
     </Router>
   )
 }

@@ -287,18 +287,18 @@ const Home = () => {
             >
               <Link
                 to="/packages"
-                className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg h-[40px] flex items-center justify-center text-sm btn-hover-effect min-w-[160px]"
+                className="w-full sm:w-auto min-w-[180px] h-[44px] bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm btn-hover-effect"
               >
                 Explore Packages <ArrowRight size={14} className="ml-2" />
               </Link>
               <Link
                 to="/short-inquiry"
-                className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg h-[40px] flex items-center justify-center text-sm btn-hover-effect min-w-[160px]"
+                className="w-full sm:w-auto min-w-[180px] h-[44px] bg-white hover:bg-gray-100 text-gray-900 px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm btn-hover-effect"
               >
                 Quick Inquiry
               </Link>
-
             </div>
+
           </div>
         </div>
         <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 animate-bounce hidden md:block">
@@ -844,28 +844,23 @@ const Home = () => {
               have to say about their experiences.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <div className="flex flex-wrap justify-center gap-4">
-                <button
-                  onClick={() => setShowFeedbackForm(true)}
-                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
-                >
-                  <MessageCircle size={18} className="mr-2" />
-                  Share Your Experience
-                </button>
+              <button
+                onClick={() => setShowFeedbackForm(true)}
+                className="w-full sm:w-[260px] h-[52px] inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md text-base"
+              >
+                <MessageCircle size={18} className="mr-2" />
+                Share Your Experience
+              </button>
 
-               
-
-                <button
-                  onClick={() =>
-                    setIsTestimonialsExpanded(!isTestimonialsExpanded)
-                  }
-                  className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
-                >
-                  <Star size={18} className="mr-2" />
-                  {isTestimonialsExpanded ? 'Show Less' : 'View All Feedbacks'}
-                </button>
-              </div>
+              <button
+                onClick={() => setIsTestimonialsExpanded(!isTestimonialsExpanded)}
+                className="w-full sm:w-[260px] h-[52px] inline-flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md text-base"
+              >
+                <Star size={18} className="mr-2" />
+                {isTestimonialsExpanded ? 'Show Less' : 'View All Feedbacks'}
+              </button>
             </div>
+
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {allTestimonials
@@ -1152,11 +1147,9 @@ const Home = () => {
                         Email
                       </h4>
                       <p className="text-gray-300 text-base">
-                        info@wintours.com
+                        info@wintourssrilanka.com
                       </p>
-                      <p className="text-gray-300 text-base">
-                        support@wintours.com
-                      </p>
+
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -1338,7 +1331,7 @@ const Home = () => {
               Make an Inquiry
             </Link>
             <a
-              href="mailto:info@wintours.com"
+              href="mailto:info@wintourssrilanka.com"
               className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-44 h-12 text-base"
             >
               Contact Us

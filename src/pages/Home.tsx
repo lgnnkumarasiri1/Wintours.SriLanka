@@ -662,7 +662,7 @@ const Home = () => {
             >
               <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/u4VgSfsv6u6RyY2LBNLRBZ/beach1.png"
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/73AwLdEJo1TiQf7DgDmsKX/galle_fort.png"
                   alt="14 Days Adventure"
                   className="w-full h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -718,7 +718,8 @@ const Home = () => {
             >
               <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/73AwLdEJo1TiQf7DgDmsKX/galle_fort.png"
+                
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/u4VgSfsv6u6RyY2LBNLRBZ/beach1.png"
                   alt="9 Days Adventure"
                   className="w-full h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
                 />

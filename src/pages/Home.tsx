@@ -1467,13 +1467,6 @@ const testimonials = [
     avatar:
       'https://uploadthingy.s3.us-west-1.amazonaws.com/8GKzWHAZSCsq1B3v21JVRV/happy_customer5.jpg',
   },
-  {
-    name: 'Emily Rodriguez',
-    location: 'London, UK',
-    text: 'The customer service was exceptional from start to finish. They helped us plan the perfect vacation for our family, and the memories will last a lifetime.',
-    rating: 4,
-    avatar:
-      'https://uploadthingy.s3.us-west-1.amazonaws.com/4995X4UbvdGEbTW4vCsDV5/happy_customer1.jpg',
-  },
+
 ]
 export default Home

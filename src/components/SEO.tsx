@@ -16,7 +16,7 @@ const SEO: React.FC<SEOProps> = ({
   ogUrl = 'https://wintours.com',
   ogType = 'website'
 }) => {
-  const siteTitle = title.includes('WinTours') ? title : `${title} | WinTours Sri Lanka`;
+  const siteTitle = title.includes('WinTours') ? title : `${title} | WinTours Sri Lanka | sri lanka travel agency | sri lanka tour package | best travel Agency sri lanka`;
   return <Helmet>
       <title>{siteTitle}</title>
       <meta name="description" content={description} />

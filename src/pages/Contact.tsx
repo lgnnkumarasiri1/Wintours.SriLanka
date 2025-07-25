@@ -116,7 +116,7 @@ const Contact = () => {
               </div>
               <h3 className="text-xl font-bold mb-2 text-gray-800">Email</h3>
               <p className="text-gray-600">
-                info@wintours.com
+                info@wintourssrilanka.com
                 
               </p>
             </div>

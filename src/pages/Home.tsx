@@ -662,7 +662,7 @@ const Home = () => {
             >
               <div className="md:w-2/5 relative">
                 <img
-                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/obwacKgv1BhiiTsDVFzPaT/bg3.png"
+                  src="https://uploadthingy.s3.us-west-1.amazonaws.com/u4VgSfsv6u6RyY2LBNLRBZ/beach1.png"
                   alt="14 Days Adventure"
                   className="w-full h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -853,7 +853,7 @@ const Home = () => {
                   Share Your Experience
                 </button>
 
-
+               
 
                 <button
                   onClick={() =>
@@ -1331,14 +1331,12 @@ const Home = () => {
             waiting to assist you.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://wa.me/94778289862"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/inquiry"
               className="bg-white text-green-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-44 h-12 text-base"
             >
               Make an Inquiry
-            </a>
+            </Link>
             <a
               href="mailto:info@wintours.com"
               className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-44 h-12 text-base"

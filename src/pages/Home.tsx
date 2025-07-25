@@ -1122,7 +1122,7 @@ const Home = () => {
                         Our Location
                       </h4>
                       <p className="text-gray-300 text-base">
-                        No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
+                        No 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
                       </p>
                     </div>
                   </div>

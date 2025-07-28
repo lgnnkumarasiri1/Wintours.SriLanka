@@ -52,24 +52,8 @@ const Footer = () => {
               >
                 <Instagram size={18} />
               </a>
-              <a
-                href="https://www.tiktok.com/@wintours_srilanka"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
-                aria-label="TikTok Page"
-              >
-                <Music size={18} />
-              </a>
-              <a
-                href="https://youtube.com/@wintourssrilanka"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
-                aria-label="Youtube Page"
-              >
-                <Youtube size={18} />
-              </a>
+            
+            
             </div>
           </div>
           <div>
@@ -232,7 +216,7 @@ const Footer = () => {
                 <p className="text-gray-500 text-xs flex items-center whitespace-normal text-center">
                   Powered by{' '}
                   <a
-                    href="https://wa.me/94783655655"
+                    href="https://wa.me/94778289862"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-400 hover:text-green-300 transition-colors inline-flex items-center ml-1 flex-wrap"

@@ -57,7 +57,7 @@ const Home = () => {
     email: '',
     message: '',
   })
-  const [allTestimonials, setAllTestimonials] = useState(testimonials)
+  const [allTestimonials, setAllTestimonials] = useState([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [contactSubmitSuccess, setContactSubmitSuccess] = useState(false)
@@ -137,7 +137,15 @@ const Home = () => {
     e.preventDefault()
     setIsSubmitting(true)
     setTimeout(() => {
-      setAllTestimonials((prev) => [feedbackFormData, ...prev])
+      // Create a new array with the new feedback added to the beginning
+      const updatedTestimonials = [feedbackFormData, ...allTestimonials]
+      // Update state
+      setAllTestimonials(updatedTestimonials)
+      // Save to localStorage
+      localStorage.setItem(
+        'wintours_testimonials',
+        JSON.stringify(updatedTestimonials),
+      )
       setIsSubmitting(false)
       setSubmitSuccess(true)
       setTimeout(() => {
@@ -193,6 +201,21 @@ const Home = () => {
     }, 5000)
     return () => clearInterval(interval)
   }, [heroImages.length])
+  // Load testimonials from localStorage on component mount
+  useEffect(() => {
+    const savedTestimonials = localStorage.getItem('wintours_testimonials')
+    if (savedTestimonials) {
+      try {
+        const parsedTestimonials = JSON.parse(savedTestimonials)
+        setAllTestimonials(parsedTestimonials)
+      } catch (error) {
+        console.error('Error parsing testimonials from localStorage:', error)
+        setAllTestimonials(testimonials) // Fallback to default testimonials
+      }
+    } else {
+      setAllTestimonials(testimonials) // Use default testimonials if none in localStorage
+    }
+  }, [])
   useEffect(() => {
     const observers = {}
     // Create an intersection observer for each section with lower threshold for quicker triggering
@@ -279,7 +302,7 @@ const Home = () => {
               of Sri Lanka.
             </p>
             <div
-              className="flex flex-wrap gap-4 opacity-100 md:opacity-0 animate-fadeInUp"
+              className="flex flex-wrap gap-4 animate-fadeInUp"
               style={{
                 animationDelay: '0.1s',
                 animationFillMode: 'forwards',
@@ -287,13 +310,14 @@ const Home = () => {
             >
               <Link
                 to="/packages"
-                className="w-full sm:w-auto min-w-[180px] h-[44px] bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm btn-hover-effect"
+                className="bg-green-600 hover:bg-green-700 text-white min-w-[150px] h-[48px] px-5 py-2 rounded-md font-medium text-center text-sm flex items-center justify-center transition-all transform hover:scale-105 hover:shadow-lg btn-hover-effect"
               >
                 Explore Packages <ArrowRight size={14} className="ml-2" />
               </Link>
+
               <Link
                 to="/short-inquiry"
-                className="w-full sm:w-auto min-w-[180px] h-[44px] bg-white hover:bg-gray-100 text-gray-900 px-5 py-2 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center text-sm btn-hover-effect"
+                className="bg-white hover:bg-gray-100 text-gray-900 min-w-[150px] h-[48px] px-5 py-2 rounded-md font-medium text-center text-sm flex items-center justify-center transition-all transform hover:scale-105 hover:shadow-lg btn-hover-effect"
               >
                 Quick Inquiry
               </Link>
@@ -718,7 +742,6 @@ const Home = () => {
             >
               <div className="md:w-2/5 relative">
                 <img
-                
                   src="https://uploadthingy.s3.us-west-1.amazonaws.com/u4VgSfsv6u6RyY2LBNLRBZ/beach1.png"
                   alt="9 Days Adventure"
                   className="w-full h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
@@ -845,23 +868,28 @@ const Home = () => {
               have to say about their experiences.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button
-                onClick={() => setShowFeedbackForm(true)}
-                className="w-full sm:w-[260px] h-[52px] inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md text-base"
-              >
-                <MessageCircle size={18} className="mr-2" />
-                Share Your Experience
-              </button>
+              <div className="flex flex-wrap justify-center gap-4">
+                <button
+                  onClick={() => setShowFeedbackForm(true)}
+                  className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
+                >
+                  <MessageCircle size={18} className="mr-2" />
+                  Share Your Experience
+                </button>
 
-              <button
-                onClick={() => setIsTestimonialsExpanded(!isTestimonialsExpanded)}
-                className="w-full sm:w-[260px] h-[52px] inline-flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md text-base"
-              >
-                <Star size={18} className="mr-2" />
-                {isTestimonialsExpanded ? 'Show Less' : 'View All Feedbacks'}
-              </button>
+
+
+                <button
+                  onClick={() =>
+                    setIsTestimonialsExpanded(!isTestimonialsExpanded)
+                  }
+                  className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-900 text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
+                >
+                  <Star size={18} className="mr-2" />
+                  {isTestimonialsExpanded ? 'Show Less' : 'View All Feedbacks'}
+                </button>
+              </div>
             </div>
-
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {allTestimonials
@@ -1263,42 +1291,10 @@ const Home = () => {
                       ></textarea>
                     </div>
                     <a
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        handleContactSubmit(e)
-                      }}
+                      href={`mailto:info@wintours.com?subject=Inquiry from Website&body=Name: ${contactFormData.name}%0D%0AEmail: ${contactFormData.email}%0D%0AMessage: ${contactFormData.message}`}
                       className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-md font-medium flex items-center justify-center transition-colors text-base h-12"
                     >
-                      {isSubmitting ? (
-                        <>
-                          <svg
-                            className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <circle
-                              className="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              strokeWidth="4"
-                            ></circle>
-                            <path
-                              className="opacity-75"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                          </svg>
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          <Send size={18} className="mr-2" /> Send Message
-                        </>
-                      )}
+                      <Send size={18} className="mr-2" /> Send Message
                     </a>
                   </form>
                 )}
@@ -1331,12 +1327,12 @@ const Home = () => {
             >
               Make an Inquiry
             </Link>
-            <a
-              href="mailto:info@wintourssrilanka.com"
+            <Link
+              to="/contact"
               className="bg-black text-white hover:bg-gray-900 px-6 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-lg flex items-center justify-center w-44 h-12 text-base"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -1468,6 +1464,13 @@ const testimonials = [
     avatar:
       'https://uploadthingy.s3.us-west-1.amazonaws.com/8GKzWHAZSCsq1B3v21JVRV/happy_customer5.jpg',
   },
-
+  {
+    name: 'Emily Rodriguez',
+    location: 'London, UK',
+    text: 'The customer service was exceptional from start to finish. They helped us plan the perfect vacation for our family, and the memories will last a lifetime.',
+    rating: 4,
+    avatar:
+      'https://uploadthingy.s3.us-west-1.amazonaws.com/4995X4UbvdGEbTW4vCsDV5/happy_customer1.jpg',
+  },
 ]
 export default Home

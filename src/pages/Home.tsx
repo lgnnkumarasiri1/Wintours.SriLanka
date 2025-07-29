@@ -146,16 +146,16 @@ const Home = () => {
     // Add to Firestore database
     addTestimonial(newTestimonial)
       .then((result) => {
+        console.log('Testimonial submission result:', result)
         if (result.success) {
           console.log('Successfully added testimonial to Firestore:', result.id)
           // Use the returned testimonial with ID from Firestore
-          const testimonialWithId = result.testimonial || {
+          const testimonialWithId = {
             ...newTestimonial,
             id: result.id,
           }
-          // If successfully added to Firestore, update local state and localStorage
+          // Update state with the new testimonial at the beginning of the array
           const updatedTestimonials = [testimonialWithId, ...allTestimonials]
-          // Update state
           setAllTestimonials(updatedTestimonials)
           // Save to localStorage as backup
           localStorage.setItem(
@@ -185,41 +185,14 @@ const Home = () => {
             result.error,
           )
           setIsSubmitting(false)
-          // Fallback to localStorage only
-          const updatedTestimonials = [newTestimonial, ...allTestimonials]
-          setAllTestimonials(updatedTestimonials)
-          localStorage.setItem(
-            'wintours_testimonials',
-            JSON.stringify(updatedTestimonials),
-          )
-          setSubmitSuccess(true)
+          // Show error in UI but still update local state as fallback
+          alert('There was an error saving your feedback. Please try again.')
         }
       })
       .catch((error) => {
         console.error('Error in feedback submission:', error)
         setIsSubmitting(false)
-        // Fallback to localStorage if Firestore fails
-        const updatedTestimonials = [newTestimonial, ...allTestimonials]
-        setAllTestimonials(updatedTestimonials)
-        localStorage.setItem(
-          'wintours_testimonials',
-          JSON.stringify(updatedTestimonials),
-        )
-        setSubmitSuccess(true)
-        setTimeout(() => {
-          setSubmitSuccess(false)
-          setShowFeedbackForm(false)
-          setFeedbackFormData({
-            name: '',
-            location: '',
-            text: '',
-            rating: 5,
-            avatar:
-              'https://uploadthingy.s3.us-west-1.amazonaws.com/7ZeCM38y7x8KydR9sXo9tA/happy_customer_4.jpg',
-          })
-          setSelectedFile(null)
-          setPreviewUrl(null)
-        }, 2000)
+        alert('There was an error saving your feedback. Please try again.')
       })
   }
   const closeFeedbackForm = () => {
@@ -266,8 +239,11 @@ const Home = () => {
         console.log('Starting testimonial loading process...')
         // Try to get testimonials from Firestore
         const firestoreTestimonials = await getTestimonials()
-        // Always use Firestore testimonials if available (even if empty)
-        if (firestoreTestimonials && firestoreTestimonials.length > 0) {
+        console.log('Testimonials from Firestore:', firestoreTestimonials)
+        if (
+          Array.isArray(firestoreTestimonials) &&
+          firestoreTestimonials.length > 0
+        ) {
           console.log(
             `Loaded ${firestoreTestimonials.length} testimonials from Firestore`,
           )
@@ -279,7 +255,7 @@ const Home = () => {
           )
         } else {
           console.log(
-            'No testimonials found in Firestore, checking localStorage...',
+            'No testimonials found in Firestore or invalid response, checking localStorage...',
           )
           // If no Firestore testimonials, try localStorage
           const savedTestimonials = localStorage.getItem(
@@ -291,40 +267,35 @@ const Home = () => {
               console.log(
                 `Found ${parsedTestimonials.length} testimonials in localStorage`,
               )
-              setAllTestimonials(parsedTestimonials)
-              // Sync localStorage testimonials to Firestore if they don't have IDs
-              // (indicating they haven't been saved to Firestore yet)
-              for (const testimonial of parsedTestimonials) {
-                if (!testimonial.id) {
-                  console.log(
-                    'Syncing testimonial to Firestore:',
-                    testimonial.name,
-                  )
-                  await addTestimonial(testimonial)
-                }
+              if (
+                Array.isArray(parsedTestimonials) &&
+                parsedTestimonials.length > 0
+              ) {
+                setAllTestimonials(parsedTestimonials)
+              } else {
+                console.log(
+                  'Using default testimonials (localStorage data invalid)',
+                )
+                setAllTestimonials(testimonials)
               }
             } catch (error) {
               console.error(
                 'Error parsing testimonials from localStorage:',
                 error,
               )
-              setAllTestimonials(testimonials) // Fallback to default testimonials
-              // Add default testimonials to Firestore
-              for (const testimonial of testimonials) {
-                await addTestimonial(testimonial)
-              }
+              console.log(
+                'Using default testimonials (localStorage parse error)',
+              )
+              setAllTestimonials(testimonials)
             }
           } else {
             console.log('No testimonials in localStorage, using defaults')
-            setAllTestimonials(testimonials) // Use default testimonials if none in localStorage
-            // Add default testimonials to Firestore
-            for (const testimonial of testimonials) {
-              await addTestimonial(testimonial)
-            }
+            setAllTestimonials(testimonials)
           }
         }
       } catch (error) {
         console.error('Error in testimonial loading process:', error)
+        console.log('Using default or localStorage testimonials due to error')
         // Fallback to localStorage if Firestore fails
         const savedTestimonials = localStorage.getItem('wintours_testimonials')
         if (savedTestimonials) {
@@ -339,11 +310,11 @@ const Home = () => {
               'Error parsing testimonials from localStorage:',
               error,
             )
-            setAllTestimonials(testimonials) // Fallback to default testimonials
+            setAllTestimonials(testimonials)
           }
         } else {
           console.log('Fallback: Using default testimonials')
-          setAllTestimonials(testimonials) // Use default testimonials
+          setAllTestimonials(testimonials)
         }
       }
     }
@@ -1010,7 +981,22 @@ const Home = () => {
                   Share Your Experience
                 </button>
 
-
+                <a
+                  href="https://www.tripadvisor.com/UserReviewEdit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-[#00aa6c] hover:bg-[#00956d] text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-5 h-5 mr-2"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                  </svg>
+                  Review on TripAdvisor
+                </a>
 
                 <button
                   onClick={() =>

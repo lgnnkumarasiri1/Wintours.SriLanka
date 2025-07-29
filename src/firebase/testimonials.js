@@ -5,7 +5,6 @@ import {
   getDocs, 
   query, 
   orderBy, 
-  Timestamp,
   serverTimestamp 
 } from 'firebase/firestore';
 // Collection reference
@@ -13,11 +12,13 @@ const testimonialsCollection = collection(db, 'testimonials');
 // Add a new testimonial
 export const addTestimonial = async (testimonialData) => {
   try {
+    console.log("Adding testimonial to Firestore:", testimonialData);
     // Add a server timestamp to ensure proper ordering
     const docRef = await addDoc(testimonialsCollection, {
       ...testimonialData,
       createdAt: serverTimestamp()
     });
+    console.log("Testimonial added successfully with ID:", docRef.id);
     // Return the data with the ID to immediately use in the UI
     return { 
       success: true, 
@@ -37,7 +38,7 @@ export const addTestimonial = async (testimonialData) => {
 export const getTestimonials = async () => {
   try {
     console.log("Fetching testimonials from Firestore...");
-    // Create a query against the collection ordered by timestamp
+    // Create a query against the collection ordered by timestamp (descending)
     const q = query(testimonialsCollection, orderBy('createdAt', 'desc'));
     const querySnapshot = await getDocs(q);
     // Log the number of documents found
@@ -46,13 +47,14 @@ export const getTestimonials = async () => {
     querySnapshot.forEach((doc) => {
       // For each document, get the data and add the ID
       const data = doc.data();
+      console.log(`Processing testimonial ${doc.id}:`, data);
       // Convert Firestore Timestamp to regular date if it exists
       const processedData = {
         ...data,
         id: doc.id,
         // Ensure the timestamp is in the expected format if it exists
         ...(data.createdAt && { 
-          timestamp: data.createdAt.toDate().toISOString() 
+          timestamp: data.createdAt.toDate ? data.createdAt.toDate().toISOString() : new Date().toISOString() 
         })
       };
       testimonials.push(processedData);

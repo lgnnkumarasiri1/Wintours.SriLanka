@@ -142,18 +142,19 @@ const Home = () => {
       ...feedbackFormData,
       timestamp: new Date().toISOString(),
     }
+    console.log('Submitting new testimonial:', newTestimonial)
     // Add to Firestore database
     addTestimonial(newTestimonial)
       .then((result) => {
         if (result.success) {
+          console.log('Successfully added testimonial to Firestore:', result.id)
+          // Use the returned testimonial with ID from Firestore
+          const testimonialWithId = result.testimonial || {
+            ...newTestimonial,
+            id: result.id,
+          }
           // If successfully added to Firestore, update local state and localStorage
-          const updatedTestimonials = [
-            {
-              ...newTestimonial,
-              id: result.id,
-            },
-            ...allTestimonials,
-          ]
+          const updatedTestimonials = [testimonialWithId, ...allTestimonials]
           // Update state
           setAllTestimonials(updatedTestimonials)
           // Save to localStorage as backup
@@ -179,7 +180,10 @@ const Home = () => {
             setPreviewUrl(null)
           }, 2000)
         } else {
-          console.error('Failed to save testimonial to Firestore')
+          console.error(
+            'Failed to save testimonial to Firestore:',
+            result.error,
+          )
           setIsSubmitting(false)
           // Fallback to localStorage only
           const updatedTestimonials = [newTestimonial, ...allTestimonials]
@@ -259,17 +263,24 @@ const Home = () => {
   useEffect(() => {
     const loadTestimonials = async () => {
       try {
+        console.log('Starting testimonial loading process...')
         // Try to get testimonials from Firestore
         const firestoreTestimonials = await getTestimonials()
-        if (firestoreTestimonials.length > 0) {
-          // If we have testimonials in Firestore, use those
+        // Always use Firestore testimonials if available (even if empty)
+        if (firestoreTestimonials && firestoreTestimonials.length > 0) {
+          console.log(
+            `Loaded ${firestoreTestimonials.length} testimonials from Firestore`,
+          )
           setAllTestimonials(firestoreTestimonials)
-          // Also update localStorage for offline access
+          // Update localStorage for offline access
           localStorage.setItem(
             'wintours_testimonials',
             JSON.stringify(firestoreTestimonials),
           )
         } else {
+          console.log(
+            'No testimonials found in Firestore, checking localStorage...',
+          )
           // If no Firestore testimonials, try localStorage
           const savedTestimonials = localStorage.getItem(
             'wintours_testimonials',
@@ -277,36 +288,51 @@ const Home = () => {
           if (savedTestimonials) {
             try {
               const parsedTestimonials = JSON.parse(savedTestimonials)
+              console.log(
+                `Found ${parsedTestimonials.length} testimonials in localStorage`,
+              )
               setAllTestimonials(parsedTestimonials)
-              // Sync localStorage testimonials to Firestore
-              parsedTestimonials.forEach(async (testimonial) => {
+              // Sync localStorage testimonials to Firestore if they don't have IDs
+              // (indicating they haven't been saved to Firestore yet)
+              for (const testimonial of parsedTestimonials) {
                 if (!testimonial.id) {
-                  // Only add if not already in Firestore
+                  console.log(
+                    'Syncing testimonial to Firestore:',
+                    testimonial.name,
+                  )
                   await addTestimonial(testimonial)
                 }
-              })
+              }
             } catch (error) {
               console.error(
                 'Error parsing testimonials from localStorage:',
                 error,
               )
               setAllTestimonials(testimonials) // Fallback to default testimonials
+              // Add default testimonials to Firestore
+              for (const testimonial of testimonials) {
+                await addTestimonial(testimonial)
+              }
             }
           } else {
+            console.log('No testimonials in localStorage, using defaults')
             setAllTestimonials(testimonials) // Use default testimonials if none in localStorage
             // Add default testimonials to Firestore
-            testimonials.forEach(async (testimonial) => {
+            for (const testimonial of testimonials) {
               await addTestimonial(testimonial)
-            })
+            }
           }
         }
       } catch (error) {
-        console.error('Error loading testimonials:', error)
+        console.error('Error in testimonial loading process:', error)
         // Fallback to localStorage if Firestore fails
         const savedTestimonials = localStorage.getItem('wintours_testimonials')
         if (savedTestimonials) {
           try {
             const parsedTestimonials = JSON.parse(savedTestimonials)
+            console.log(
+              `Fallback: Using ${parsedTestimonials.length} testimonials from localStorage`,
+            )
             setAllTestimonials(parsedTestimonials)
           } catch (error) {
             console.error(
@@ -316,6 +342,7 @@ const Home = () => {
             setAllTestimonials(testimonials) // Fallback to default testimonials
           }
         } else {
+          console.log('Fallback: Using default testimonials')
           setAllTestimonials(testimonials) // Use default testimonials
         }
       }
@@ -983,22 +1010,7 @@ const Home = () => {
                   Share Your Experience
                 </button>
 
-                <a
-                  href="https://www.tripadvisor.com/UserReviewEdit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-[#00aa6c] hover:bg-[#00956d] text-white px-5 py-3 rounded-md font-medium transition-all transform hover:scale-105 hover:shadow-md min-w-[220px] h-[52px] text-base"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-5 h-5 mr-2"
-                  >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-                  </svg>
-                  Review on TripAdvisor
-                </a>
+
 
                 <button
                   onClick={() =>
@@ -1272,7 +1284,7 @@ const Home = () => {
                         Our Location
                       </h4>
                       <p className="text-gray-300 text-base">
-                        No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
+                        No 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
                       </p>
                     </div>
                   </div>
@@ -1299,7 +1311,7 @@ const Home = () => {
                       <p className="text-gray-300 text-base">
                         info@wintourssrilanka.com
                       </p>
-                      
+
                     </div>
                   </div>
                   <div className="flex items-start">

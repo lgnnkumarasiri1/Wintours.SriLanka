@@ -10,7 +10,6 @@ import {
   ArrowRight,
   Music,
   ExternalLink,
-  Youtube,
 } from 'lucide-react'
 const Footer = () => {
   return (
@@ -52,8 +51,15 @@ const Footer = () => {
               >
                 <Instagram size={18} />
               </a>
-            
-            
+              <a
+                href="https://www.tiktok.com/@wintours_srilanka"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800 hover:bg-green-600 h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
+                aria-label="TikTok Page"
+              >
+                <Music size={18} />
+              </a>
             </div>
           </div>
           <div>
@@ -152,9 +158,42 @@ const Footer = () => {
                   09 Days, 08 Nights
                 </Link>
               </li>
-             
-             
-             
+              <li>
+                <Link
+                  to="/packages"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
+                >
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
+                  Sri Lanka Explorer
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/packages"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
+                >
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
+                  Beach Getaway
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/packages"
+                  className="text-gray-300 hover:text-green-400 transition-colors flex items-center group"
+                >
+                  <ArrowRight
+                    size={14}
+                    className="mr-2 transform group-hover:translate-x-1 transition-transform"
+                  />
+                  Cultural Tour
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
@@ -168,7 +207,7 @@ const Footer = () => {
                   className="mr-3 text-green-400 flex-shrink-0 mt-1"
                 />
                 <span className="text-gray-300">
-                  No 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
+                  No, 10, Kalalpitiya, Ukuwela, Matale, Sri Lanka
                 </span>
               </li>
               <li className="flex items-center">
@@ -186,10 +225,10 @@ const Footer = () => {
               <li className="flex items-center">
                 <Mail size={20} className="mr-3 text-green-400 flex-shrink-0" />
                 <a
-                  href="mailto:info@wintourssrilanka.com"
+                  href="mailto:info@wintours.com"
                   className="text-gray-300 hover:text-green-400 transition-colors"
                 >
-                  info@wintourssrilanka.com
+                  info@wintours.com
                 </a>
               </li>
               <li className="flex items-center">
@@ -206,28 +245,28 @@ const Footer = () => {
         </div>
         <div className="border-t border-gray-800 pt-8 mt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <div className="flex flex-col sm:flex-row items-center mb-6 sm:mb-0">
-              <p className="text-gray-400 text-sm mb-4 sm:mb-0 text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start mb-4 sm:mb-0">
+              <p className="text-gray-400 text-sm mb-4 sm:mb-0">
                 &copy; {new Date().getFullYear()} WinTours Sri Lanka. All rights
                 reserved.
               </p>
               <div className="flex items-center sm:ml-4">
                 <span className="mx-2 text-gray-600 hidden sm:inline">|</span>
-                <p className="text-gray-500 text-xs flex items-center whitespace-normal text-center">
-                  Powered by{' '}
+                <p className="text-gray-500 text-xs flex items-center">
+                  Website by{' '}
                   <a
                     href="https://wa.me/94783655655"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-green-400 hover:text-green-300 transition-colors inline-flex items-center ml-1 flex-wrap"
+                    className="text-green-400 hover:text-green-300 transition-colors inline-flex items-center ml-1"
                   >
-                    <span className="mr-1">Olee Tech and Design Hub</span>
-                    <ExternalLink size={12} />
+                    Olee Tech and Design Hub{' '}
+                    <ExternalLink size={12} className="ml-1" />
                   </a>
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+            <div className="flex space-x-6">
               <Link
                 to="/privacy-policy"
                 className="text-gray-400 hover:text-green-400 text-sm"

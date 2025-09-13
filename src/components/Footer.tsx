@@ -216,7 +216,7 @@ const Footer = () => {
                 <p className="text-gray-500 text-xs flex items-center whitespace-normal text-center">
                   Powered by{' '}
                   <a
-                    href="https://wa.me/94778289862"
+                    href="https://wa.me/94783655655"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-400 hover:text-green-300 transition-colors inline-flex items-center ml-1 flex-wrap"
